@@ -1,90 +1,74 @@
-<ion-content color="secondary">
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <form #form="ngForm">
-    <ion-grid no-padding>
-      <ion-row margin>
-        <ion-col>
-          <ion-item lines="none">
-            <!--Full Name Field-->
-            <ion-label position="floating">Full Name<span class="required">*</span></ion-label>
-            <!-- <ion-input type="text" name="fullName" [(ngModel)]="doctor.firstName" required></ion-input> -->
-          </ion-item>
-          <!-- <ion-text  class="err-size ion-margin-start" color="danger" *ngIf="signupForm.get('fullName').invalid && showSignupError">FirstName Required</ion-text> -->
-        </ion-col>
-      </ion-row>
-      <ion-row margin>
-        <ion-col>
-          <ion-item lines="none">
-            <!--Email Field-->
-            <ion-label position="floating">Email<span class="required">*</span></ion-label>
-            <!-- <ion-input type="email" name="email" [(ngModel)]="doctor.email" required></ion-input> -->
-          </ion-item>
-          <!-- <ion-text  class="err-size ion-margin-start" color="danger" *ngIf="signupForm.get('email').invalid && showSignupError">FirstName Required</ion-text> -->
-        </ion-col>
-      </ion-row>
-      <ion-row margin>
-        <ion-col>
-          <ion-item lines="none">
-            <!--Phone Number Field-->
-            <ion-label position="floating">Phone Number<span class="required">*</span></ion-label>
-            <!-- <ion-input type="phone" name="phone" [(ngModel)]="doctor.phoneNumber"  required></ion-input> -->
-          </ion-item>
-          <!-- <ion-text  class="err-size ion-margin-start" color="danger" *ngIf="signupForm.get('phone').invalid && showSignupError">FirstName Required</ion-text> -->
-        </ion-col>
-      </ion-row>
-      <ion-row margin>
-        <ion-col>
-          <ion-item lines="none">
-            <!--Specialization Field-->
-            <ion-label position="floating">Specialization</ion-label>
-            <!-- <ion-input type="text" name="specialization" [(ngModel)]="doctor.specialization" ></ion-input> -->
-          </ion-item>
-          <!-- <ion-text  class="err-size ion-margin-start" color="danger" *ngIf="signupForm.get('specialization').invalid && showSignupError">FirstName Required</ion-text> -->
-        </ion-col>
-      </ion-row>
-      <ion-row margin>
-        <ion-col>
-          <ion-item lines="none">
-            <!--Register Number Field-->
-            <ion-label position="floating">Register Number</ion-label>
-            <!-- <ion-input type="text" name="registerNumber" [(ngModel)]="doctor.registerNumber" ></ion-input> -->
-          </ion-item>
-          <!-- <ion-text  class="err-size ion-margin-start" color="danger" *ngIf="signupForm.get('registerNumber').invalid && showSignupError">FirstName Required</ion-text> -->
-        </ion-col>
-      </ion-row>
-      <ion-row margin>
-          <ion-col>
-            <ion-item lines="none">
-              <!--Username Field-->
-              <ion-label position="floating">Username<span class="required">*</span></ion-label>
-              <!-- <ion-input type="text" name="username" [(ngModel)]="doctor.doctorIdpCode" required></ion-input> -->
-            </ion-item>
-            <!-- <ion-text  class="err-size ion-margin-start" color="danger" *ngIf="signupForm.get('username').invalid && showSignupError">FirstName Required</ion-text> -->
-          </ion-col>
-        </ion-row>
-        <ion-row margin>
-            <ion-col>
-              <ion-item lines="none">
-                <!--Password Field-->
-                <ion-label position="floating">Password<span class="required">*</span></ion-label>
-                <!-- <ion-input type="password"  name="password" [(ngModel)]="password" required></ion-input> -->
-              </ion-item>
-              <!-- <ion-text  class="err-size ion-margin-start" color="danger" *ngIf="signupForm.get('password').invalid && showSignupError">FirstName Required</ion-text> -->
+<ion-content class="background">
+  <div class="container">
+      <ion-slide>
+        <form [formGroup]="signupForm">
+          <div class="bg-blur rounded" lines="none">
+            <ion-input
+              formControlName="fullName"
+              
+              placeholder="Full Name"
+            ></ion-input>
+            <!-- [(ngModel)] = "user.firstName" -->
+          </div>
+          <!-- <ion-text  class="err-size ion-margin-start" color="danger" *ngIf="signupForm.get('firstname').invalid && showSignupError">FirstName Required</ion-text> -->
+          <div class="bg-blur rounded" lines="none">
+            <ion-input
+              formControlName="email"
+              
+              placeholder="Email id"
+            ></ion-input>
+            <!-- [(ngModel)]="user.email" -->
+          </div>
+          <!-- <ion-text  class="err-size ion-margin-start" color="danger" *ngIf="signupForm.get('email').invalid && showSignupError">LastName Required</ion-text> -->
+          <div class="bg-blur rounded" lines="none">
+            <ion-input
+              formControlName="phone"
+              
+              placeholder="Phone Number"
+            ></ion-input>
+            <!-- [(ngModel)]="user.phoneNumber" -->
+          </div>
+          <!-- <ion-text  class="err-size ion-margin-start" color="danger" *ngIf="signupForm.get('phone').invalid && showSignupError">EmailId Required</ion-text> -->
+          <div class="bg-blur rounded" lines="none">
+            <ion-input
+              formControlName="password"
+             
+              type="text"
+              placeholder="password"
+            ></ion-input>
+            <!-- [(ngModel)]="password" -->
+          </div>
+          <!-- <ion-text  class="err-size ion-margin-start" color="danger" *ngIf="signupForm.get('username').invalid && showSignupError">Password Required</ion-text> -->
+         
+          <div>
+            <ion-button color="primary" expand="block" (click)="createAccount()"
+              ><h5>REGISTER</h5></ion-button>
+          </div>
+          <ion-row >
+            <ion-col text="center">
+              <ion-text>
+                <span>
+                  <p class="forgot">By Clicking Create Account , You Agree with our</p><br>
+                  <a href="">Terms and Policies</a>
+                </span>
+              </ion-text>
             </ion-col>
           </ion-row>
-      <ion-row margin>
-        <ion-col>
-          <ion-text>
-            <p>By Clicking Create Account , You Agree with our
-              <a href=""> Terms and Policies</a>
-            </p>
-          </ion-text>
-          <!--Create Account Button-->
-          <!-- <ion-button [disabled]="form.invalid" (click)="createAccount()" expand="block" class="custom">Create Account</ion-button> -->
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </form>
-
+        </form>
+        
+      </ion-slide>
+      
+  </div>
+  
 </ion-content>
+
 

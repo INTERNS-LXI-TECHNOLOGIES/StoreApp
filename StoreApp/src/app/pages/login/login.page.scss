@@ -1,0 +1,67 @@
+.color {
+    color: "#0C1536"
+  }
+  
+  .background{
+    --background: url(/assets/Mutton.jpg) no-repeat center/cover fixed;
+  }
+  
+    
+    .bg-blur {
+        
+        margin: auto;
+        margin-top: 10%;
+        width: 100%;
+        // height: 9%;
+        margin-bottom: 10px;  
+        background-color:rgba(255,255,255,0.3);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        //  opacity: 20%;
+         
+    }
+  
+    .rounded {
+        border-radius: 10px !important;
+    }
+  
+    .container {
+        position:fixed;
+        width:100%;
+        height:100%; 
+        background:rgba(0,0,0,0.5);
+        margin-left:auto; 
+        margin-right: auto; 
+    }
+  
+    .w-100 {
+        width: 100%;
+    }
+    .h-100 {
+        height: 100%;
+    }
+    .margin {
+        margin-top: unset;
+        margin: auto;
+        width: 100%;
+        margin-bottom: 10px;  
+        background-color:rgba(255,255,255,0.3);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    ion-button{
+        align-items: center;
+        width:100%;
+        height:45px;
+        // margin-left:3px;
+        border-radius: 30px !important;
+    }
+    .forgot{
+        text-align:center;
+        color:white;
+    }
+    .image{
+        margin:auto;
+        margin-top: 100px;
+        width: 150px;
+        height: 150px;
+    }
+  
