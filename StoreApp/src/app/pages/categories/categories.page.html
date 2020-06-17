@@ -1,0 +1,61 @@
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Categories</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-item *ngFor="let c of categories"> -->
+    <ion-buttons (click)="getCategory(c)">
+      <ion-card class="welcome">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+                <img class="category" src="assets/salads.jpg">
+        </ion-col>
+        <ion-col><h4>salads</h4>
+        <ion-row><h6>tasty refreshing salads</h6></ion-row>
+      </ion-col>
+      </ion-row>
+      <ion-col></ion-col>
+    </ion-grid>
+  </ion-card>
+</ion-buttons>
+<!-- </ion-item> -->
+<ion-buttons (click)="getCategory(c)">
+  <ion-card class="welcome">
+<ion-grid>
+  <ion-row>
+    <ion-col>
+            <img class="category" src="assets/maincourse.jpg">
+    </ion-col>
+    <ion-col><h4>maincourse</h4>
+    <ion-row><h6>best food make you feel full</h6></ion-row>
+  </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-card>
+</ion-buttons>
+</ion-content>
+<!--realcode is below top is demo-->
+<!-- <ion-item *ngFor="let c of categories">
+  <ion-buttons (click)="getCategory(c)">
+  <ion-card>
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="3"><ion-img>{{c.image}}</ion-img></ion-col>
+            <ion-col>{{c.categoryname}}
+              <ion-row>{{c.discription}}</ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-buttons>
+</ion-item> -->
+
+
