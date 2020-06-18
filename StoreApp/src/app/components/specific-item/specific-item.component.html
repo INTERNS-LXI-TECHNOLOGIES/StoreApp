@@ -1,9 +1,48 @@
 
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Italian Salad</ion-title>
+    <ion-title>italian salad</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   
+    <ion-card class="welcome">
+              <img class="category" src="assets/italiansalad1.jpg" >
+</ion-card >
+<ion-item>
+<ion-grid>
+  <ion-row>
+    <ion-toolbar color="primary">
+      <h2 class="price">price</h2>
+    </ion-toolbar>
+  </ion-row>
+  <ion-row>
+<ion-col><ion-text>Standard Rate</ion-text></ion-col>
+<ion-col><ion-text>5$</ion-text></ion-col>
+  </ion-row>
+  <ion-row>
+<ion-col>
+<ion-button class="button" expand="block" (click)=increament()><ion-icon name="add"></ion-icon></ion-button>
+</ion-col>
+<ion-col>
+  <ion-text text-align="center">quantity{{quantity[i]}}</ion-text>
+<!-- {{s.quantity}} -->
+</ion-col>
+<ion-col>
+<ion-button class="button" expand="block" (click)=decreament()><ion-icon name="remove"></ion-icon></ion-button>
+</ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+<ion-button expand="full" (click)=viewCart()>checkout</ion-button>
+</ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+<ion-button expand="full" (click)=categoriesPage() >keep shopping</ion-button>
+</ion-col>
+  </ion-row>
+</ion-grid>
+</ion-item>
 </ion-content>
+

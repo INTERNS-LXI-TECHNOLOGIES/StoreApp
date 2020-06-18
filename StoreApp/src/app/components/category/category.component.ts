@@ -1,6 +1,7 @@
 import { ModalController } from '@ionic/angular';
 import { Component, OnInit, Input } from '@angular/core';
 import { SpecificItemComponent } from '../specific-item/specific-item.component';
+import { Category } from 'src/app/mocks/category.list';
 
 @Component({
   selector: 'app-category',
@@ -8,8 +9,7 @@ import { SpecificItemComponent } from '../specific-item/specific-item.component'
   styleUrls: ['./category.component.scss'],
 })
 export class CategoryComponent implements OnInit {
-  // @Input() category: categoryDTO;
-  // items : SpecificItems[] = [];
+  category = Category;
   constructor(private modalController: ModalController) { }
 
   ngOnInit() {}
@@ -21,4 +21,6 @@ export class CategoryComponent implements OnInit {
     });
     modal.present();
   }
+
+  
 }

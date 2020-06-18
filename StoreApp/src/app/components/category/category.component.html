@@ -1,67 +1,48 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar color="primary">
     <ion-title>salads</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <!-- <ion-item *ngFor="let items of category"> -->
-    <ion-buttons (click)="viewItem(items)">
+  <ion-item *ngFor="let c of category">
+    <ion-buttons (click)="viewItem(c)">
       <ion-card class="welcome">
     <ion-grid>
       <ion-row>
         <ion-col>
-                <img class="category" src="assets/italiansalad.jpg">
+                <img class="category" src="{{c.image}}">
         </ion-col>
-        <ion-col><h4>italiansalads</h4>
-        <ion-row><h6>A refreshing appetizer with italian spices </h6></ion-row>
+        <ion-col><h4>{{c.name}}</h4>
+        <ion-row><h6>{{c.discription}}</h6></ion-row>
       </ion-col>
       </ion-row>
       <ion-col></ion-col>
     </ion-grid>
   </ion-card>
 </ion-buttons>
-<!-- </ion-item> -->
-<!-- <ion-buttons [routerLink]="['/maincourse']"> -->
-  <ion-card class="welcome">
-<ion-grid>
-  <ion-row>
-    <ion-col>
-            <img class="category" src="assets/caramalisedsalad.jpg">
-    </ion-col>
-    <ion-col><h4>caramalisedSalad</h4>
-    <ion-row><h6>its creaminess and richness make you feel full</h6></ion-row>
-  </ion-col>
-  </ion-row>
-</ion-grid>
-</ion-card>
-<!-- </ion-buttons> -->
+</ion-item>
 
-</ion-content>
+</ion-content> -->
 
-<!-- real code is below -->
-<!-- <ion-header>
+<ion-header>
   <ion-toolbar color="primary">
-    <ion-title>category.name</ion-title>
+    <ion-title>salads</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
 <ion-item *ngFor="let items of category">
-  <ion-buttons (click)="viewItems(items)">
-  <ion-card>
-    <ion-card-content>
-      <ion-item lines="none">
+  <ion-buttons (click)="viewItem(items)">
+  <ion-card >
         <ion-grid>
           <ion-row>
-            <ion-col size="3"><ion-img>{{c.image}}</ion-img></ion-col>
-            <ion-col>{{c.categoryname}}
-              <ion-row>{{c.discription}}</ion-row>
+            <ion-col class="category"><img class="category" src="{{items.image}}"></ion-col>
+            <ion-col><h4>{{items.name}}</h4>
+              <ion-row><h6>{{items.discription}}</h6></ion-row>
             </ion-col>
           </ion-row>
         </ion-grid>
-      </ion-item>
-    </ion-card-content>
   </ion-card>
 </ion-buttons>
 </ion-item>
-</ion-content>-->
+</ion-content>

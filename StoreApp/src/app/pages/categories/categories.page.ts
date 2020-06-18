@@ -1,6 +1,8 @@
+import { Categories } from './../../mocks/categories.list';
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { CategoryComponent } from 'src/app/components/category/category.component';
+
 
 @Component({
   selector: 'app-categories',
@@ -9,7 +11,7 @@ import { CategoryComponent } from 'src/app/components/category/category.componen
 })
 export class CategoriesPage implements OnInit {
   categoryMap: any;
-  // categories: CategoryDTO[] = [];
+  categories = Categories;
   constructor(private modalController: ModalController) { }
 
   ngOnInit() {
@@ -21,4 +23,5 @@ export class CategoriesPage implements OnInit {
     });
     modal.present();
   }
+  
 }
