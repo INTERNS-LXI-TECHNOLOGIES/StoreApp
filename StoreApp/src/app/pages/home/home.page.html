@@ -5,19 +5,20 @@
 </ion-header>
 
 <ion-content>
-    <div>
-      <ionCart class="welcome-card">
-      <img class="imgStyle" src="/assets/icon/images.jpg" alt="" />
-      </ionCart>
+    <div *ngFor="let i of [1,2,3,4,5,6,7,8,9]" >
+      <ion-card>
+      <img class="imagesStyle" src="../../../assets/img.jpg">
+      <ion-label>{{products[0].name}}</ion-label>
+      <ion-label>{{products[0].price}}</ion-label>
+      <ion-button size="small" fill="none" slots="end"><ion-icon name="trash-sharp" ></ion-icon></ion-button>
+      <ion-button size="small" fill="none" slots="end"><ion-icon name="create-sharp"></ion-icon></ion-button>
+      </ion-card>
     </div>
-
+    <div>
+      <!-- <ion-button class="buttonsize" size="large" ><ion-icon  ></ion-icon></ion-button> -->
+     
+  </div>
 </ion-content>
 
 
-
-<footer>
-<button (click)=><ion-icon name="add-circle"></ion-icon></button>
-
-
-</footer>
 

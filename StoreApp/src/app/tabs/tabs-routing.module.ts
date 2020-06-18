@@ -1,3 +1,4 @@
+import { CreateProdouctPageModule } from './../pages/create-prodouct/create-prodouct.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
@@ -13,7 +14,7 @@ const routes: Routes = [
       },
       {
         path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        loadChildren: () => import("../pages/create-prodouct/create-prodouct.module").then(m => m.CreateProdouctPageModule)
       },
       {
         path: 'tab3',

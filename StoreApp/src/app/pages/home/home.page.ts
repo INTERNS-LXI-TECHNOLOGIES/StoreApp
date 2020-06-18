@@ -6,6 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+  
+  products = [
+    {
+      name:'chilly powder',
+      price:'  100'
+    }
+  ]
 
   constructor() { }
 

@@ -11,5 +11,4 @@ export class CreateProdouctPage implements OnInit {
 
   ngOnInit() {
   }
-
 }
