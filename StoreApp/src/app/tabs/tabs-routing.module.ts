@@ -13,7 +13,19 @@ const routes: Routes = [
       // },
       {
         path: 'tab1',
+<<<<<<< HEAD
         loadChildren: () => import('../pages/categories/categories.module').then(m => m.CategoriesPageModule)
+=======
+        loadChildren: () => import('../pages/home/home.module').then(m => m.HomePageModule)
+      },
+      {
+        path: 'tab2',
+        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+      },
+      {
+        path: 'tab3',
+        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+>>>>>>> 0304fc1250dea112729fcd2c0a3b3cce0dae24ef
       },
       // {
       //   path: 'tab3',

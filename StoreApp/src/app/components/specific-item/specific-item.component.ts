@@ -22,11 +22,11 @@ export class SpecificItemComponent implements OnInit {
 ngOnInit() {}
 
 async viewCart(){
-  const modal = await this.modalController.create({
-    component: CartComponent,
-    // componentProps: { category: categories ,sessions: this.categoryMap.get(categories.name)}
-  });
-  modal.present();
+  // const modal = await this.modalController.create({
+  //   // component: CartComponent,
+  //   // componentProps: { category: categories ,sessions: this.categoryMap.get(categories.name)}
+  // });
+  // modal.present();
 }
 categoriesPage() {
   this.util.navigateCategories();
