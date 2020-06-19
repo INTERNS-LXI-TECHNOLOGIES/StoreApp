@@ -6,3 +6,22 @@
 height: 10px;
 width: 10px;
 }
+.addCart {
+  margin-top: -58;
+}
+.basket {
+  margin-top: 472px;
+}
+.cart-icon {
+  font-size : 50px;
+
+}
+.cart-length {
+  color: var(--ion-color-primary);
+  position: absolute;
+  top: 18px;
+  left:25px;
+  font-size: 1.2em;
+  min-width: 25px;
+  z-index: 15;
+}

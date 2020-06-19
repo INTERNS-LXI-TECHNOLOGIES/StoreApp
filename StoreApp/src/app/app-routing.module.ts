@@ -25,7 +25,11 @@ const routes: Routes = [
   {
     path: 'create-prodouct',
     loadChildren: () => import('./pages/create-prodouct/create-prodouct.module').then( m => m.CreateProdouctPageModule)
+  },  {
+    path: 'cart-modal',
+    loadChildren: () => import('./pages/cart-modal/cart-modal.module').then( m => m.CartModalPageModule)
   }
+
 
 ];
 @NgModule({
