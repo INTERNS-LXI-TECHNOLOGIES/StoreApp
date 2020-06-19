@@ -19,7 +19,7 @@ export class CategoriesPage implements OnInit {
   async getCategory(categories: any){
     const modal = await this.modalController.create({
       component: CategoryComponent,
-      // componentProps: { category: categories ,sessions: this.categoryMap.get(categories.name)}
+      // componentProps: { category: categories , sessions: this.categoryMap.get(categories.id)}
     });
     modal.present();
   }
