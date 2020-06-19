@@ -1,56 +1,62 @@
-import { SpecificItem } from './../../mocks/specificitem.list';
-import { Util } from './../../services/util';
-import { ModalController } from '@ionic/angular';
-import { Component, OnInit, Input } from '@angular/core';
 
+import { ModalController, AlertController } from '@ionic/angular';
+import { CartService } from './../../services/cart.service';
+import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/services/cart.service';
+import { Util } from 'src/app/services/util';
 @Component({
-  selector: 'app-specific-item',
-  templateUrl: './specific-item.component.html',
-  styleUrls: ['./specific-item.component.scss'],
-  providers: [Util]
-})
-export class SpecificItemComponent implements OnInit {
+    selector: 'app-specific-item',
+    templateUrl: './specific-item.component.html',
+    styleUrls: ['./specific-item.component.scss'],
+    providers: [Util]
+  })
 
-  quantity = [];
-  i: any;
+export class  SpecificItemComponent implements OnInit {
+   cart: Product[] = [];
+  constructor( private cartService: CartService,
+               private modalController: ModalController,
+               private alertCntoller: AlertController,
+               private util: Util,
+                ) { }
 
-  specificitem: any[] = [];
-
-  constructor(private modalController: ModalController,
-              private util: Util) { }
-
-ngOnInit() {}
-
-async viewCart(){
-  // const modal = await this.modalController.create({
-  //   // component: CartComponent,
-  //   // componentProps: { category: categories ,sessions: this.categoryMap.get(categories.name)}
-  // });
-  // modal.present();
-}
-categoriesPage() {
-  this.util.navigateCategories();
-}
-increament() {
-
-  const index = 1;
-  console.log(this.quantity);
-  this.quantity[index] = this.quantity[index] + 1;
-  // this.orders.beverages.push(product);
-  this.quantity[1] = 0;
-  return this.quantity[1]++;
-}
-decreament() {
-  const pindex = 1;
-  console.log(this.quantity);
-  if (this.quantity[pindex] > 0) {
-  this.quantity[pindex] = this.quantity[pindex] - 1;
-  this.quantity[1] = 0;
-  return this.quantity[1]--;
+  ngOnInit() {
+    this.cart = this.cartService.getCart();
   }
-}
 
-getSpecificItem() {
-this.specificitem = SpecificItem;
+  decreaseCartItem(product) {
+    this.cartService.decreaseProduct(product);
+  }
+
+  increaseCartItem(product) {
+    this.cartService.addProduct(product);
+  }
+
+  removeCartItem(product) {
+    this.cartService.removeProduct(product);
+  }
+
+  getTotal() {
+    return this.cart.reduce((i, j) => i + j.price * j.amount, 0);
+  }
+
+  close() {
+    this.modalController.dismiss();
+  }
+
+  async checkout() {
+    // Perfom PayPal or Stripe checkout process
+
+    const alert = await this.alertCntoller.create({
+      header: 'Thanks for your Order!',
+      message: 'We will deliver your food as soon as possible',
+      buttons: ['OK']
+    });
+    alert.present().then(() => {
+      this.modalController.dismiss();
+    });
+  }
+
+keepshopping() {
+  this.util.navigateCategories();
 }
 }

@@ -4,8 +4,10 @@ import { BehaviorSubject } from 'rxjs';
 export interface Product {
   id: number;
   name: string;
+  image: any;
   price: number;
   amount: number;
+  weight: string;
 }
 @Injectable({
   providedIn: 'root'
@@ -15,10 +17,10 @@ export class CartService {
   constructor() { }
 
   item: Product [] = [
-    { id: 0, name: 'salad', price: 8.99, amount: 0 },
-    { id: 1, name: 'mionize', price: 5.49, amount: 0 },
-    { id: 2, name: 'bread', price: 4.99, amount: 0 },
-    { id: 3, name: 'chilly Powder', price: 6.99, amount: 0 }
+    { id: 0, image: 'assets/img.jpg', name: 'chilly', price: 8.99, amount: 0 , weight: '100g'},
+    { id: 1, image: 'assets/turmeric.jpg', name: 'turmeric', price: 5.49, amount: 0 , weight: '100g'},
+    { id: 2, image: 'assets/coriander.jpg', name: 'coriander', price: 4.99, amount: 0 , weight: '100g'},
+    
   ];
 
   private cart = [];

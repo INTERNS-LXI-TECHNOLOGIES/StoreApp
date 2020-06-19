@@ -7,7 +7,7 @@
 
 <ion-content>
   <ion-item *ngFor="let c of categories">
-    <ion-buttons (click)="getCategory(c.id)">
+    <ion-buttons (click)="getCategory()">
       <ion-card class="welcome">
     <ion-grid>
       <ion-row>
@@ -15,7 +15,6 @@
                 <img class="category" src="{{c.image}}">
         </ion-col>
         <ion-col><h4>{{c.name}}</h4>
-        <ion-row><h6>{{c.discription}}</h6></ion-row>
       </ion-col>
       </ion-row>
       <ion-col></ion-col>
