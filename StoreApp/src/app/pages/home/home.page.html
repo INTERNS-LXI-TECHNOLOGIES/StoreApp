@@ -1,25 +1,35 @@
 <ion-header>
-     <ion-toolbar>
+     <ion-toolbar color="primary">
         <ion-title>home</ion-title>
         <ion-button slots="end">category</ion-button>
         <ion-button slots="end">product</ion-button>
      </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <div *ngFor="let i of [1,2,3,4,5,6,7,8,9]" >
-      <ion-card>
-       <!-- <ion-item *ngif="let tran of transactions"></ion-item>-->
-      </ion-card>
-      <ion-card>
-      <ion-card>Toothpaste</ion-card>  
+<ion-content> 
+  <ion-list>
+      <ion-card *ngFor ="let i of products">
+      <ion-card>catogery</ion-card>  
       <img class="imagesStyle" src="../../../assets/img.jpg">
-      <ion-label>{{products[0].name}}</ion-label>
-      <ion-label>{{products[0].price}}</ion-label>
+      <ion-label>{{i.name}}</ion-label>
+      <ion-label>{{i.price}}</ion-label>
       <ion-button size="small" fill="none" slots="end"><ion-icon name="trash-sharp" ></ion-icon></ion-button>
       <ion-button size="small" fill="none" slots="end"><ion-icon name="create-sharp"></ion-icon></ion-button>
+      <ion-col size="4" class="ion-text-right">
+        <ion-button class="addCart" fill="clear" (click) = "addToCart(i)">
+          Add to cart
+        </ion-button>
+      </ion-col>
+     
       </ion-card>
-    </div>
+      <ion-fab class="basket" vertical="top" horizontal="end" slot="end" >
+        <ion-fab-button  (click)="openCart()" #cart>
+          <div class="cart-length">{{ cartItemCount | async }}</div>
+          <ion-icon name="cart" class="cart-icon"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </ion-list>
+
     <div>
       <!-- <ion-button class="buttonsize" size="large" ><ion-icon  ></ion-icon></ion-button> -->
      
