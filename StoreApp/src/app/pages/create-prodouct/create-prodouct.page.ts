@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-prodouct.page.scss'],
 })
 export class CreateProdouctPage implements OnInit {
-
-  constructor() { }
+//public product: Product;
+ product={
+   name:"",
+   price:"",
+   quantity:"",
+   discription:""
+ };
+  constructor(private router: Router) { }
 
   ngOnInit() {
+
+  }
+  goToHome(){
+    this.router.navigateByUrl('/tabs/tab1');
   }
 }

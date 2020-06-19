@@ -7,23 +7,26 @@
 <ion-content>
   <ion-card>
     <ion-item>
-          <ion-input>Name</ion-input>
+    <ion-input type="file"></ion-input>
+  </ion-item>
+    <ion-item>
+          <ion-input placeholder="Name"></ion-input>
     </ion-item>
     <ion-item>
-          <ion-input>Price</ion-input>
+          <ion-input placeholder="Price"></ion-input>
     </ion-item>
     <ion-item>
-          <ion-input>quantity</ion-input>
+          <ion-input placeholder="quantity"></ion-input>
     </ion-item>
   </ion-card>
   <ion-card>
      <ion-item>
-         <ion-input>discription</ion-input>
+         <ion-input  placeholder="discription"></ion-input>
      </ion-item>
   </ion-card>
 
 </ion-content>
 
 <ion-fab  vertical="bottom" horizontal="end">
-  <ion-fab-button ><ion-icon name="add-circle" ></ion-icon></ion-fab-button>
+  <ion-fab-button (click)="goToHome()"><ion-icon name="add-circle" ></ion-icon></ion-fab-button>
 </ion-fab> 
