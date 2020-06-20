@@ -48,7 +48,11 @@ export class Util {
     }
 
     navigateCategories() {
+<<<<<<< Updated upstream
         this.navController.navigateBack('/home');
+=======
+        this.navController.navigateBack('/categories');
+>>>>>>> Stashed changes
     }
 
     // navigateProfile() {

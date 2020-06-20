@@ -40,8 +40,6 @@ export class CartModalPage implements OnInit {
   }
 
   async checkout() {
-    // Perfom PayPal or Stripe checkout process
-
     const alert = await this.alertCntoller.create({
       header: 'Thanks for your Order!',
       message: 'We will deliver your food as soon as possible',
@@ -49,7 +47,17 @@ export class CartModalPage implements OnInit {
     });
     alert.present().then(() => {
       this.modalController.dismiss();
+      this.emptyCart();
     });
+  }
+
+  async emptyCart() {
+    const choice = confirm('Do you want to clear cart?');
+    if (choice) {
+      this.cart = [];
+      this.cartService.clearProducts();
+      this.close();
+    }
   }
 
 

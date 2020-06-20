@@ -27,5 +27,8 @@ export class CategoriesPage implements OnInit {
     console.log('this is the product from page', product);
     modal.present();
   }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 }
