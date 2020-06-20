@@ -32,9 +32,9 @@
           <ion-text  class="err-size ion-margin-start" color="danger"  *ngIf="loginForm.get('password').invalid && showLoginError">Password Required</ion-text>
           <div class="forgot"><h6>FORGOT PASSWORD?</h6></div>
           <div>
-            <ion-button color="primary" expand="block" 
+            <ion-button color="primary" expand="block"  (click)="authenticate()"
               ><h5>LOGIN</h5></ion-button>
-              <!-- (click)="authenticate()" -->
+             
           </div>
           <ion-row >
             <ion-col text-center>

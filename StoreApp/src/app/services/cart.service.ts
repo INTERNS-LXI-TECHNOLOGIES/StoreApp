@@ -17,9 +17,9 @@ export class CartService {
   constructor() { }
 
   item: Product [] = [
-    { id: 0, image: 'assets/img.jpg', name: 'chilly', price: 8.99, amount: 0 , weight: '100g'},
-    { id: 1, image: 'assets/turmeric.jpg', name: 'turmeric', price: 5.49, amount: 0 , weight: '100g'},
-    { id: 2, image: 'assets/coriander.jpg', name: 'coriander', price: 4.99, amount: 0 , weight: '100g'},
+    { id: 0, image: 'assets/img.jpg', name: 'chilly powder', price: 8.99, amount: 0 , weight: '100g'},
+    { id: 1, image: 'assets/turmeric.jpg', name: 'turmeric powder', price: 5.49, amount: 0 , weight: '100g'},
+    { id: 2, image: 'assets/coriander.jpg', name: 'coriander powder', price: 4.99, amount: 0 , weight: '100g'},
     
   ];
 

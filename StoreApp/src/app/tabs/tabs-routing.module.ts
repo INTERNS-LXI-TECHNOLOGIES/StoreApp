@@ -8,6 +8,7 @@ const routes: Routes = [
     path: 'tabs',
     component: TabsPage,
     children: [
+
       {
         path: 'tab1',
 
@@ -21,10 +22,6 @@ const routes: Routes = [
         path: 'tab3',
         loadChildren: () => import('../pages/categories/categories.module').then(m => m.CategoriesPageModule)
       },
-      // {
-      //   path: 'tab3',
-      //   loadChildren: () => import('../pages/mycart/mycart.module').then(m => m.MycartPageModule)
-      // },
       {
         path: '',
         redirectTo: '/tabs/tab1',

@@ -25,13 +25,13 @@ export class CategoryComponent implements OnInit {
     this.cartItemCount = this.cartService.getCartItemCount();
   }
 
-  async viewItem(){
-    const modal = await this.modalController.create({
-      component: SpecificItemComponent,
-      // componentProps: { category: categories ,sessions: this.categoryMap.get(categories.name)}
-    });
-    modal.present();
-  }
+  // async viewItem(){
+  //   const modal = await this.modalController.create({
+  //     component: SpecificItemComponent,
+  //     // componentProps: { category: categories ,sessions: this.categoryMap.get(categories.name)}
+  //   });
+  //   modal.present();
+  // }
 
   addToCart(product) {
     this.cartService.addProduct(product);

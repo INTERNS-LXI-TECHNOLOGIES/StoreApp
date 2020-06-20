@@ -48,7 +48,7 @@ export class Util {
     }
 
     navigateCategories() {
-        this.navController.navigateBack('/Categories');
+        this.navController.navigateBack('/home');
     }
 
     // navigateProfile() {
