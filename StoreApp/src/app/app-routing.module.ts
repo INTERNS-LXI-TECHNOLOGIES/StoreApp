@@ -23,13 +23,22 @@ const routes: Routes = [
     loadChildren: () => import('./pages/categories/categories.module').then( m => m.CategoriesPageModule)
   },
   {
-    path: 'create-prodouct',
-    loadChildren: () => import('./pages/create-prodouct/create-prodouct.module').then( m => m.CreateProdouctPageModule)
+    path: 'create-product',
+    loadChildren: () => import('./pages/create-product/create-product.module').then( m => m.CreateProdouctPageModule)
+  },
+  {
+    path: 'create-category',
+    loadChildren: () => import('./pages/create-category/create-category.module').then( m => m.CreateCategoryPageModule)
+  },
+  {
+    path: 'update-product',
+    loadChildren: () => import('./pages/update-product/update-product.module').then( m => m.UpdateProductPageModule)
   },
   {
     path: 'cart-modal',
     loadChildren: () => import('./pages/cart-modal/cart-modal.module').then( m => m.CartModalPageModule)
-  },  {
+  },
+  {
     path: 'profile',
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   }

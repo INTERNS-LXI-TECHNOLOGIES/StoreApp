@@ -1,4 +1,4 @@
-import { CartModalPageModule } from './pages/cart-modal/cart-modal.module';
+import { ComponentsModule } from './components/components.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -10,6 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CartModalPageModule } from './pages/cart-modal/cart-modal.module';
 
 @NgModule({
   declarations: [AppComponent],
