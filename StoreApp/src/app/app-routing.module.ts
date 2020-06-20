@@ -13,13 +13,22 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
-  },  {
+  },
+  {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'create-prodouct',
-    loadChildren: () => import('./pages/create-prodouct/create-prodouct.module').then( m => m.CreateProdouctPageModule)
+    path: 'create-product',
+    loadChildren: () => import('./pages/create-product/create-product.module').then( m => m.CreateProdouctPageModule)
+  },
+  {
+    path: 'create-category',
+    loadChildren: () => import('./pages/create-category/create-category.module').then( m => m.CreateCategoryPageModule)
+  },
+  {
+    path: 'update-product',
+    loadChildren: () => import('./pages/update-product/update-product.module').then( m => m.UpdateProductPageModule)
   }
 
 ];

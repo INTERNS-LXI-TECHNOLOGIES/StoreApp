@@ -1,4 +1,5 @@
-import { CreateProdouctPageModule } from './../pages/create-prodouct/create-prodouct.module';
+import { UpdateProductPageModule } from './../pages/update-product/update-product.module';
+import { CreateCategoryPageModule } from './../pages/create-category/create-category.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
@@ -14,12 +15,13 @@ const routes: Routes = [
       },
       {
         path: 'tab2',
-        loadChildren: () => import("../pages/create-prodouct/create-prodouct.module").then(m => m.CreateProdouctPageModule)
+        loadChildren: () => import("../tab2/tab2-routing.module").then(m => m.Tab2PageRoutingModule)
       },
       {
         path: 'tab3',
         loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
       },
+      
       {
         path: '',
         redirectTo: '/tabs/tab1',

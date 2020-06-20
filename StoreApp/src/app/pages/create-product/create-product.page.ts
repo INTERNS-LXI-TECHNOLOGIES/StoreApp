@@ -2,11 +2,11 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-create-prodouct',
-  templateUrl: './create-prodouct.page.html',
-  styleUrls: ['./create-prodouct.page.scss'],
+  selector: 'app-create-product',
+  templateUrl: './create-product.page.html',
+  styleUrls: ['./create-product.page.scss'],
 })
-export class CreateProdouctPage implements OnInit {
+export class CreateProductPage implements OnInit {
 //public product: Product;
  product={
    name:"",
