@@ -10,16 +10,18 @@ import { CategoryComponent } from 'src/app/components/category/category.componen
   styleUrls: ['./categories.page.scss'],
 })
 export class CategoriesPage implements OnInit {
-  categoryMap: any;
-  categories = Categories;
+  categoryMap= Categories;
+ categories = Categories;
+
   constructor(private modalController: ModalController) { }
 
   ngOnInit() {
   }
+
   async getCategory(categories: any){
     const modal = await this.modalController.create({
       component: CategoryComponent,
-      // componentProps: { category: categories , sessions: this.categoryMap.get(categories.id)}
+      // componentProps: { category: categories , sessions: this.categoryMap.get(categories.name)}
     });
     modal.present();
   }

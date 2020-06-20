@@ -1,4 +1,5 @@
-import { SpecificItemComponent } from './../specific-item/specific-item.component';
+import { CartModalPage } from './../../pages/cart-modal/cart-modal.page';
+import { Categories } from './../../mocks/categories.list';
 import { BehaviorSubject } from 'rxjs';
 import { ModalController } from '@ionic/angular';
 import { Component, OnInit, Input } from '@angular/core';
@@ -11,38 +12,38 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./category.component.scss'],
 })
 export class CategoryComponent implements OnInit {
-  // category = Category;
+  categories= Categories;
 
   cart = [];
   products = [];
+
   cartItemCount: BehaviorSubject<number>;
   constructor(private modalController: ModalController,
-              private cartService: CartService) { }
+              private cartService: CartService,
+              ) { }
 
+              // private productService: ProductResourseService
   ngOnInit() {
     this.products = this.cartService.getProduct();
     this.cart = this.cartService.getCart();
     this.cartItemCount = this.cartService.getCartItemCount();
+    // this.getProduct(this.categories);
   }
-
-  // async viewItem(){
-  //   const modal = await this.modalController.create({
-  //     component: SpecificItemComponent,
-  //     // componentProps: { category: categories ,sessions: this.categoryMap.get(categories.name)}
-  //   });
-  //   modal.present();
-  // }
 
   addToCart(product) {
     this.cartService.addProduct(product);
 
   }
+  // getProduct(category) {
+  //   this.productService.getAllProductByCategoryUsingGET(category
+  //   ).subscribe(bev => this.categories = bev);
+  // }
 
   async openCart() {
 
       const modal = await this.modalController.create({
-        component : SpecificItemComponent,
-        // cssClass: 'cart-modal'
+        component : CartModalPage,
+        cssClass: 'cart-modal'
       });
       modal.present();
   }

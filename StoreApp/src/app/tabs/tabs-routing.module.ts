@@ -10,31 +10,56 @@ const routes: Routes = [
     children: [
 
       {
-        path: 'tab1',
+        path: 'home',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/home/home.module').then(m => m.HomePageModule)
+          }
+        ]
+      },
+      {
+        path: 'categories',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/categories/categories.module').then(m => m.CategoriesPageModule)
 
-        loadChildren: () => import('../pages/home/home.module').then(m => m.HomePageModule)
+          }
+        ]
       },
       {
-        path: 'tab2',
-        loadChildren: () => import('../pages/create-prodouct/create-prodouct.module').then(m => m.CreateProdouctPageModule)
-      },
-      {
-        path: 'tab3',
-        loadChildren: () => import('../pages/categories/categories.module').then(m => m.CategoriesPageModule)
+        path: 'profile',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/profile/profile.module').then(m => m.ProfilePageModule)
+
+          }
+        ]
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: 'tabs/home',
+        pathMatch: 'full'
+      },
+      {
+        path: 'categories',
+        redirectTo: '/categories',
         pathMatch: 'full'
       }
     ]
-  },
-  {
-    path: '',
-    redirectTo: '/tabs/tab1',
-    pathMatch: 'full'
-  }
-];
+    },
+    {
+      path: 'profile',
+      redirectTo: '/profile',
+      pathMatch: 'full'
+    }
+  ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

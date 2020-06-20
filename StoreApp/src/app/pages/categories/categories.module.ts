@@ -1,4 +1,3 @@
-import { SpecificItemComponent } from './../../components/specific-item/specific-item.component';
 import { ComponentsModule } from './../../components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -20,7 +19,6 @@ import { CategoryComponent } from 'src/app/components/category/category.componen
     ComponentsModule
   ],
   declarations: [CategoriesPage],
-  entryComponents: [CategoryComponent,
-    SpecificItemComponent]
+  entryComponents: [CategoryComponent]
 })
 export class CategoriesPageModule {}
