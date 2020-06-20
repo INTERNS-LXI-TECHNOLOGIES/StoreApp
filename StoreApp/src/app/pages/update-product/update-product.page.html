@@ -8,8 +8,13 @@
 </ion-header>
 
 <ion-content>
-
+<ion-card><ion-input placeholder="name"></ion-input></ion-card>
+<ion-card><ion-input placeholder="price"></ion-input></ion-card>
+<ion-card><ion-input placeholder="quantity"></ion-input></ion-card>
+<ion-card></ion-card>
+<ion-item></ion-item>
+<ion-item><ion-input placeholder="description"></ion-input></ion-item>
 </ion-content>
 <ion-footer color="primary">
-  <ion-item><ion-button slot="start" >Update</ion-button><ion-button slot="end" >Cancel</ion-button></ion-item>
+  <ion-item><ion-button slot="start">Update</ion-button><ion-button slot="end" (click)="goToHome()">Cancel</ion-button></ion-item>
 </ion-footer>
