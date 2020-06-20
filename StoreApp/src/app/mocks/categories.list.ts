@@ -1,7 +1,7 @@
 export let Categories =  [
 
-    {id: 1, name: 'currypowder',image: 'assets/img.jpg'},
-    {id: 2, name: 'shampoo', image: ''},
-    {id: 3, name: 'Beverage', image: ''}
+    {id: 1, name: 'Keyboard ',image: 'assets/keyboard.jpg'},
+    {id: 2, name: 'quantifying Cheese rich', image: 'assets/cheese.jpeg'},
+    {id: 2, name: 'Generic Metal Hat', image: 'assets/hat.jpg'},
 
 ];
