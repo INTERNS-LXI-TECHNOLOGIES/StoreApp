@@ -13,6 +13,6 @@ export class UpdateProductPage implements OnInit {
   ngOnInit() {
   }
   goToHome(){
-    this.router.navigateByUrl('/tabs/tab1');
+    this.router.navigateByUrl('/tabs/home');
   }
 }

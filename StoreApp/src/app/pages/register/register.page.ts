@@ -19,8 +19,6 @@ export class RegisterPage implements OnInit {
 // user:User={};
   signupForm = new FormGroup({
     password: new FormControl('', [Validators.required]),
-    fullName: new FormControl('', [
-      Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     phone: new FormControl('', [
       Validators.required,

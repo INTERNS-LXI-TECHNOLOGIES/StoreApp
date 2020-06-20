@@ -28,4 +28,13 @@ export class LoginPage implements OnInit {
   registerPage() {
     this.util.navigateRegister();
  }
+
+ login() {
+  if (!this.loginForm.invalid) {
+    console.log('logged in');
+  } else {
+    this.showLoginError = true;
+  }
+}
+
 }

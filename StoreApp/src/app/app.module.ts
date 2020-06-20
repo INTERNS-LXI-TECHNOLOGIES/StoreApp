@@ -18,7 +18,7 @@ import { AppComponent } from './app.component';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
-  ],
+  ], 
   bootstrap: [AppComponent]
 })
 export class AppModule {}

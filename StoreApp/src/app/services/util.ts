@@ -47,9 +47,9 @@ export class Util {
         this.navController.navigateBack('/login');
     }
 
-    // navigateDashboard() {
-    //     this.navController.navigateBack('/tabs/dashboard');
-    // }
+    navigateCategories() {
+        this.navController.navigateBack('/home');
+    }
 
     // navigateProfile() {
     //     this.navController.navigateForward('/tabs/profile');

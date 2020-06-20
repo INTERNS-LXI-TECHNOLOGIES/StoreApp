@@ -14,7 +14,7 @@ export class CreateCategoryPage implements OnInit {
   }
 
   goToHome(){
-    this.router.navigateByUrl('/tabs/tab1');
+    this.router.navigateByUrl('/tabs/home');
   }
 
 }
