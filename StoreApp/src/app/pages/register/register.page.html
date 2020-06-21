@@ -13,9 +13,17 @@
         <form [formGroup]="signupForm">
           <div class="bg-blur rounded" lines="none">
             <ion-input
-              formControlName="username"
+              formControlName="firstName"
               
-              placeholder="username"
+              placeholder="First Name"
+            ></ion-input>
+            <!-- [(ngModel)] = "user.firstName" -->
+          </div>
+          <div class="bg-blur rounded" lines="none">
+            <ion-input
+              formControlName="lastName"
+              
+              placeholder="Last Name"
             ></ion-input>
             <!-- [(ngModel)] = "user.firstName" -->
           </div>
@@ -29,14 +37,7 @@
             <!-- [(ngModel)]="user.email" -->
           </div>
           <!-- <ion-text  class="err-size ion-margin-start" color="danger" *ngIf="signupForm.get('email').invalid && showSignupError">LastName Required</ion-text> -->
-          <div class="bg-blur rounded" lines="none">
-            <ion-input
-              formControlName="phone"
-              
-              placeholder="Phone Number"
-            ></ion-input>
-            <!-- [(ngModel)]="user.phoneNumber" -->
-          </div>
+         
           <!-- <ion-text  class="err-size ion-margin-start" color="danger" *ngIf="signupForm.get('phone').invalid && showSignupError">EmailId Required</ion-text> -->
           <div class="bg-blur rounded" lines="none">
             <ion-input

@@ -14,7 +14,7 @@
           <div class="bg-blur rounded" lines="none">
             <ion-input
               formControlName="username"
-              [(ngModel)]="username"
+
               type="text" name="username"
               placeholder="username"
             ></ion-input>
@@ -24,7 +24,6 @@
             <ion-input
               formControlName="password"
               type="password"
-              [(ngModel)]="password"
               name = "password"
               placeholder="Password"
             ></ion-input>
@@ -32,7 +31,7 @@
           <ion-text  class="err-size ion-margin-start" color="danger"  *ngIf="loginForm.get('password').invalid && showLoginError">Password Required</ion-text>
           <div class="forgot"><h6>FORGOT PASSWORD?</h6></div>
           <div>
-            <ion-button color="primary" expand="block"  (click)="authenticate()"
+            <ion-button color="primary" expand="block"  (click)="login()"
               ><h5>LOGIN</h5></ion-button>
              
           </div>

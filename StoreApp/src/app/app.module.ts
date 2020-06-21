@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { ComponentsModule } from './components/components.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,7 +16,12 @@ import { CartModalPageModule } from './pages/cart-modal/cart-modal.module';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, CartModalPageModule, HttpClientModule],
+  imports: [BrowserModule,
+     IonicModule.forRoot(),
+     AppRoutingModule,
+     CartModalPageModule,
+     HttpClientModule,
+     FormsModule],
   providers: [
     StatusBar,
     SplashScreen,

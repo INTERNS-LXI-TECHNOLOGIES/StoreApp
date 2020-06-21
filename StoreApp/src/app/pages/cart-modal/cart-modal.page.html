@@ -1,21 +1,27 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>cart-modal
-    <div class="ion-text-end">
-      <ion-button (click)="close()" fill="clear" color="dark">
-        <ion-icon name="close" slot="start"></ion-icon>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-button (click)="emptyCart()" fill="clear" color="dark" > 
+        <ion-icon name="trash"  ></ion-icon>
       </ion-button>
-    </div>
-  </ion-title>
+    </ion-buttons>
+     <ion-buttons slot="end">
+      <ion-button (click)="close()" fill="clear" color="dark" > 
+        <ion-icon name="close"  ></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 	
 <ion-content fullscreen>
- 
+  <div  *ngIf="cart.length == 0" class="box" >
+    <ion-icon name="cart" class="cartIcon"></ion-icon>
+  
+  </div>
 
  
-  <div class="ion-padding">
+  <div class="ion-padding" *ngIf="cart.length > 0">
  
     <ion-list>
       <ion-item *ngFor="let p of cart" class="ion-text-wrap">

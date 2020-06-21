@@ -2,10 +2,6 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>products</ion-title>
-    <ion-fab-button  vertical="top" horizontal="end" slot="end" (click)="openCart()" #cart>
-      <div class="cart-length">{{ cartItemCount | async }}</div>
-      <ion-icon name="cart" class="cart-icon"></ion-icon>
-    </ion-fab-button>
   </ion-toolbar>
 </ion-header>
 
@@ -26,4 +22,10 @@
         </ion-grid>
   </ion-card>
 </ion-item>
+<ion-fab class="basket" vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="openCart()" #cart>
+    <div class="cart-length">{{ cartItemCount | async }}</div>
+    <ion-icon name="cart" class="cart-icon"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
 </ion-content>

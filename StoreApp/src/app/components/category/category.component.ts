@@ -46,8 +46,8 @@ export class CategoryComponent implements OnInit {
     console.log('this is the product from component **********', this.category.name);
     this.productService.findAllByCategoryUsingGET(category
     ).subscribe(bev => {
-      this.category = bev; console.log(bev);});
-      
+      this.category = bev; console.log(bev); });
+
   }
 
   async openCart() {
@@ -58,7 +58,9 @@ export class CategoryComponent implements OnInit {
       });
       modal.present();
   }
-
+  closeModal() {
+    this.modalController.dismiss();
+ }
 
 
 }

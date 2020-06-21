@@ -51,7 +51,7 @@ export class HomePage implements OnInit {
     this.router.navigateByUrl('/create-category');
   }
   arrowProcess(id) {
-    this.currentid = id
+    this.currentid = id;
   }
   goToUpdateProductPage() {
     this.router.navigateByUrl('update-product');
