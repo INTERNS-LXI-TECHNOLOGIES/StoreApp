@@ -5,9 +5,10 @@ import { AlertController } from '@ionic/angular';
 
 import { CartModalPage } from './../cart-modal/cart-modal.page';
 import { ModalController } from '@ionic/angular';
-import { CartService } from './../../services/cart.service';
+import { CartService, Product } from './../../services/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import {ProductResourceService } from 'src/app/api/services';
 
 
 @Component({
@@ -23,13 +24,15 @@ export class HomePage implements OnInit {
   constructor(
     private router: Router,
     private alert: AlertController,
+    private productResourceService: ProductResourceService,
     //private cartService: CartService,
     //private modalController: ModalController
     ) { }
 
 
   cart = [];
-  products = [];
+  //products = [];
+  products: Product[]=[];
   //cartItemCount: BehaviorSubject<number>;
 
 
@@ -37,7 +40,6 @@ export class HomePage implements OnInit {
     // this.products = this.cartService.getProduct();
     // this.cart = this.cartService.getCart();
     // this.cartItemCount = this.cartService.getCartItemCount();
-
   }
 
   // addToCart(product) {
@@ -57,8 +59,6 @@ export class HomePage implements OnInit {
     this.router.navigateByUrl('update-product');
   }
 
-
-
   async presentAlertConfirm(id) {
     const alert = await this.alert.create({
       header: 'Delete',
@@ -70,7 +70,7 @@ export class HomePage implements OnInit {
         }, {
           text: 'Okay',
           handler: () => {
-            // this.delete(id);
+             //this.delete(id);
           }
         }
       ]

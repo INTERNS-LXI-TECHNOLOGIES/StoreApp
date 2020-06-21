@@ -1,5 +1,7 @@
+import { Product } from 'src/app/services/cart.service';
 import { PRODUCTS } from './../../dumb-data/ProductDumb';
 import { Component, OnInit, Input } from '@angular/core';
+import { ProductResourceService } from 'src/app/api/services';
 
 @Component({
   selector: 'app-product-list',
@@ -8,23 +10,34 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProductListComponent implements OnInit {
 
-  @Input() categoryId : number;
+  @Input() categoryName : string;
 
   productsDumb = PRODUCTS;
-  products = [];
+  products: Product[]= [];
 
-  constructor() { }
+  constructor(private productResourceService:ProductResourceService) { }
 
   ngOnInit() {
-    console.log(this.categoryId);
+    // console.log(this.categoryId);
     
-    this.productsDumb.forEach((product) => {
-      console.log(product.categoryId == this.categoryId);
+    // this.productsDumb.forEach((product) => {
+    //   console.log(product.categoryId == this.categoryId);
       
-      if(product.categoryId == this.categoryId){
-        this.products.push(product);
-      }
-    });
+    //   if(product.categoryId == this.categoryId){
+    //     this.products.push(product);
+    //   }
+    // });
+    this.productResourceService.findAllByCategoryUsingGET(this.categoryName).subscribe(pro => {
+      console.log(pro);
+      //this.products = pro;
+    })
+      console.log(this.categoryName);
+
+  }
+
+  delete(id: number){
+    this.productResourceService.deleteProductUsingDELETE(id).subscribe();
+    this.products = this.products.filter(pro => id !== pro.id);
   }
 
 }

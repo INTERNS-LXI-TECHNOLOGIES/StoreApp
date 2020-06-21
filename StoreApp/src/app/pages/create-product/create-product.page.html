@@ -12,27 +12,36 @@
   </ion-item>
   
     <ion-item>
-          <ion-input placeholder="Name"></ion-input>
+          <ion-input [(ngModel)]="product.name" placeholder="Name"></ion-input>
     </ion-item>
     <ion-item>
-          <ion-input placeholder="Price"></ion-input>
+          <ion-input  [(ngModel)]="product.price" placeholder="Price"></ion-input>
     </ion-item>
     <ion-item>
-          <ion-input placeholder="quantity"></ion-input>
+          <ion-input  [(ngModel)]="product.quantity" placeholder="Quantity"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-textarea  placeholder="Description"></ion-textarea>
+  </ion-item>
+    <ion-item>
+      <ion-label>Category</ion-label>
+      <ion-select [(ngModel)]="product.category" okText="Okay" cancelText="Dismiss">
+        <ion-select-option *ngFor="let c of categories" value={{c.name}}>{{c.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Manufacturing Date</ion-label>
+      <ion-datetime [(ngModel)]="product.manufacturingDate" displayFormat="MM DD YY"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Expiry Date</ion-label>
+      <ion-datetime  [(ngModel)]="product.expiringDate" displayFormat="MM DD YY"></ion-datetime>
     </ion-item>
   </ion-card>
-  <ion-card>
-    <ion-card></ion-card>
-  <ion-card></ion-card>
-  <ion-card></ion-card>
-  <ion-card></ion-card>
-     <ion-item>
-         <ion-input  placeholder="discription"></ion-input>
-     </ion-item>
-  </ion-card>
+ 
 
 </ion-content>
 
 <ion-fab  vertical="bottom" horizontal="end">
-  <ion-fab-button (click)="goToHome()"><ion-icon name="add-circle" ></ion-icon></ion-fab-button>
+  <ion-fab-button (click)="createProduct()"><ion-icon name="add-circle" ></ion-icon></ion-fab-button>
 </ion-fab> 

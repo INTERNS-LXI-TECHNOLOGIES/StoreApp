@@ -8,36 +8,15 @@
 
 <ion-content>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button>
+    <ion-fab-button  (click)="gotoCreateProductPage()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
     
-  <ion-fab-list side="start">
+  <!-- <ion-fab-list side="start">
     <ion-button (click)="goToCreateCatogeryPage()" shape="round">Category</ion-button>
     <ion-button (click)="gotoCreateProductPage()" shape="round">Product</ion-button>
-  </ion-fab-list>
+  </ion-fab-list> -->
   </ion-fab>
-
-
-
-
-    <!-- <div *ngFor="let i of [1,2,3,4,5,6,7,8,9]" >
-     <ion-card> -->
-       <!-- <ion-item *ngif="let tran of transactions"></ion-item>-->
-      <!-- </ion-card>
-      <ion-card>
-      <ion-card>Toothpaste</ion-card>  
-      <img class="imagesStyle" src="../../../assets/img.jpg">
-      <ion-label>{{i.name}}</ion-label>
-      <ion-label>{{i.price}}</ion-label>
-      <ion-button size="small" fill="none" slots="end"><ion-icon name="trash-sharp" ></ion-icon></ion-button>
-      <ion-button size="small" fill="none" slots="end"><ion-icon name="create-sharp"></ion-icon></ion-button>
-      </ion-card>>
-    </div>
-    <div> -->
-      <!-- <ion-button class="buttonsize" size="large" ><ion-icon  ></ion-icon></ion-button> -->
-     
-  <!-- </div> -->
 
 
   <ion-list *ngFor="let c of catergory" >
@@ -51,7 +30,7 @@
          <ion-col size=2><ion-button fill="none" (click)="arrowProcess(c.id)"><ion-icon color="dark" slot="icon-only" name="arrow-down-circle"></ion-icon></ion-button></ion-col>
         </ion-row>
         
-        <app-product-list *ngIf="currentid ==c.id" categoryId="{{c.id}}"></app-product-list>
+        <app-product-list *ngIf="currentid ==c.id" categoryName="{{c.name}}"></app-product-list>
       </ion-grid>
     </ion-card>
   </ion-list>
