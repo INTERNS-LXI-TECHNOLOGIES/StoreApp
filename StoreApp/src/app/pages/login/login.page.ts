@@ -1,54 +1,66 @@
 import { Routes, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { AccountResourceService, UserJwtControllerService } from 'src/app/api/services';
+import {
+  AccountResourceService,
+  UserJwtControllerService,
+} from 'src/app/api/services';
 
 import { Component, OnInit } from '@angular/core';
-import { Util } from './../../services/util';
 import {
   FormBuilder,
   FormGroup,
   Validators,
-  FormControl
+  FormControl,
 } from '@angular/forms';
-
+import { Util } from 'src/app/core/services/util';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
-  providers: [Util]
+  providers: [Util],
 })
 export class LoginPage implements OnInit {
   showLoginError = false;
+
   loginForm = new FormGroup({
     username: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required])
+    password: new FormControl('', [Validators.required]),
   });
-  constructor(private util: Util,
-              private accountService: AccountResourceService,
-              private httpClient: HttpClient,
-              private jwtService: UserJwtControllerService,
-              private router: Router
 
-              ) { }
+  constructor(
+    private util: Util,
+    private accountService: AccountResourceService,
+    private httpClient: HttpClient,
+    private jwtService: UserJwtControllerService,
+    private router: Router,
+    private storage: Storage
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
+
   registerPage() {
     this.util.navigateRegister();
- }
-
- login() {
-  this.jwtService.authorizeUsingPOST( this.loginForm.value)
-  .subscribe(data => {
-    console.log(data);
-  });
-  if (!this.loginForm.invalid) {
-    this.util.navigateCategories();
-    console.log('logged in');
-  } else {
-    this.showLoginError = true;
   }
-}
 
+  login() {
+    if (!this.loginForm.invalid) {
+      console.log(this.loginForm.value.username, 'email is getting');
+      this.jwtService
+        .authorizeUsingPOST(this.loginForm.value)
+        .subscribe((data) => {
+          this.storage.set('token', data.id_token);
+          console.log(data, 'token');
+          this.storage
+            .set('username', this.loginForm.value.username)
+            .then(() => {
+              this.util.navigateCategories();
+              console.log('logged in');
+            });
+        });
+    } else {
+      this.showLoginError = true;
+    }
+  }
 }

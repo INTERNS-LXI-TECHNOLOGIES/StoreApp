@@ -1,22 +1,24 @@
 import { UserDTO } from './../../api/models/user-dto';
-import { Util } from './../../services/util';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
   Validators,
-  FormControl
+  FormControl,
 } from '@angular/forms';
-import { UserResourceService, AccountResourceService } from 'src/app/api/services';
+import {
+  UserResourceService,
+  AccountResourceService,
+} from 'src/app/api/services';
+import { Util } from 'src/app/core/services/util';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
-  providers: [Util]
+  providers: [Util],
 })
 export class RegisterPage implements OnInit {
-
   showSignupError = false;
   signupForm = new FormGroup({
     password: new FormControl('', [Validators.required]),
@@ -24,27 +26,30 @@ export class RegisterPage implements OnInit {
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', [Validators.required]),
     login: new FormControl(''),
-    langKey: new FormControl('en')
+    langKey: new FormControl('en'),
   });
-  constructor(private util: Util,
-              private userService: UserResourceService,
-              private accountService: AccountResourceService
+  constructor(
+    private util: Util,
+    private userService: UserResourceService,
+    private accountService: AccountResourceService
+  ) {}
 
-             ) { }
+  ngOnInit() {}
 
-  ngOnInit(){  }
-
-  createAccount(){
+  createAccount() {
     this.signupForm.value.login = this.signupForm.value.email;
     console.log(this.signupForm.value);
 
-    this.accountService.registerAccountUsingPOST(this.signupForm.value)
-    .subscribe(data => {
+    this.accountService
+      .registerAccountUsingPOST(this.signupForm.value)
+      .subscribe(
+        (data) => {
+          this.util.navigateLogin();
+        },
+        (err) => {
+          console.log(err);
 
-    }, err => {
-      console.log(err);
-
-    });
-}
-
+        }
+      );
+  }
 }
