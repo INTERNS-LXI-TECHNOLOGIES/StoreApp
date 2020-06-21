@@ -45,10 +45,10 @@ export class HomePage implements OnInit {
 
   // }
   gotoCreateProductPage() {
-    this.router.navigateByUrl('create-product');
+    this.router.navigateByUrl('/create-product');
   }
   goToCreateCatogeryPage() {
-    this.router.navigateByUrl('create-category');
+    this.router.navigateByUrl('/create-category');
   }
   arrowProcess(id) {
     this.currentid = id
