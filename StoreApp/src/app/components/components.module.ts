@@ -13,7 +13,6 @@ import { UpdateProductComponent } from './update-product/update-product.componen
 
 @NgModule({
   declarations: [
-    CartModalComponent,
     CategoryListComponent,
     CreateCategoryComponent,
     CreateProductComponent,
