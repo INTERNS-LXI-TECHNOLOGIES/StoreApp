@@ -1,3 +1,5 @@
+import { CATEGORYS } from './../../dumb-data/CategoryDumb';
+import { ProductDTO } from 'src/app/api/models';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -7,6 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./update-product.page.scss'],
 })
 export class UpdateProductPage implements OnInit {
+
+  product:ProductDTO = {};
+
+  categories = CATEGORYS;
 
   constructor(private router: Router) { }
 

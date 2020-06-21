@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 
 import { CategoryComponent } from './components/category/category.component';
 import { FormsModule } from '@angular/forms';
@@ -10,7 +11,8 @@ import { CommonModule } from '@angular/common';
     imports: [
         CommonModule,
         IonicModule,
-        FormsModule],
+        FormsModule,
+    HttpClientModule],
 
         exports: [
             CategoryComponent]

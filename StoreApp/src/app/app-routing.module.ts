@@ -2,14 +2,17 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {
-    path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  },
+
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
+  {
+    path: '',
+    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  },
+
   {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
@@ -31,7 +34,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/create-category/create-category.module').then( m => m.CreateCategoryPageModule)
   },
   {
-    path: 'update-product',
+    path: 'update-product/:id',
     loadChildren: () => import('./pages/update-product/update-product.module').then( m => m.UpdateProductPageModule)
   },
   {

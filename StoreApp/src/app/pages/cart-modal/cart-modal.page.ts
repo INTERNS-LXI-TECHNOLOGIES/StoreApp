@@ -48,9 +48,17 @@ export class CartModalPage implements OnInit {
       buttons: ['OK']
     });
     alert.present().then(() => {
+      this.cartService.clearProducts();
       this.modalController.dismiss();
     });
   }
-
+  emptyCart() {
+    const choice = confirm('Do you want to clear cart?');
+    if (choice) {
+      this.cart = [];
+      this.cartService.clearProducts();
+      this.close();
+    }
+  }
 
 }

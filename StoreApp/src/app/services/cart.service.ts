@@ -73,4 +73,8 @@ export class CartService {
       }
     }
   }
+   clearProducts() {
+    this.item = [];
+    this.cartItemCount.next(0);
+  }
 }

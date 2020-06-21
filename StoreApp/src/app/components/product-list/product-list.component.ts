@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Product } from 'src/app/services/cart.service';
 import { PRODUCTS } from './../../dumb-data/ProductDumb';
 import { Component, OnInit, Input } from '@angular/core';
@@ -15,7 +16,8 @@ export class ProductListComponent implements OnInit {
   productsDumb = PRODUCTS;
   products: Product[]= [];
 
-  constructor(private productResourceService:ProductResourceService) { }
+  constructor(private productResourceService:ProductResourceService,  private router: Router,) { }
+
 
   ngOnInit() {
     // console.log(this.categoryId);
@@ -38,6 +40,11 @@ export class ProductListComponent implements OnInit {
   delete(id: number){
     this.productResourceService.deleteProductUsingDELETE(id).subscribe();
     this.products = this.products.filter(pro => id !== pro.id);
+  }
+
+  gotoUpdate(id) {
+
+  this.router.navigateByUrl('update-product',id);
   }
 
 }

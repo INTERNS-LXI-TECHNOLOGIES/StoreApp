@@ -14,19 +14,22 @@ export class CreateProductPage implements OnInit {
  product : ProductDTO = {};
  categories = CATEGORYS;
   constructor(private router: Router,private ProductResourceService: ProductResourceService) { }
-
+  manufacturingDate: string;
+  expiringDate: string;
   ngOnInit() {
 
   }
   createProduct(){
-    console.log(this.product.manufacturingDate);
-    
-    // this.ProductResourceService.createProductUsingPOST(this.product).subscribe(pro=>{
+    console.log(this.manufacturingDate.split('+')[0]+'Z');
+    this.product.manufacturingDate = this.manufacturingDate.split('+')[0]+'Z';
+    this.product.expiringDate = this.expiringDate.split('+')[0]+'Z';
+      this.ProductResourceService.createProductUsingPOST(this.product).subscribe(pro=>{
 
-    // } )
-    //this.goToHome();
+    } )
+//   this.goToHome();
   }
   goToHome(){
     this.router.navigateByUrl('/tabs/home');
   }
 }
+
