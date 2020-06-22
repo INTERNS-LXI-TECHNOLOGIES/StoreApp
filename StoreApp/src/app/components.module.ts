@@ -1,13 +1,13 @@
+import { CategoryListComponent } from 'src/app/components/category-list/category-list.component';
 import { HttpClientModule } from '@angular/common/http';
 
-import { CategoryComponent } from './components/category/category.component';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-    declarations: [CategoryComponent],
+    declarations: [CategoryListComponent],
     imports: [
         CommonModule,
         IonicModule,
@@ -15,6 +15,6 @@ import { CommonModule } from '@angular/common';
     HttpClientModule],
 
         exports: [
-            CategoryComponent]
+            CategoryListComponent]
         })
         export class ComponentsModule { }

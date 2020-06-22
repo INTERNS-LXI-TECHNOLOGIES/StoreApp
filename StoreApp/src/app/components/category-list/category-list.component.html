@@ -1,0 +1,91 @@
+<ng-container *ngIf="userRole === 'user'">
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Categories</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor="let c of categories">
+    <ion-buttons (click)="getCategory(c)">
+      <ion-card class="welcome">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+                <img class="category" src="{{c.image}}">
+        </ion-col>
+        <ion-col><h4>{{c.name}}</h4>
+      </ion-col>
+      </ion-row>
+      <ion-col></ion-col>
+    </ion-grid>
+  </ion-card>
+</ion-buttons>
+</ion-item>
+</ion-content>
+</ng-container>
+
+<ng-container *ngIf="userRole === 'admin'">
+  
+  
+<ion-header>
+  <ion-toolbar color="primary">
+     <ion-title>home</ion-title>
+   
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+ <ion-fab-button>
+   <ion-icon name="add"></ion-icon>
+ </ion-fab-button>
+ 
+<ion-fab-list side="start">
+ <ion-button (click)="goToCreateCatogeryPage()" shape="round">Category</ion-button>
+ <ion-button (click)="gotoCreateProductPage()" shape="round">Product</ion-button>
+</ion-fab-list>
+</ion-fab>
+
+
+
+
+ <!-- <div *ngFor="let i of [1,2,3,4,5,6,7,8,9]" >
+  <ion-card> -->
+    <!-- <ion-item *ngif="let tran of transactions"></ion-item>-->
+   <!-- </ion-card>
+   <ion-card>
+   <ion-card>Toothpaste</ion-card>  
+   <img class="imagesStyle" src="../../../assets/img.jpg">
+   <ion-label>{{i.name}}</ion-label>
+   <ion-label>{{i.price}}</ion-label>
+   <ion-button size="small" fill="none" slots="end"><ion-icon name="trash-sharp" ></ion-icon></ion-button>
+   <ion-button size="small" fill="none" slots="end"><ion-icon name="create-sharp"></ion-icon></ion-button>
+   </ion-card>>
+ </div>
+ <div> -->
+   <!-- <ion-button class="buttonsize" size="large" ><ion-icon  ></ion-icon></ion-button> -->
+  
+<!-- </div> -->
+
+
+<ion-list *ngFor="let c of catergory" >
+ <ion-card>
+   <ion-grid>
+     <ion-row>
+      <ion-col size=2> <img src = "{{c.image}}"></ion-col>
+      <ion-col size=4><ion-text center>{{c.name}}</ion-text></ion-col>
+      <ion-col size=2><ion-button fill="none" (click)="goToUpdateProductPage()"><ion-icon color="dark" slot="icon-only" name ="create"></ion-icon></ion-button></ion-col>
+      <ion-col size=2><ion-button (click)="presentAlertConfirm(c.id)" fill="none"><ion-icon color ="danger" slot="icon-only" name ="trash"></ion-icon></ion-button></ion-col>
+      <ion-col size=2><ion-button fill="none" (click)="arrowProcess(c.id)"><ion-icon color="dark" slot="icon-only" name="arrow-down-circle"></ion-icon></ion-button></ion-col>
+     </ion-row>
+     
+   </ion-grid>
+ </ion-card>
+</ion-list>
+</ion-content>
+
+
+
+
+</ng-container>
