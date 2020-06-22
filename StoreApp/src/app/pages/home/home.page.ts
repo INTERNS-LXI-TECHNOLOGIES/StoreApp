@@ -9,7 +9,6 @@ import { ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { CATEGORYS } from 'src/app/core/dumb-data/CategoryDumb';
-import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +22,6 @@ export class HomePage implements OnInit {
   constructor(
 
     private userResourceService: UserResourceService,
-    private storage: Storage,
     private routes: Router
   ) {}
 
@@ -32,13 +30,10 @@ export class HomePage implements OnInit {
   }
 
   getUserDetails() {
-    this.storage.get('username').then((username) => {
-      console.log(username, 'username');
-      this.userResourceService.getUserUsingGET(username).subscribe((data) => {
-        console.log(data);
-        this.user = data;
-        this.checkRole();
-      });
+    this.userResourceService.getUserUsingGET(localStorage.getItem('username')).subscribe((data) => {
+      console.log(data);
+      this.user = data;
+      this.checkRole();
     });
   }
 
