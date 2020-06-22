@@ -1,3 +1,4 @@
+import { UserLayoutPageModule } from './layouts/user-layout/user-layout.module';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
@@ -27,6 +28,14 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'user-layout',
+    loadChildren: () => import('./layouts/user-layout/user-layout.module').then( m => m.UserLayoutPageModule)
+  },
+  {
+    path: 'admin-layout',
+    loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then( m => m.AdminLayoutPageModule)
   }
 
 

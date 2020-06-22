@@ -44,9 +44,11 @@ export class HomePage implements OnInit {
 
   checkRole() {
     if (this.user.authorities.includes('ROLE_ADMIN')) {
+      console.log(this.user.authorities.includes('ROLE_ADMIN'), 'admin');
       this.routes.navigateByUrl('admin-layout');
     } else {
       this.routes.navigateByUrl('user-layout');
+      console.log(this.user.authorities.includes('ROLE_ADMIN'), 'user');
     }
   }
 }

@@ -14,7 +14,7 @@ export class CreateCategoryComponent implements OnInit {
   }
 
   goToHome(){
-    this.router.navigateByUrl('/tabs/home');
+    this.router.navigateByUrl('/home');
   }
 
 }

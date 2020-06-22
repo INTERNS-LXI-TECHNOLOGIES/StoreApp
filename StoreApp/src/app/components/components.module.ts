@@ -1,3 +1,4 @@
+import { CartService } from './../core/services/cart.service';
 import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule } from '@angular/forms';
@@ -13,11 +14,13 @@ import { UpdateProductComponent } from './update-product/update-product.componen
 
 @NgModule({
   declarations: [
+
     CategoryListComponent,
     CreateCategoryComponent,
     CreateProductComponent,
     ProductListComponent,
-    UpdateProductComponent
+    UpdateProductComponent,
+    CartModalComponent
   ],
   imports: [CommonModule, IonicModule, FormsModule, HttpClientModule],
 

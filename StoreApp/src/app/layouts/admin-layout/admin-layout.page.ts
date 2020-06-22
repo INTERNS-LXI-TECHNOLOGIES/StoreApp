@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-layout.page.scss'],
 })
 export class AdminLayoutPage implements OnInit {
-
   constructor() { }
 
   ngOnInit() {

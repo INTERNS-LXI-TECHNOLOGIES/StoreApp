@@ -1,7 +1,13 @@
-import { OnInit } from '@angular/core';
+import { OnInit, Component } from '@angular/core';
 import { Product, CartService } from 'src/app/core/services/cart.service';
 import { ModalController, AlertController } from '@ionic/angular';
 
+
+@Component({
+  selector: 'app-cart-modal',
+  templateUrl: './cart-modal.component.html',
+  styleUrls: ['./cart-modal.component.scss'],
+})
 export class CartModalComponent implements OnInit {
     cart: Product[] = [];
    constructor( private cartService: CartService,
@@ -34,7 +40,6 @@ export class CartModalComponent implements OnInit {
    }
 
    async checkout() {
-     // Perfom PayPal or Stripe checkout process
 
      const alert = await this.alertCntoller.create({
        header: 'Thanks for your Order!',
