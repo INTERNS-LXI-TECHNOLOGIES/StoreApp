@@ -14,11 +14,12 @@ export class UpdateProductComponent implements OnInit {
   product:ProductDTO = {};
   id : number;
   categories = CATEGORYS;
-
   constructor(private router: Router,private route: ActivatedRoute,private productService:ProductResourceService) { }
 
   ngOnInit() {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
+    console.log(this.id);
+    
     this.productService.getProductUsingGET(this.id).subscribe(pro => {
       this.product = pro
     })
@@ -27,7 +28,7 @@ export class UpdateProductComponent implements OnInit {
     this.router.navigateByUrl('admin-layout');
   }
   update() {
-    this.productService.updateProductUsingPUT(this.product).subscribe();
+    this.productService.updateProductUsingPUT(this.product).subscribe(() => this.goToHome());
   }
 
 }

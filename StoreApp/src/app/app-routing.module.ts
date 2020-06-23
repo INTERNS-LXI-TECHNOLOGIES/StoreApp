@@ -1,3 +1,4 @@
+import { UpdateProductComponent } from './components/update-product/update-product.component';
 import { UserLayoutPageModule } from './layouts/user-layout/user-layout.module';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'admin-layout',
     loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then( m => m.AdminLayoutPageModule)
+  },
+  {
+    path: 'update-product/:id',
+    component: UpdateProductComponent
   }
 
 

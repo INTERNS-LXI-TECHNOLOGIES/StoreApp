@@ -24,7 +24,7 @@ export class CreateProductComponent implements OnInit {
      this.product.manufacturingDate = this.manufacturingDate.split('+')[0] + 'Z';
      this.product.expiringDate = this.expiringDate.split('+')[0] + 'Z';
      this.productResourceService.createProductUsingPOST(this.product).subscribe(pro => {
-
+      this.goToHome();
      } );
  //   this.goToHome();
    }

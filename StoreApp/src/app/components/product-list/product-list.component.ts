@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CartModalComponent } from './../cart-modal/cart-modal.component';
 
 import { Component, OnInit, Input } from '@angular/core';
@@ -27,9 +28,10 @@ export class ProductListComponent implements OnInit {
   cart = [];
   cartItemCount: BehaviorSubject<number>;
   categories = [];
-  router: any;
 
-  constructor(private modalController: ModalController,
+
+  constructor(private router:Router,
+              private modalController: ModalController,
               private cartService: CartService,
               private productResourceService: ProductResourceService) { }
 
@@ -37,9 +39,9 @@ export class ProductListComponent implements OnInit {
 
     if (this.userRole === 'admin') {
       
-        this.productResourceService.findAllByCategoryUsingGET(this.categoryName).subscribe(pro => {
+        this.productResourceService.findAllByCategoryUsingGET(this.categoryName).subscribe((pro : any) => {
           console.log(pro);
-          
+          this.products = pro;
         })
     } else {
       this.cart = this.cartService.getCart();
@@ -84,7 +86,7 @@ export class ProductListComponent implements OnInit {
 
 gotoUpdate(id) {
 
-this.router.navigateByUrl('update-product', id);
+this.router.navigateByUrl('update-product/'+id);
 }
 
 
