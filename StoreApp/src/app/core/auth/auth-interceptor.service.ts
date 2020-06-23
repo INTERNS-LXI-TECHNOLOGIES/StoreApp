@@ -7,11 +7,14 @@ import {
   HttpHeaders,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Storage } from '@ionic/storage';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthInterceptorService implements HttpInterceptor {
+  constructor(private storage: Storage) {}
+
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
@@ -19,16 +22,14 @@ export class AuthInterceptorService implements HttpInterceptor {
     if (req.url.includes('api/authenticate')) {
       return next.handle(req);
     }
+
     const authReq = req.clone({
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        Authorization: 'my-auth-token',
-        'Access-Control-Allow-Origin': 'http://localhost:8080/',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Access-Control-Allow-Origin': 'http://localhost:8081/',
       }),
     });
-
-    console.log('Intercepted HTTP call', authReq);
-    console.log(req.url);
     return next.handle(authReq);
   }
 }

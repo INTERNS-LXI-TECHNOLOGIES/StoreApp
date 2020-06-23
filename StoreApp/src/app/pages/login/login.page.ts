@@ -34,8 +34,7 @@ export class LoginPage implements OnInit {
     private accountService: AccountResourceService,
     private httpClient: HttpClient,
     private jwtService: UserJwtControllerService,
-    private router: Router,
-    private storage: Storage
+    private router: Router
   ) {}
 
   ngOnInit() {}
@@ -50,14 +49,11 @@ export class LoginPage implements OnInit {
       this.jwtService
         .authorizeUsingPOST(this.loginForm.value)
         .subscribe((data) => {
-          this.storage.set('token', data.id_token);
+          localStorage.setItem('token', data.id_token);
+          localStorage.setItem('username', this.loginForm.value.username);
           console.log(data, 'token');
-          this.storage
-            .set('username', this.loginForm.value.username)
-            .then(() => {
-              this.util.navigateCategories();
-              console.log('logged in');
-            });
+          this.util.navigateCategories();
+          console.log('logged in');
         });
     } else {
       this.showLoginError = true;
