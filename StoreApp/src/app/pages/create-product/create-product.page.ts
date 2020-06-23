@@ -29,7 +29,7 @@ export class CreateProductPage implements OnInit {
 //   this.goToHome();
   }
   goToHome(){
-    this.router.navigateByUrl('/tabs/home');
+    this.router.navigateByUrl('/admin-layout');
   }
 }
 

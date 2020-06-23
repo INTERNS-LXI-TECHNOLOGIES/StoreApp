@@ -17,7 +17,7 @@ import { Categories } from 'src/app/core/mocks/categories.list';
 export class ProductListComponent implements OnInit {
 
 
-  @Input() categoryId: number;
+  @Input() categoryName: string;
   @Input() product: ProductDTO[];
   @Input() userRole = 'user';
 
@@ -36,16 +36,11 @@ export class ProductListComponent implements OnInit {
   ngOnInit() {
 
     if (this.userRole === 'admin') {
-      console.log(this.categoryId);
-
-      this.productsDumb.forEach((product) => {
-        console.log(product.categoryId === this.categoryId);
-
-        if (product.categoryId === this.categoryId){
-          this.products.push(product);
-        }
-      });
-
+      
+        this.productResourceService.findAllByCategoryUsingGET(this.categoryName).subscribe(pro => {
+          console.log(pro);
+          
+        })
     } else {
       this.cart = this.cartService.getCart();
       this.cartItemCount = this.cartService.getCartItemCount();

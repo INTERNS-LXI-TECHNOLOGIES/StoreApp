@@ -13,7 +13,8 @@ import { CreateProductPage } from './create-product.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    CreateProductPageRoutingModule
+    CreateProductPageRoutingModule,
+    //ComponentsModule
   ],
   declarations: [CreateProductPage]
 })
