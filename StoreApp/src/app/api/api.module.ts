@@ -32,7 +32,7 @@ import { UserResourceService } from './services/user-resource.service';
   ],
 })
 export class ApiModule {
-  static forRoot(customParams: ApiConfigurationInterface): ModuleWithProviders<ApiModule> {
+  static forRoot(customParams: ApiConfigurationInterface): ModuleWithProviders {
     return {
       ngModule: ApiModule,
       providers: [

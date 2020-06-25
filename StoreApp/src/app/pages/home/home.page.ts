@@ -42,7 +42,7 @@ export class HomePage implements OnInit {
       console.log(this.user.authorities.includes('ROLE_ADMIN'), 'admin');
       this.routes.navigateByUrl('admin-layout');
     } else {
-      this.routes.navigateByUrl('user-layout');
+      this.routes.navigateByUrl('user-home');
       console.log(this.user.authorities.includes('ROLE_ADMIN'), 'user');
     }
   }

@@ -41,7 +41,11 @@ const routes: Routes = [
   {
     path: 'update-product/:id',
     component: UpdateProductComponent
+  },  {
+    path: 'user-home',
+    loadChildren: () => import('./pages/user-home/user-home.module').then( m => m.UserHomePageModule)
   }
+
 
 
 

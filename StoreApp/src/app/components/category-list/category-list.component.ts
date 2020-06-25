@@ -26,6 +26,7 @@ export class CategoryListComponent implements OnInit {
               ) { }
 
   ngOnInit() {
+    // this.getCategories();
   }
 
   async getCategory(product: any){
@@ -70,7 +71,11 @@ export class CategoryListComponent implements OnInit {
 
     await alert.present();
   }
-
+// getCategories() {
+//   this.productResourceService.findAllCategoryUsingGET(category
+//     ).subscribe(bev => {
+//       this.category = bev; console.log(bev); });
+// }
     // async openCart() {
 
   //   const modal = await this.modalController.create({
