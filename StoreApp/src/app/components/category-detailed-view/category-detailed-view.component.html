@@ -1,0 +1,16 @@
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons><ion-button (click)="goToHome()"><ion-icon slot="icon-only" name="backspace"></ion-icon></ion-button>
+    <ion-title>Category Detailed View</ion-title></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card><ion-input placeholder="Description"></ion-input></ion-card>
+</ion-content>
+  
+   <ion-item size=2 ><ion-button slot="end" fill="none" (click)="goToUpdateProductPage()"><ion-icon color="primary" slot="icon-only" name ="create"></ion-icon></ion-button>
+   <ion-button slot="start" (click)="presentAlertConfirm(c.id)" fill="none"><ion-icon color ="danger" slot="icon-only" name ="trash"></ion-icon></ion-button></ion-item> 
+
+
+  

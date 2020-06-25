@@ -1,3 +1,4 @@
+import { CategoryDetailedViewComponent } from './../category-detailed-view/category-detailed-view.component';
 import { Router } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import { Categories } from 'src/app/core/mocks/categories.list';
@@ -50,6 +51,9 @@ export class CategoryListComponent implements OnInit {
   goToUpdateProductPage() {
     this.router.navigateByUrl('update-product');
   }
+  goToCategoryDetailedView(){
+    this.router.navigateByUrl('category-detailed-view');
+  }
 
   async presentAlertConfirm(id) {
     const alert = await this.alert.create({
@@ -70,26 +74,5 @@ export class CategoryListComponent implements OnInit {
 
     await alert.present();
   }
-
-    // async openCart() {
-
-  //   const modal = await this.modalController.create({
-  //     component : CartModalPage,
-  //     cssClass: 'cart-modal'
-  //   });
-  //   modal.present();
-  // }
-
-//  ngOnInit() {
-    // this.products = this.cartService.getProduct();
-    // this.cart = this.cartService.getCart();
-    // this.cartItemCount = this.cartService.getCartItemCount();
-
-
-
-  // addToCart(product) {
-  //   this.cartService.addProduct(product);
-
-  // }
-
+ 
 }

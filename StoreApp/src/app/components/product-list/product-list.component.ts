@@ -1,6 +1,5 @@
 import { Router } from '@angular/router';
 import { CartModalComponent } from './../cart-modal/cart-modal.component';
-
 import { Component, OnInit, Input } from '@angular/core';
 import { PRODUCTS } from 'src/app/core/dumb-data/ProductDumb';
 import { ProductDTO } from 'src/app/api/models';
@@ -77,19 +76,9 @@ export class ProductListComponent implements OnInit {
   closeModal() {
     this.modalController.dismiss();
  }
+goToProductDetailedView(id){
+  this.router.navigateByUrl('product-detailed-view/'+id);
 
-
- delete(id: number){
-  this.productResourceService.deleteProductUsingDELETE(id).subscribe();
-  this.products = this.products.filter(pro => id !== pro.id);
 }
-
-gotoUpdate(id) {
-
-this.router.navigateByUrl('update-product/'+id);
-}
-
-
-
 
 }

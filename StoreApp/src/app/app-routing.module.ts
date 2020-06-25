@@ -1,7 +1,10 @@
+import { CategoryDetailedViewComponent } from './components/category-detailed-view/category-detailed-view.component';
+import { CreateCategoryComponent } from './components/create-category/create-category.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
 import { UserLayoutPageModule } from './layouts/user-layout/user-layout.module';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ProductDetailedViewComponent } from './components/product-detailed-view/product-detailed-view.component';
 
 const routes: Routes = [
 
@@ -41,6 +44,18 @@ const routes: Routes = [
   {
     path: 'update-product/:id',
     component: UpdateProductComponent
+  },
+  {
+    path: 'create-category',
+    component: CreateCategoryComponent
+  },
+  {
+    path: 'category-detailed-view',
+    component: CategoryDetailedViewComponent
+  },
+  {
+    path: 'product-detailed-view/:id',
+    component: ProductDetailedViewComponent
   }
 
 
