@@ -15,12 +15,12 @@ export class AppComponent {
   public appPages = [
     {
       title: 'home',
-      url: '/user-home',
+      url: '/user-layout',
       icon: 'home'
     },
     {
       title: 'category',
-      url: '/user-layout',
+      url: '/category-list',
       icon: 'paper-plane'
     },
     {

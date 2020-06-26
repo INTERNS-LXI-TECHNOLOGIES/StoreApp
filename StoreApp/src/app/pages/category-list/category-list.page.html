@@ -1,0 +1,29 @@
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Categories</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-item *ngFor="let c of categories">
+      <ion-buttons (click)="getCategory(c)">
+        
+        <ion-card class="welcome">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+                  <img class="category" src="{{c.image}}">
+          </ion-col>
+          <ion-col><h4>{{c.name}}</h4>
+        </ion-col>
+        </ion-row>
+        <ion-col></ion-col>
+      </ion-grid>
+    </ion-card>
+  </ion-buttons>
+  </ion-item>
+  </ion-content>
+

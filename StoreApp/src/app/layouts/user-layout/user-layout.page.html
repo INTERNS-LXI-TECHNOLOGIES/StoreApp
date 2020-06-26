@@ -1,6 +1,24 @@
 <ion-content>
-<app-category-list [userRole]>
+<app-dashboard [userRole]>
 
-</app-category-list>
+</app-dashboard>
 
 </ion-content>
+<ion-footer color="primary" class="ion-no-border">
+    <ion-grid>
+      <ion-row>
+        <ion-col><ion-tab-button (click)="goHome()">
+          <ion-icon name="home"></ion-icon>
+          <ion-label>Home</ion-label>
+        </ion-tab-button></ion-col>
+        <ion-col><ion-tab-button (click)="goCart()">
+          <ion-icon name="cart"></ion-icon>
+          <ion-label>My Cart</ion-label>
+        </ion-tab-button></ion-col>
+        <ion-col><ion-tab-button (click)="goProfile()">
+          <ion-icon name="person"></ion-icon>
+          <ion-label>Profile</ion-label>
+        </ion-tab-button></ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-footer>
