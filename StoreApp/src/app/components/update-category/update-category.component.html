@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons><ion-button (click)="goToHome()"><ion-icon slot="icon-only" name="backspace"></ion-icon></ion-button>
+      <ion-title>Update Category</ion-title></ion-buttons>
+
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+  
+   <ion-item>
+          <ion-input placeholder="Name"></ion-input>
+   </ion-item>
+    <ion-item>
+          <ion-input placeholder="Number of products"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Description"></ion-input>
+  </ion-item>
+   
+      
+    
+  </ion-card>
+</ion-content>
+<ion-footer color="primary"> 
+  <ion-item>
+    <ion-button slot="start" (click)="update()">Update</ion-button><ion-button slot="end" (click)="goToHome()">Cancel</ion-button>
+  </ion-item>
+</ion-footer>

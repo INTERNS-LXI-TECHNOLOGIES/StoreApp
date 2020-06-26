@@ -1,3 +1,5 @@
+import { UpdateStockComponent } from './components/update-stock/update-stock.component';
+import { UpdateCategoryComponent } from './components/update-category/update-category.component';
 import { CategoryDetailedViewComponent } from './components/category-detailed-view/category-detailed-view.component';
 import { CreateCategoryComponent } from './components/create-category/create-category.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
@@ -50,13 +52,23 @@ const routes: Routes = [
     component: CreateCategoryComponent
   },
   {
-    path: 'category-detailed-view',
+    path: 'category-detailed-view/:id',
     component: CategoryDetailedViewComponent
   },
   {
     path: 'product-detailed-view/:id',
     component: ProductDetailedViewComponent
+  },
+  {
+    path: 'update-category/:id',
+    component: UpdateCategoryComponent
+  },
+  {
+    path: 'update-stock',
+    component: UpdateStockComponent
   }
+ 
+
 
 
 

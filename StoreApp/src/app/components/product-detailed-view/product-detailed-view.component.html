@@ -4,7 +4,22 @@
     <ion-title>Product Detailed View</ion-title></ion-buttons>
   </ion-toolbar>
 </ion-header>
+<ion-content>
+  <ion-card>
+  <ion-item>Name:  {{product.name}}</ion-item>
+  <ion-item>Id:  {{product.id}}</ion-item>
+  <ion-item>Price:  {{product.price}}</ion-item>
+  <ion-item>Quantity:  {{product.quantity}}</ion-item>
+  <ion-item>Category:  {{product.category}}</ion-item>
+  <ion-item>ExpiringDate:  {{product.expiringDate}}</ion-item>
+  <ion-item>ManufacturingDate:  {{product.manufacturingDate}}</ion-item>
+  <ion-item>ExpiringDate:  {{product.expiringDate}}</ion-item>
+  <ion-item>Description:  {{product.description}}</ion-item>
+</ion-card>
+</ion-content>
   <ion-footer>
-  <ion-col size=2><ion-button (click)="delete()"  fill="none"><ion-icon color ="danger" slot="icon-only" name ="trash"></ion-icon></ion-button></ion-col>
+    <ion-col size=2><ion-button (click)="goToUpdateStock()" fill="none"><ion-icon name="layers" color="dark"></ion-icon></ion-button></ion-col>  
+  <ion-col size=2><ion-button (click)="deleteProduct()"  fill="none"><ion-icon color ="danger" slot="icon-only" name ="trash"></ion-icon></ion-button></ion-col>
   <ion-col size=2><ion-button (click)="gotoUpdate()"  fill="none"><ion-icon color="dark" slot="icon-only" name="create"></ion-icon></ion-button></ion-col>
-  </ion-footer>
+ 
+</ion-footer>

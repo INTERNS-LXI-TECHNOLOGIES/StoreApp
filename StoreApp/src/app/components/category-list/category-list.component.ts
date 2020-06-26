@@ -1,3 +1,4 @@
+import { CategoryResourceService } from 'src/app/api/services';
 import { CategoryDetailedViewComponent } from './../category-detailed-view/category-detailed-view.component';
 import { Router } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
@@ -24,6 +25,7 @@ export class CategoryListComponent implements OnInit {
               private alert: AlertController,
               // private cartService: CartService,
               // private modalController: ModalController
+              private categoryResourceService: CategoryResourceService
               ) { }
 
   ngOnInit() {
@@ -48,11 +50,11 @@ export class CategoryListComponent implements OnInit {
   arrowProcess(id) {
     this.currentid = id;
   }
-  goToUpdateProductPage() {
-    this.router.navigateByUrl('update-product');
-  }
-  goToCategoryDetailedView(){
-    this.router.navigateByUrl('category-detailed-view');
+  // goToUpdateProductPage() {
+  //   this.router.navigateByUrl('update-product');
+  // }
+  goToCategoryDetailedView(id){
+    this.router.navigateByUrl('category-detailed-view/'+id);
   }
 
   async presentAlertConfirm(id) {
@@ -75,4 +77,5 @@ export class CategoryListComponent implements OnInit {
     await alert.present();
   }
  
+
 }

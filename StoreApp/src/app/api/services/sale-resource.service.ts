@@ -7,20 +7,20 @@ import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-respo
 import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
-import { ProductDTO } from '../models/product-dto';
+import { SaleDTO } from '../models/sale-dto';
 
 /**
- * Product Resource
+ * Sale Resource
  */
 @Injectable({
   providedIn: 'root',
 })
-class ProductResourceService extends __BaseService {
-  static readonly getAllProductsUsingGETPath = '/api/products';
-  static readonly createProductUsingPOSTPath = '/api/products';
-  static readonly updateProductUsingPUTPath = '/api/products';
-  static readonly getProductUsingGETPath = '/api/products/{id}';
-  static readonly deleteProductUsingDELETEPath = '/api/products/{id}';
+class SaleResourceService extends __BaseService {
+  static readonly getAllSalesUsingGETPath = '/api/sales';
+  static readonly createSaleUsingPOSTPath = '/api/sales';
+  static readonly updateSaleUsingPUTPath = '/api/sales';
+  static readonly getSaleUsingGETPath = '/api/sales/{id}';
+  static readonly deleteSaleUsingDELETEPath = '/api/sales/{id}';
 
   constructor(
     config: __Configuration,
@@ -30,16 +30,16 @@ class ProductResourceService extends __BaseService {
   }
 
   /**
-   * getAllProducts
+   * getAllSales
    * @return OK
    */
-  getAllProductsUsingGETResponse(): __Observable<__StrictHttpResponse<Array<ProductDTO>>> {
+  getAllSalesUsingGETResponse(): __Observable<__StrictHttpResponse<Array<SaleDTO>>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/products`,
+      this.rootUrl + `/api/sales`,
       __body,
       {
         headers: __headers,
@@ -50,33 +50,33 @@ class ProductResourceService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<Array<ProductDTO>>;
+        return _r as __StrictHttpResponse<Array<SaleDTO>>;
       })
     );
   }
   /**
-   * getAllProducts
+   * getAllSales
    * @return OK
    */
-  getAllProductsUsingGET(): __Observable<Array<ProductDTO>> {
-    return this.getAllProductsUsingGETResponse().pipe(
-      __map(_r => _r.body as Array<ProductDTO>)
+  getAllSalesUsingGET(): __Observable<Array<SaleDTO>> {
+    return this.getAllSalesUsingGETResponse().pipe(
+      __map(_r => _r.body as Array<SaleDTO>)
     );
   }
 
   /**
-   * createProduct
-   * @param productDTO productDTO
+   * createSale
+   * @param saleDTO saleDTO
    * @return OK
    */
-  createProductUsingPOSTResponse(productDTO: ProductDTO): __Observable<__StrictHttpResponse<ProductDTO>> {
+  createSaleUsingPOSTResponse(saleDTO: SaleDTO): __Observable<__StrictHttpResponse<SaleDTO>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-    __body = productDTO;
+    __body = saleDTO;
     let req = new HttpRequest<any>(
       'POST',
-      this.rootUrl + `/api/products`,
+      this.rootUrl + `/api/sales`,
       __body,
       {
         headers: __headers,
@@ -87,34 +87,34 @@ class ProductResourceService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<ProductDTO>;
+        return _r as __StrictHttpResponse<SaleDTO>;
       })
     );
   }
   /**
-   * createProduct
-   * @param productDTO productDTO
+   * createSale
+   * @param saleDTO saleDTO
    * @return OK
    */
-  createProductUsingPOST(productDTO: ProductDTO): __Observable<ProductDTO> {
-    return this.createProductUsingPOSTResponse(productDTO).pipe(
-      __map(_r => _r.body as ProductDTO)
+  createSaleUsingPOST(saleDTO: SaleDTO): __Observable<SaleDTO> {
+    return this.createSaleUsingPOSTResponse(saleDTO).pipe(
+      __map(_r => _r.body as SaleDTO)
     );
   }
 
   /**
-   * updateProduct
-   * @param productDTO productDTO
+   * updateSale
+   * @param saleDTO saleDTO
    * @return OK
    */
-  updateProductUsingPUTResponse(productDTO: ProductDTO): __Observable<__StrictHttpResponse<ProductDTO>> {
+  updateSaleUsingPUTResponse(saleDTO: SaleDTO): __Observable<__StrictHttpResponse<SaleDTO>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-    __body = productDTO;
+    __body = saleDTO;
     let req = new HttpRequest<any>(
       'PUT',
-      this.rootUrl + `/api/products`,
+      this.rootUrl + `/api/sales`,
       __body,
       {
         headers: __headers,
@@ -125,34 +125,34 @@ class ProductResourceService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<ProductDTO>;
+        return _r as __StrictHttpResponse<SaleDTO>;
       })
     );
   }
   /**
-   * updateProduct
-   * @param productDTO productDTO
+   * updateSale
+   * @param saleDTO saleDTO
    * @return OK
    */
-  updateProductUsingPUT(productDTO: ProductDTO): __Observable<ProductDTO> {
-    return this.updateProductUsingPUTResponse(productDTO).pipe(
-      __map(_r => _r.body as ProductDTO)
+  updateSaleUsingPUT(saleDTO: SaleDTO): __Observable<SaleDTO> {
+    return this.updateSaleUsingPUTResponse(saleDTO).pipe(
+      __map(_r => _r.body as SaleDTO)
     );
   }
 
   /**
-   * getProduct
+   * getSale
    * @param id id
    * @return OK
    */
-  getProductUsingGETResponse(id: number): __Observable<__StrictHttpResponse<ProductDTO>> {
+  getSaleUsingGETResponse(id: number): __Observable<__StrictHttpResponse<SaleDTO>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
 
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/products/${encodeURIComponent(id)}`,
+      this.rootUrl + `/api/sales/${encodeURIComponent(id)}`,
       __body,
       {
         headers: __headers,
@@ -163,33 +163,33 @@ class ProductResourceService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<ProductDTO>;
+        return _r as __StrictHttpResponse<SaleDTO>;
       })
     );
   }
   /**
-   * getProduct
+   * getSale
    * @param id id
    * @return OK
    */
-  getProductUsingGET(id: number): __Observable<ProductDTO> {
-    return this.getProductUsingGETResponse(id).pipe(
-      __map(_r => _r.body as ProductDTO)
+  getSaleUsingGET(id: number): __Observable<SaleDTO> {
+    return this.getSaleUsingGETResponse(id).pipe(
+      __map(_r => _r.body as SaleDTO)
     );
   }
 
   /**
-   * deleteProduct
+   * deleteSale
    * @param id id
    */
-  deleteProductUsingDELETEResponse(id: number): __Observable<__StrictHttpResponse<null>> {
+  deleteSaleUsingDELETEResponse(id: number): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
 
     let req = new HttpRequest<any>(
       'DELETE',
-      this.rootUrl + `/api/products/${encodeURIComponent(id)}`,
+      this.rootUrl + `/api/sales/${encodeURIComponent(id)}`,
       __body,
       {
         headers: __headers,
@@ -205,17 +205,17 @@ class ProductResourceService extends __BaseService {
     );
   }
   /**
-   * deleteProduct
+   * deleteSale
    * @param id id
    */
-  deleteProductUsingDELETE(id: number): __Observable<null> {
-    return this.deleteProductUsingDELETEResponse(id).pipe(
+  deleteSaleUsingDELETE(id: number): __Observable<null> {
+    return this.deleteSaleUsingDELETEResponse(id).pipe(
       __map(_r => _r.body as null)
     );
   }
 }
 
-module ProductResourceService {
+module SaleResourceService {
 }
 
-export { ProductResourceService }
+export { SaleResourceService }

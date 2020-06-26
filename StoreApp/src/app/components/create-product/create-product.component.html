@@ -21,15 +21,12 @@
           <ion-input  [(ngModel)]="product.quantity" placeholder="Quantity"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="BrandName"></ion-input>
-    </ion-item>
-    <ion-item>
       <ion-input placeholder="Description"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Category</ion-label>
-      <ion-select [(ngModel)]="product.category" okText="Okay" cancelText="Dismiss">
-        <ion-select-option *ngFor="let c of categories" value={{c.name}}>{{c.name}}</ion-select-option>
+      <ion-select [(ngModel)]="product.categoryId" okText="Okay" cancelText="Dismiss">
+        <ion-select-option *ngFor="let c of categories" value={{c.id}}>{{c.name}}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>

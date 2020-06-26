@@ -5,7 +5,7 @@ import { PRODUCTS } from 'src/app/core/dumb-data/ProductDumb';
 import { ProductDTO } from 'src/app/api/models';
 import { ModalController } from '@ionic/angular';
 import { CartService } from 'src/app/core/services/cart.service';
-import { ProductResourceService } from 'src/app/api/services';
+import { ProductResourceService, QueryResourceService } from 'src/app/api/services';
 import { BehaviorSubject } from 'rxjs';
 import { Categories } from 'src/app/core/mocks/categories.list';
 
@@ -17,7 +17,7 @@ import { Categories } from 'src/app/core/mocks/categories.list';
 export class ProductListComponent implements OnInit {
 
 
-  @Input() categoryName: string;
+  @Input() categoryId: string;
   @Input() product: ProductDTO[];
   @Input() userRole = 'user';
 
@@ -32,13 +32,14 @@ export class ProductListComponent implements OnInit {
   constructor(private router:Router,
               private modalController: ModalController,
               private cartService: CartService,
+              private query: QueryResourceService,
               private productResourceService: ProductResourceService) { }
 
   ngOnInit() {
 
     if (this.userRole === 'admin') {
       
-        this.productResourceService.findAllByCategoryUsingGET(this.categoryName).subscribe((pro : any) => {
+        this.query.findAllProductsByCategoryIdUsingGET(this.categoryId).subscribe((pro : any) => {
           console.log(pro);
           this.products = pro;
         })
@@ -59,7 +60,7 @@ export class ProductListComponent implements OnInit {
   }
   getProduct(category) {
     console.log('this is the product from component **********', this.category.name);
-    this.productResourceService.findAllByCategoryUsingGET(category
+    this.query.findAllProductsByCategoryIdUsingGET(category
     ).subscribe(bev => {
       this.category = bev; console.log(bev); });
 

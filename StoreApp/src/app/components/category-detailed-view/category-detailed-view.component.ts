@@ -1,3 +1,4 @@
+import { ProductDTO } from 'src/app/api/models';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -7,12 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-detailed-view.component.scss'],
 })
 export class CategoryDetailedViewComponent implements OnInit {
-
+id
   constructor(private router: Router) { }
 
   ngOnInit() {}
   goToHome(){
     this.router.navigateByUrl('/admin-layout');
+  }
+  goToUpdateProductPage() {
+    this.router.navigateByUrl('update-category/'+this.id);
   }
 
 }

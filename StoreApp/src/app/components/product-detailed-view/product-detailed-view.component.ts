@@ -11,7 +11,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 export class ProductDetailedViewComponent implements OnInit {
 id
- product: ProductDTO;
+ product: ProductDTO = {};
 
   constructor(private router: Router,private route: ActivatedRoute,private productResourceService: ProductResourceService) { }
 
@@ -31,9 +31,10 @@ gotoUpdate() {
   this.router.navigateByUrl('update-product/'+this.product.id);
   }
   
- delete(){
+ deleteProduct(){
   this.productResourceService.deleteProductUsingDELETE(this.product.id).subscribe();
-
 }
-  
+goToUpdateStock(){
+  this.router.navigateByUrl('update-stock');
+}
 }

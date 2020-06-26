@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons>
+      <ion-button (click)="goToHome()">
+        <ion-icon slot="icon-only" name="backspace"></ion-icon>
+      </ion-button>
+      <ion-title>Update Stock</ion-title>
+    </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-item>
+      <ion-input  disabled placeholder="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Manufacturing Date</ion-label>
+      <ion-datetime [(ngModel)]="manufacturingDate" displayFormat="MM DD YY"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Expiry Date</ion-label>
+      <ion-datetime  [(ngModel)]="expiringDate" displayFormat="MM DD YY"></ion-datetime>
+    </ion-item>
+  </ion-card>
+  <ion-card>
+  <ion-card>
+    
+    <ion-title><h1>Stock</h1></ion-title>
+    <ion-card>
+     <ion-item><ion-button fill="none" (click)="stockIncreaseProcess()"><ion-icon name="add-circle" color="dark"></ion-icon></ion-button>
+      <ion-label>{{stock}}</ion-label>
+      <ion-button fill="none" slot="end" (click)="stockDecreaseProcess()"><ion-icon name="remove-circle" color="dark"></ion-icon></ion-button></ion-item>
+    
+    </ion-card>
+  </ion-card>
+</ion-card>
+</ion-content>
+<ion-footer></ion-footer>
