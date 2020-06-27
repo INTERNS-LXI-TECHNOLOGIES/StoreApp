@@ -30,6 +30,7 @@ class StoreResourceService extends __BaseService {
   }
 
   /**
+   * getAllStores
    * @return OK
    */
   getAllStoresUsingGETResponse(): __Observable<__StrictHttpResponse<Array<StoreDTO>>> {
@@ -54,6 +55,7 @@ class StoreResourceService extends __BaseService {
     );
   }
   /**
+   * getAllStores
    * @return OK
    */
   getAllStoresUsingGET(): __Observable<Array<StoreDTO>> {
@@ -63,6 +65,7 @@ class StoreResourceService extends __BaseService {
   }
 
   /**
+   * createStore
    * @param storeDTO storeDTO
    * @return OK
    */
@@ -89,6 +92,7 @@ class StoreResourceService extends __BaseService {
     );
   }
   /**
+   * createStore
    * @param storeDTO storeDTO
    * @return OK
    */
@@ -99,6 +103,7 @@ class StoreResourceService extends __BaseService {
   }
 
   /**
+   * updateStore
    * @param storeDTO storeDTO
    * @return OK
    */
@@ -125,6 +130,7 @@ class StoreResourceService extends __BaseService {
     );
   }
   /**
+   * updateStore
    * @param storeDTO storeDTO
    * @return OK
    */
@@ -135,6 +141,7 @@ class StoreResourceService extends __BaseService {
   }
 
   /**
+   * getStore
    * @param id id
    * @return OK
    */
@@ -145,7 +152,7 @@ class StoreResourceService extends __BaseService {
 
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/stores/${id}`,
+      this.rootUrl + `/api/stores/${encodeURIComponent(id)}`,
       __body,
       {
         headers: __headers,
@@ -161,6 +168,7 @@ class StoreResourceService extends __BaseService {
     );
   }
   /**
+   * getStore
    * @param id id
    * @return OK
    */
@@ -171,6 +179,7 @@ class StoreResourceService extends __BaseService {
   }
 
   /**
+   * deleteStore
    * @param id id
    */
   deleteStoreUsingDELETEResponse(id: number): __Observable<__StrictHttpResponse<null>> {
@@ -180,7 +189,7 @@ class StoreResourceService extends __BaseService {
 
     let req = new HttpRequest<any>(
       'DELETE',
-      this.rootUrl + `/api/stores/${id}`,
+      this.rootUrl + `/api/stores/${encodeURIComponent(id)}`,
       __body,
       {
         headers: __headers,
@@ -196,6 +205,7 @@ class StoreResourceService extends __BaseService {
     );
   }
   /**
+   * deleteStore
    * @param id id
    */
   deleteStoreUsingDELETE(id: number): __Observable<null> {

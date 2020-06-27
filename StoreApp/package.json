@@ -26,7 +26,6 @@
     "@ionic/storage": "^2.2.0",
     "angular-oauth2-oidc": "^9.2.2",
     "cordova-sqlite-storage": "^5.0.0",
-    "ionic-angular": "^3.9.10",
     "rxjs": "~6.5.1",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

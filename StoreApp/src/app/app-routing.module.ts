@@ -1,3 +1,4 @@
+import { CategoryListComponent } from 'src/app/components/category-list/category-list.component';
 import { UpdateStockComponent } from './components/update-stock/update-stock.component';
 import { UpdateCategoryComponent } from './components/update-category/update-category.component';
 import { CategoryDetailedViewComponent } from './components/category-detailed-view/category-detailed-view.component';
@@ -7,7 +8,6 @@ import { UserLayoutPageModule } from './layouts/user-layout/user-layout.module';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ProductDetailedViewComponent } from './components/product-detailed-view/product-detailed-view.component';
-import { CategoryListComponent } from './components/category-list/category-list.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 
 const routes: Routes = [
@@ -45,6 +45,10 @@ const routes: Routes = [
     path: 'admin-layout',
     loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutPageModule)
   },
+  // {
+  //   path: 'category-list',
+  //   component: CategoryListComponent
+  // },
   {
     path: 'update-product/:id',
     component: UpdateProductComponent
@@ -68,6 +72,10 @@ const routes: Routes = [
   {
     path: 'update-stock',
     component: UpdateStockComponent
+  },
+  {
+    path: 'category-list',
+    loadChildren: () => import('./pages/category-list/category-list.module').then( m => m.CategoryListPageModule)
   },
 
 

@@ -7,7 +7,6 @@ export { ManagedUserVM } from './models/managed-user-vm';
 export { PasswordChangeDTO } from './models/password-change-dto';
 export { ProductDTO } from './models/product-dto';
 export { SaleDTO } from './models/sale-dto';
-export { StockDTO } from './models/stock-dto';
 export { StoreDTO } from './models/store-dto';
 export { User } from './models/user';
 export { UserDTO } from './models/user-dto';

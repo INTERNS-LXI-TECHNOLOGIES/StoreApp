@@ -11,7 +11,6 @@ import { CustomerResourceService } from './services/customer-resource.service';
 import { ProductResourceService } from './services/product-resource.service';
 import { QueryResourceService } from './services/query-resource.service';
 import { SaleResourceService } from './services/sale-resource.service';
-import { StockResourceService } from './services/stock-resource.service';
 import { StoreResourceService } from './services/store-resource.service';
 import { UserResourceService } from './services/user-resource.service';
 
@@ -36,13 +35,12 @@ import { UserResourceService } from './services/user-resource.service';
     ProductResourceService,
     QueryResourceService,
     SaleResourceService,
-    StockResourceService,
     StoreResourceService,
     UserResourceService
   ],
 })
 export class ApiModule {
-  static forRoot(customParams: ApiConfigurationInterface): ModuleWithProviders {
+  static forRoot(customParams: ApiConfigurationInterface): ModuleWithProviders<ApiModule> {
     return {
       ngModule: ApiModule,
       providers: [

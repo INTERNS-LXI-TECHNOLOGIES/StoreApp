@@ -26,10 +26,10 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-            <ion-card><img src="assets/curry.jpeg"></ion-card>
+            <ion-card><img class="imagesStyle" src="assets/school.jpg"></ion-card>
           </ion-col>
           <ion-col>
-            <ion-card><img src="assets/curry.jpeg"></ion-card>
+            <ion-card><img class="imagesStyle" src="assets/free.jpg"></ion-card>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -48,22 +48,39 @@
 
 
 
-      <ion-item *ngFor="let c of categories">
-        <ion-buttons (click)="getCategory(c)">
+      <ion-item *ngFor="let c of categorylist">
+        <ion-buttons (click)="getCategory(c.id)">
           <ion-card class="welcome">
             <ion-grid>
               <ion-row>
                 <ion-col>
-                  <img class="category" src="{{c.image}}">
-                </ion-col>
-                <ion-col>
-                  <h4>{{c.name}}</h4>
+                  <img class="category" src="assets/product.jpg">
                 </ion-col>
               </ion-row>
-              <ion-col></ion-col>
             </ion-grid>
+
+
+
+            <ion-item *ngFor="let c of categories">
+              <ion-buttons (click)="getCategory(c)">
+                <ion-card class="welcome">
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col>
+                        <img class="category" src="{{c.image}}">
+                      </ion-col>
+                      <ion-col>
+                        <h4>{{c.name}}</h4>
+                      </ion-col>
+                    </ion-row>
+                    <ion-col></ion-col>
+                  </ion-grid>
+                </ion-card>
+              </ion-buttons>
+            </ion-item>
           </ion-card>
         </ion-buttons>
+
       </ion-item>
     </div>
 

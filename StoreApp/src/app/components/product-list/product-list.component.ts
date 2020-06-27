@@ -17,37 +17,38 @@ import { Categories } from 'src/app/core/mocks/categories.list';
 export class ProductListComponent implements OnInit {
 
 
-  @Input() categoryId: string;
+  @Input() categoryId: number;
   @Input() product: ProductDTO[];
   @Input() userRole = 'user';
 
   productsDumb = PRODUCTS;
   products = [];
-  category;
+  categoryid;
   cart = [];
   cartItemCount: BehaviorSubject<number>;
   categories = [];
 
 
-  constructor(private router:Router,
+  constructor(private router: Router,
               private modalController: ModalController,
               private cartService: CartService,
-              private query: QueryResourceService,
+              private queryResourceService: QueryResourceService,
               private productResourceService: ProductResourceService) { }
 
   ngOnInit() {
 
-    if (this.userRole === 'admin') {
-      
-        this.query.findAllProductsByCategoryIdUsingGET(this.categoryId).subscribe((pro : any) => {
+if (this.userRole === 'admin') {
+  console.log(this.categoryId);
+  
+        this.queryResourceService.findAllProductsByCategoryIdUsingGET(this.categoryId).subscribe((pro: any) => {
           console.log(pro);
           this.products = pro;
-        })
+        });
     } else {
       this.cart = this.cartService.getCart();
       this.cartItemCount = this.cartService.getCartItemCount();
-      this.getProduct(this.category.name);
-      console.log('this is the product from component', this.category.name);
+      this.getProduct(this.categoryid);
+      console.log('this is the productid from component', this.categoryid);
 
 
     }
@@ -58,11 +59,11 @@ export class ProductListComponent implements OnInit {
     this.cartService.addProduct(product);
 
   }
-  getProduct(category) {
-    console.log('this is the product from component **********', this.category.name);
-    this.query.findAllProductsByCategoryIdUsingGET(category
+  getProduct(categoryid) {
+    console.log('this is the categoryid from component **********', this.categoryid);
+    this.queryResourceService.findAllProductsByCategoryIdUsingGET(categoryid
     ).subscribe(bev => {
-      this.category = bev; console.log(bev); });
+      this.product = bev; console.log(bev); });
 
   }
 
@@ -81,5 +82,13 @@ goToProductDetailedView(id){
   this.router.navigateByUrl('product-detailed-view/'+id);
 
 }
+delete(id: number){
+  this.productResourceService.deleteProductUsingDELETE(id).subscribe();
+  this.products = this.products.filter(pro => id !== pro.id);
+}
 
+gotoUpdate(id) {
+
+this.router.navigateByUrl('update-product/' + id);
+}
 }
