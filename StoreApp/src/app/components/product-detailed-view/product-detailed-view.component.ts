@@ -1,3 +1,4 @@
+import { AlertController } from '@ionic/angular';
 import { ProductDTO } from 'src/app/api/models';
 import { ProductResourceService } from 'src/app/api/services';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -13,7 +14,7 @@ export class ProductDetailedViewComponent implements OnInit {
 id
  product: ProductDTO = {};
 
-  constructor(private router: Router,private route: ActivatedRoute,private productResourceService: ProductResourceService) { }
+  constructor(private alert: AlertController, private router: Router,private route: ActivatedRoute,private productResourceService: ProductResourceService) { }
 
   ngOnInit() {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
@@ -31,10 +32,26 @@ gotoUpdate() {
   this.router.navigateByUrl('update-product/'+this.product.id);
   }
   
- deleteProduct(){
-  this.productResourceService.deleteProductUsingDELETE(this.product.id).subscribe();
-}
 goToUpdateStock(){
   this.router.navigateByUrl('update-stock');
+}
+async deleteProduct() {
+  const alert = await this.alert.create({
+    header: 'Delete',
+    message: 'Are you sure ?',
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel'
+      }, {
+        text: 'Okay',
+        handler: () => {
+          this.productResourceService.deleteProductUsingDELETE(this.product.id).subscribe();
+        }
+      }
+    ]
+  });
+
+  await alert.present();
 }
 }

@@ -7,41 +7,43 @@ import { UserLayoutPageModule } from './layouts/user-layout/user-layout.module';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ProductDetailedViewComponent } from './components/product-detailed-view/product-detailed-view.component';
+import { CategoryListComponent } from './components/category-list/category-list.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
 
 const routes: Routes = [
 
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
   },
 
 
   {
     path: 'register',
-    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+    loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterPageModule)
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
   },
 
   {
     path: 'create-product',
-    loadChildren: () => import('./pages/create-product/create-product.module').then( m => m.CreateProdouctPageModule)
+    loadChildren: () => import('./pages/create-product/create-product.module').then(m => m.CreateProdouctPageModule)
   },
 
   {
     path: 'profile',
-    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+    loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfilePageModule)
   },
   {
     path: 'user-layout',
-    loadChildren: () => import('./layouts/user-layout/user-layout.module').then( m => m.UserLayoutPageModule)
+    loadChildren: () => import('./layouts/user-layout/user-layout.module').then(m => m.UserLayoutPageModule)
   },
   {
     path: 'admin-layout',
-    loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then( m => m.AdminLayoutPageModule)
+    loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutPageModule)
   },
   {
     path: 'update-product/:id',
@@ -66,8 +68,8 @@ const routes: Routes = [
   {
     path: 'update-stock',
     component: UpdateStockComponent
-  }
- 
+  },
+
 
 
 
@@ -75,8 +77,8 @@ const routes: Routes = [
 ];
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules})
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -15,7 +15,7 @@ import { CATEGORYS } from 'src/app/core/dumb-data/CategoryDumb';
 export class CategoryListComponent implements OnInit {
 
   // categoryMap= Categories;
-  categories = Categories;
+  categories = [];
   @Input() userRole = 'user';
   catergory = CATEGORYS;
   currentid;
@@ -29,6 +29,7 @@ export class CategoryListComponent implements OnInit {
               ) { }
 
   ngOnInit() {
+    this.readCategory();
   }
 
   async getCategory(product: any){
@@ -76,6 +77,10 @@ export class CategoryListComponent implements OnInit {
 
     await alert.present();
   }
- 
+ readCategory(){
+   this.categoryResourceService.getAllCategoriesUsingGET().subscribe(allcategory =>{
+     this.categories=allcategory;
+   });
+ }
 
 }

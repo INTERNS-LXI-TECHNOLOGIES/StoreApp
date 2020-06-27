@@ -1,3 +1,4 @@
+import { AlertController } from '@ionic/angular';
 import { CategoryDTO } from './../../api/models/category-dto';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -10,7 +11,7 @@ import { CategoryResourceService } from 'src/app/api/services';
 })
 export class CreateCategoryComponent implements OnInit {
   category: CategoryDTO = {};
-  constructor(private router: Router,private categoryResourceService: CategoryResourceService,) { }
+  constructor(private router: Router,private categoryResourceService: CategoryResourceService,private alert: AlertController) { }
 
   ngOnInit() {
   }
@@ -23,4 +24,27 @@ export class CreateCategoryComponent implements OnInit {
       this.goToHome();
   });
 }
+// goTocategoryList(){
+//   this.router.navigateByUrl('category-list');
+  
+// }
+// async deleteCategory() {
+//   const alert = await this.alert.create({
+//     header: 'Delete',
+//     message: 'Are you sure ?',
+//     buttons: [
+//       {
+//         text: 'Cancel',
+//         role: 'cancel'
+//       }, {
+//         text: 'Okay',
+//         handler: () => {
+//           this.categoryResourceService.deleteCategoryUsingDELETE(this.category.id).subscribe();
+//         }
+//       }
+//     ]
+//   });
+
+//   await alert.present();
+// }
 }

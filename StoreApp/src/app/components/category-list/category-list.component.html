@@ -36,16 +36,17 @@
 </ion-header>
 
 <ion-content >
-<ion-list *ngFor="let c of catergory">
+<ion-list *ngFor="let c of categories">
 <ion-card >
    <ion-grid>
      <ion-row>
-      <ion-col (click)="arrowProcess(c.id)" size=2> <img src = "{{c.image}}"></ion-col>
+      <ion-col (click)="arrowProcess(c.id)" size=2> <img src = "https://forecourtretailer.com/wp-content/uploads/2020/03/Cans_LINEUP_5_V2-2.png"></ion-col>
+     <!--<ion-col (click)="arrowProcess(c.id)" size=2> <img src = "{{c.image}}"></ion-col>-->
       <ion-col (click)="arrowProcess(c.id)" size=8><ion-text center>{{c.name}}</ion-text></ion-col>
       <!-- <ion-col size=2><ion-button fill="none" (click)="goToUpdateProductPage()"><ion-icon color="dark" slot="icon-only" name ="create"></ion-icon></ion-button></ion-col>
       <ion-col size=2><ion-button (click)="presentAlertConfirm(c.id)" fill="none"><ion-icon color ="danger" slot="icon-only" name ="trash"></ion-icon></ion-button></ion-col> 
       <ion-col size=2><ion-button fill="none" (click)="arrowProcess(c.id)"><ion-icon color="dark" slot="icon-only" name="arrow-down-circle"></ion-icon></ion-button></ion-col>-->
-      <ion-col (click)="goToCategoryDetailedView(c.id)" size=2><ion-button fill="none"><ion-icon name="arrow-down-circle"></ion-icon></ion-button></ion-col>
+      <ion-col (click)="goToCategoryDetailedView(c.id)" size=2><ion-button fill="none"><ion-icon name="arrow-forward-circle"></ion-icon></ion-button></ion-col>
     </ion-row>
    <app-product-list  *ngIf="currentid ==c.id" userRole='admin' categoryId={{c.id}}></app-product-list>
    </ion-grid>
