@@ -4,6 +4,8 @@ import { slideData } from './../../core/mocks/slides.list';
 import { Categories } from 'src/app/core/mocks/categories.list';
 import { CATEGORYS } from 'src/app/core/dumb-data/CategoryDumb';
 import { IonSlides } from '@ionic/angular';
+import { CategoryDTO } from 'src/app/api/models';
+import { CategoryResourceService } from 'src/app/api/services';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,26 +13,31 @@ import { IonSlides } from '@ionic/angular';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private categoryResourceService: CategoryResourceService) { }
   categories = Categories;
-  slideOpts = {
-    initialSlide: 1,
-    speed: 400
-  };
   data = slideData;
   @ViewChild('Slides', null) slides: IonSlides;
-  // tslint:disable-next-line: member-ordering
+  categorylist: CategoryDTO [] = [];
   catergory = CATEGORYS;
   @Input() userRole = 'user';
   currentid;
+abstract;
   ionViewDidLoad() {
     // this.slides.autoplay = 1000;
     // this.slides.loop = true;
     // this.slides.speed = 500;
   }
 
-  ngOnInit() {}abstract
-  
+
+  ngOnInit() {
+    this.getAllCategories();
+  }
+  getAllCategories() {
+    this.categoryResourceService.getAllCategoriesUsingGET().subscribe(bev => {
+          this.categorylist = bev; console.log(bev); });
+  }
+
   arrowProcess(id) {
     this.currentid = id;
   }
@@ -49,6 +56,5 @@ goCategories() {
   this.router.navigateByUrl('/category-list');
 }
 getCategory(c) {
-  
 }
 }

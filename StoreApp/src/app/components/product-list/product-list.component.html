@@ -28,13 +28,15 @@
   </ion-header>
   
   <ion-content>
-  <ion-item *ngFor="let i of category">
+  <ion-item *ngFor="let i of product">
     <ion-card >
           <ion-grid>
             <ion-row>
               <ion-col class="category"><img class="category" src="assets/product.jpg"></ion-col>
               <ion-col><h4>{{i.name}}</h4>
-                <ion-row><h6>{{i.price}}</h6></ion-row>
+                <ion-row><h6>price: {{i.price}}</h6></ion-row>
+                <ion-row><h6>stock: {{i.noOfStock}}</h6></ion-row>
+                <ion-row><h6>qty: {{i.quantity}}</h6></ion-row>              
                 <!-- <ion-row><h6>{{i.weight}}</h6></ion-row> -->
                 <ion-row><ion-button class="addCart" fill="clear" (click) = "addToCart(i)">
                   Add to cart

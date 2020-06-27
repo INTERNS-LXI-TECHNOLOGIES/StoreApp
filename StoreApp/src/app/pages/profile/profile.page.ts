@@ -43,8 +43,9 @@ export class ProfilePage implements OnInit {
       message: 'Profile Updated',
       buttons: [ {
        text: 'Cancel',
-       role: 'cancel'
-     }, {
+       role: 'cancel',
+       handler: () => {this.readonly = true; }
+      }, {
        text: 'Confirm',
        handler: () => {
          this.update();
@@ -68,7 +69,6 @@ export class ProfilePage implements OnInit {
        this.edit();
     },
 
-    
     () => {
      alert('Faile to update to user');
     });

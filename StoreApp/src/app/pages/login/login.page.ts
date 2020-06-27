@@ -41,7 +41,6 @@ export class LoginPage implements OnInit {
   ) {}
 
   ngOnInit() {
-  
 }
 
   registerPage() {
@@ -67,12 +66,12 @@ export class LoginPage implements OnInit {
         .subscribe((data) => {
           localStorage.setItem('token', data.id_token);
           localStorage.setItem('username', this.loginForm.value.username);
+          this.util.createToast('You have Succesfuly Logedin');
           console.log(data, 'token');
           this.util.navigateCategories();
           console.log('logged in');
         },
         err => {
-          
           this.util.createToast('Invalid username or Password');
 
         });
