@@ -12,28 +12,41 @@ export class Util {
         private routes: Router
     ) {}
 
-    async createLoader() {
+    createToast(msg: string, iconName?: string) {
+        this.toastController
+          .create({
+            message: msg,
+            duration: 2000,
+            color: 'dark',
+            position: 'top',
+            keyboardClose: true,
+            buttons: [
+              {
+                side: 'start',
+                icon:
+                  iconName !== undefined ? iconName : 'information-circle-outline'
+              }
+            ]
+          })
+          .then(data => {
+            data.present();
+          });
+      }
 
+      async createLoader() {
         return await this.loadingController.create({
-            spinner: 'bubbles'
+          spinner: 'bubbles'
         });
-    }
+      }
 
-    // async createToast(msg: string) {
-    //    return await this.toastController.create({
-    //         message: msg ,
-    //         duration: 2000,
-    //         color: 'light',
-    //         position: 'top',
-    //         showCloseButton : true,
-    //         keyboardClose: true,
-    //         buttons: [
-    //           {
-    //             side: 'start',
-    //             icon: 'warning',
-    //           }]
-    //       });
-    // }
+      navigateBack() {
+        this.navController.navigateRoot('');
+      }
+
+      navigateToLogin() {
+        this.navController.navigateRoot('login');
+      }
+
 
     navigateRoot() {
         this.navController.navigateForward('');
@@ -69,7 +82,7 @@ export class Util {
     // navigateSessions() {
     //     this.navController.navigateForward('/sessions');
     // }
-    
+
 }
 
 

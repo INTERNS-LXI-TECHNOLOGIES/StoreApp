@@ -11,6 +11,7 @@ import { CreateCategoryComponent } from './create-category/create-category.compo
 import { CreateProductComponent } from './create-product/create-product.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { UpdateProductComponent } from './update-product/update-product.componen
     CreateProductComponent,
     ProductListComponent,
     UpdateProductComponent,
-    CartModalComponent
+    CartModalComponent,
+    DashboardComponent
   ],
   imports: [CommonModule, IonicModule, FormsModule, HttpClientModule],
 
@@ -30,7 +32,8 @@ import { UpdateProductComponent } from './update-product/update-product.componen
     CreateCategoryComponent,
     CreateProductComponent,
     ProductListComponent,
-    UpdateProductComponent
+    UpdateProductComponent,
+    DashboardComponent
   ]
 })
 export class ComponentsModule {}

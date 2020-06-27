@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-layout',
@@ -8,10 +9,18 @@ import { Component, OnInit } from '@angular/core';
 export class UserLayoutPage implements OnInit {
 
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
     
   }
-
+  goHome() {
+    this.router.navigateByUrl('/user-home');
+  }
+  goProfile() {
+    this.router.navigateByUrl('/profile');
+  }
+  goCart() {
+    this.router.navigateByUrl('/mycart');
+  }
 }

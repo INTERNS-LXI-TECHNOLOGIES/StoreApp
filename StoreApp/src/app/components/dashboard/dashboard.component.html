@@ -1,0 +1,106 @@
+<ng-container *ngIf="userRole === 'user'">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>user-home</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <div>
+    <ion-searchbar class="search"></ion-searchbar>
+  </div>
+  <div>
+    <ion-card>
+      <ion-slides autoplay="1000" loop="true" speed="100" >
+        <ion-slide *ngFor="let slide of data">
+          <img class="image" src="{{slide.image}}" />
+        </ion-slide>
+      </ion-slides>
+    </ion-card>
+    </div>
+    <div>
+      <h2 class="offer" color="danger">SPECIAL OFFER</h2>
+      <ion-grid>
+        <ion-row>
+          <ion-col><ion-card><img src="assets/curry.jpeg"></ion-card></ion-col>
+          <ion-col><ion-card><img src="assets/curry.jpeg"></ion-card></ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  <div>
+    <ion-grid><ion-row>
+      <ion-col><h3 class="offer">CATEGORIES</h3></ion-col>
+    <ion-col> <ion-button vertical="top" horizontal="end"  expand="block"(click)="goCategories()">view all</ion-button></ion-col> </ion-row></ion-grid>
+    
+  
+    
+    <ion-item *ngFor="let c of categories">
+      <ion-buttons (click)="getCategory(c)">
+        <ion-card class="welcome">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+                  <img class="category" src="{{c.image}}">
+          </ion-col>
+          <ion-col><h4>{{c.name}}</h4>
+        </ion-col>
+        </ion-row>
+        <ion-col></ion-col>
+      </ion-grid>
+    </ion-card>
+  </ion-buttons>
+  </ion-item>
+  </div>
+  
+  </ion-content>
+  
+  </ng-container>
+  <ng-container *ngIf="userRole === 'admin'">
+    
+    
+    <ion-header>
+      <ion-toolbar color="primary">
+         <ion-title>home</ion-title>
+       
+      </ion-toolbar>
+    </ion-header>
+    
+    <ion-content>
+    
+    <ion-list *ngFor="let c of catergory" >
+     <ion-card>
+       <ion-grid>
+         <ion-row>
+          <ion-col size=2> <img src = "{{c.image}}"></ion-col>
+          <ion-col size=8><ion-text center>{{c.name}}</ion-text></ion-col>
+          <!-- <ion-col size=2><ion-button fill="none" (click)="goToUpdateProductPage()"><ion-icon color="dark" slot="icon-only" name ="create"></ion-icon></ion-button></ion-col>
+          <ion-col size=2><ion-button (click)="presentAlertConfirm(c.id)" fill="none"><ion-icon color ="danger" slot="icon-only" name ="trash"></ion-icon></ion-button></ion-col> -->
+          <ion-col size=2><ion-button fill="none" (click)="arrowProcess(c.id)"><ion-icon color="dark" slot="icon-only" name="arrow-down-circle"></ion-icon></ion-button></ion-col>
+         </ion-row>
+       <app-product-list  *ngIf="currentid ==c.id" userRole='admin' categoryName={{c.name}}></app-product-list>
+       </ion-grid>
+       
+     </ion-card>
+    </ion-list>
+    </ion-content>
+    
+    <ion-fab vertical="bottom" horizontal="end" >
+      <ion-fab-button (click)="gotoCreateProductPage()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+      
+     <!-- <ion-fab-list side="start">
+      <ion-button (click)="goToCreateCatogeryPage()" shape="round">Category</ion-button>
+      <ion-button (click)="gotoCreateProductPage()" shape="round">Product</ion-button>
+     </ion-fab-list> -->
+     </ion-fab>
+    
+    
+    </ng-container>
+    
+
+
+
