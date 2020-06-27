@@ -1,3 +1,4 @@
+import { DashboardComponent } from './../../components/dashboard/dashboard.component';
 import { ComponentsModule } from './../../components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -19,6 +20,6 @@ import { CategoryListComponent } from 'src/app/components/category-list/category
     ComponentsModule
   ],
   declarations: [AdminLayoutPage],
-  entryComponents: [CategoryListComponent]
+  entryComponents: [CategoryListComponent, DashboardComponent]
 })
 export class AdminLayoutPageModule {}

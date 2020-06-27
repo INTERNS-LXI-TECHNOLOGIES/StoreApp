@@ -1,3 +1,4 @@
+import { DashboardComponent } from './../../components/dashboard/dashboard.component';
 import { CategoryListComponent } from './../../components/category-list/category-list.component';
 import { ComponentsModule } from './../../components/components.module';
 import { NgModule } from '@angular/core';
@@ -19,6 +20,6 @@ import { UserLayoutPage } from './user-layout.page';
     ComponentsModule
   ],
   declarations: [UserLayoutPage],
-  entryComponents: [CategoryListComponent]
+  entryComponents: [CategoryListComponent, DashboardComponent]
 })
 export class UserLayoutPageModule {}

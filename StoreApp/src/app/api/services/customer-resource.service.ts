@@ -30,7 +30,6 @@ class CustomerResourceService extends __BaseService {
   }
 
   /**
-   * getAllCustomers
    * @return OK
    */
   getAllCustomersUsingGETResponse(): __Observable<__StrictHttpResponse<Array<CustomerDTO>>> {
@@ -55,7 +54,6 @@ class CustomerResourceService extends __BaseService {
     );
   }
   /**
-   * getAllCustomers
    * @return OK
    */
   getAllCustomersUsingGET(): __Observable<Array<CustomerDTO>> {
@@ -65,7 +63,6 @@ class CustomerResourceService extends __BaseService {
   }
 
   /**
-   * createCustomer
    * @param customerDTO customerDTO
    * @return OK
    */
@@ -92,7 +89,6 @@ class CustomerResourceService extends __BaseService {
     );
   }
   /**
-   * createCustomer
    * @param customerDTO customerDTO
    * @return OK
    */
@@ -103,7 +99,6 @@ class CustomerResourceService extends __BaseService {
   }
 
   /**
-   * updateCustomer
    * @param customerDTO customerDTO
    * @return OK
    */
@@ -130,7 +125,6 @@ class CustomerResourceService extends __BaseService {
     );
   }
   /**
-   * updateCustomer
    * @param customerDTO customerDTO
    * @return OK
    */
@@ -141,7 +135,6 @@ class CustomerResourceService extends __BaseService {
   }
 
   /**
-   * getCustomer
    * @param id id
    * @return OK
    */
@@ -152,7 +145,7 @@ class CustomerResourceService extends __BaseService {
 
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/customers/${encodeURIComponent(id)}`,
+      this.rootUrl + `/api/customers/${id}`,
       __body,
       {
         headers: __headers,
@@ -168,7 +161,6 @@ class CustomerResourceService extends __BaseService {
     );
   }
   /**
-   * getCustomer
    * @param id id
    * @return OK
    */
@@ -179,7 +171,6 @@ class CustomerResourceService extends __BaseService {
   }
 
   /**
-   * deleteCustomer
    * @param id id
    */
   deleteCustomerUsingDELETEResponse(id: number): __Observable<__StrictHttpResponse<null>> {
@@ -189,7 +180,7 @@ class CustomerResourceService extends __BaseService {
 
     let req = new HttpRequest<any>(
       'DELETE',
-      this.rootUrl + `/api/customers/${encodeURIComponent(id)}`,
+      this.rootUrl + `/api/customers/${id}`,
       __body,
       {
         headers: __headers,
@@ -205,7 +196,6 @@ class CustomerResourceService extends __BaseService {
     );
   }
   /**
-   * deleteCustomer
    * @param id id
    */
   deleteCustomerUsingDELETE(id: number): __Observable<null> {

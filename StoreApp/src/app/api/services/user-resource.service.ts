@@ -32,7 +32,6 @@ class UserResourceService extends __BaseService {
   }
 
   /**
-   * getAllUsers
    * @param params The `UserResourceService.GetAllUsersUsingGETParams` containing the following parameters:
    *
    * - `sort`: Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
@@ -68,7 +67,6 @@ class UserResourceService extends __BaseService {
     );
   }
   /**
-   * getAllUsers
    * @param params The `UserResourceService.GetAllUsersUsingGETParams` containing the following parameters:
    *
    * - `sort`: Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
@@ -86,7 +84,6 @@ class UserResourceService extends __BaseService {
   }
 
   /**
-   * createUser
    * @param userDTO userDTO
    * @return OK
    */
@@ -113,7 +110,6 @@ class UserResourceService extends __BaseService {
     );
   }
   /**
-   * createUser
    * @param userDTO userDTO
    * @return OK
    */
@@ -124,7 +120,6 @@ class UserResourceService extends __BaseService {
   }
 
   /**
-   * updateUser
    * @param userDTO userDTO
    * @return OK
    */
@@ -151,7 +146,6 @@ class UserResourceService extends __BaseService {
     );
   }
   /**
-   * updateUser
    * @param userDTO userDTO
    * @return OK
    */
@@ -162,7 +156,6 @@ class UserResourceService extends __BaseService {
   }
 
   /**
-   * getAuthorities
    * @return OK
    */
   getAuthoritiesUsingGETResponse(): __Observable<__StrictHttpResponse<Array<string>>> {
@@ -187,7 +180,6 @@ class UserResourceService extends __BaseService {
     );
   }
   /**
-   * getAuthorities
    * @return OK
    */
   getAuthoritiesUsingGET(): __Observable<Array<string>> {
@@ -197,7 +189,6 @@ class UserResourceService extends __BaseService {
   }
 
   /**
-   * getUser
    * @param login login
    * @return OK
    */
@@ -208,7 +199,7 @@ class UserResourceService extends __BaseService {
 
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/users/${encodeURIComponent(login)}`,
+      this.rootUrl + `/api/users/${login}`,
       __body,
       {
         headers: __headers,
@@ -224,7 +215,6 @@ class UserResourceService extends __BaseService {
     );
   }
   /**
-   * getUser
    * @param login login
    * @return OK
    */
@@ -235,7 +225,6 @@ class UserResourceService extends __BaseService {
   }
 
   /**
-   * deleteUser
    * @param login login
    */
   deleteUserUsingDELETEResponse(login: string): __Observable<__StrictHttpResponse<null>> {
@@ -245,7 +234,7 @@ class UserResourceService extends __BaseService {
 
     let req = new HttpRequest<any>(
       'DELETE',
-      this.rootUrl + `/api/users/${encodeURIComponent(login)}`,
+      this.rootUrl + `/api/users/${login}`,
       __body,
       {
         headers: __headers,
@@ -261,7 +250,6 @@ class UserResourceService extends __BaseService {
     );
   }
   /**
-   * deleteUser
    * @param login login
    */
   deleteUserUsingDELETE(login: string): __Observable<null> {

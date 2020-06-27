@@ -1,7 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Register</ion-title>
   </ion-toolbar>
@@ -35,7 +34,13 @@
               placeholder="Email id"
             ></ion-input>
             <!-- [(ngModel)]="user.email" -->
+   
           </div>
+          <div *ngIf="!signupForm.controls.email.valid &&
+          signupForm.controls.email.dirty"
+  class="validator-error">
+Invalid E-mail
+</div>
           <!-- <ion-text  class="err-size ion-margin-start" color="danger" *ngIf="signupForm.get('email').invalid && showSignupError">LastName Required</ion-text> -->
          
           <!-- <ion-text  class="err-size ion-margin-start" color="danger" *ngIf="signupForm.get('phone').invalid && showSignupError">EmailId Required</ion-text> -->

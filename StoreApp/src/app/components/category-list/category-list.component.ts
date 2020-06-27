@@ -29,7 +29,7 @@ export class CategoryListComponent implements OnInit {
               ) { }
 
   ngOnInit() {
-    this.readCategory();
+    this.ReadCategory();
   }
 
   async getCategory(product: any){
@@ -77,7 +77,7 @@ export class CategoryListComponent implements OnInit {
 
     await alert.present();
   }
- readCategory(){
+ ReadCategory(){
    this.categoryResourceService.getAllCategoriesUsingGET().subscribe(allcategory =>{
      this.categories=allcategory;
    });
