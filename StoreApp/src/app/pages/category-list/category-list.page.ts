@@ -1,8 +1,10 @@
+import { CategoryDTO } from './../../api/models/category-dto';
 import { Component, OnInit } from '@angular/core';
 import { Categories } from 'src/app/core/mocks/categories.list';
 import { ModalController, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ProductListComponent } from 'src/app/components/product-list/product-list.component';
+import { QueryResourceService } from 'src/app/api/services';
 
 @Component({
   selector: 'app-category-list',
@@ -10,21 +12,27 @@ import { ProductListComponent } from 'src/app/components/product-list/product-li
   styleUrls: ['./category-list.page.scss'],
 })
 export class CategoryListPage implements OnInit {
-  categories = Categories;
+  // categories = Categories;
+  categorylist : CategoryDTO [] = [];
   constructor(private modalController: ModalController,
               private router: Router,
-              private alert: AlertController) { }
+              private alert: AlertController,
+              private queryResourceService: QueryResourceService) { }
 
   ngOnInit() {
+    this.getAllCategories();
   }
-
-  async getCategory(product: any){
+  getAllCategories() {
+    this.queryResourceService.findAllCategoriesUsingGET().subscribe(bev => {
+          this.categorylist = bev; console.log(bev); });
+  }
+  async getCategory(id: any){
 
     const modal = await this.modalController.create({
       component: ProductListComponent,
-      componentProps: { category: product}
+      componentProps: { categoryid: id}
     });
-    console.log('this is the product from page', product);
+    console.log('this is the categoryid from page', id);
     modal.present();
   }
 
@@ -47,5 +55,4 @@ export class CategoryListPage implements OnInit {
 
     await alert.present();
   }
-
 }

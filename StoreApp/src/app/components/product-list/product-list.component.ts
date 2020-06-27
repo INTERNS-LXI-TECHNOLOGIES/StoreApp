@@ -6,7 +6,7 @@ import { PRODUCTS } from 'src/app/core/dumb-data/ProductDumb';
 import { ProductDTO } from 'src/app/api/models';
 import { ModalController } from '@ionic/angular';
 import { CartService } from 'src/app/core/services/cart.service';
-import { ProductResourceService } from 'src/app/api/services';
+import { ProductResourceService, QueryResourceService } from 'src/app/api/services';
 import { BehaviorSubject } from 'rxjs';
 import { Categories } from 'src/app/core/mocks/categories.list';
 
@@ -24,30 +24,31 @@ export class ProductListComponent implements OnInit {
 
   productsDumb = PRODUCTS;
   products = [];
-  category;
+  categoryid;
   cart = [];
   cartItemCount: BehaviorSubject<number>;
   categories = [];
 
 
-  constructor(private router:Router,
+  constructor(private router: Router,
               private modalController: ModalController,
               private cartService: CartService,
-              private productResourceService: ProductResourceService) { }
+              private productResourceService: ProductResourceService,
+              private queryResourceService: QueryResourceService) { }
 
   ngOnInit() {
+// this.getProduct(this.categoryid);
+if (this.userRole === 'admin') {
 
-    if (this.userRole === 'admin') {
-      
-        this.productResourceService.findAllByCategoryUsingGET(this.categoryName).subscribe((pro : any) => {
+        this.queryResourceService.findAllProductsByCategoryIdUsingGET(this.categoryid).subscribe((pro: any) => {
           console.log(pro);
           this.products = pro;
-        })
+        });
     } else {
       this.cart = this.cartService.getCart();
       this.cartItemCount = this.cartService.getCartItemCount();
-      this.getProduct(this.category.name);
-      console.log('this is the product from component', this.category.name);
+      this.getProduct(this.categoryid);
+      console.log('this is the productid from component', this.categoryid);
 
 
     }
@@ -58,11 +59,11 @@ export class ProductListComponent implements OnInit {
     this.cartService.addProduct(product);
 
   }
-  getProduct(category) {
-    console.log('this is the product from component **********', this.category.name);
-    this.productResourceService.findAllByCategoryUsingGET(category
+  getProduct(categoryid) {
+    console.log('this is the categoryid from component **********', this.categoryid);
+    this.queryResourceService.findAllProductsByCategoryIdUsingGET(categoryid
     ).subscribe(bev => {
-      this.category = bev; console.log(bev); });
+      this.categoryid = bev; console.log(bev); });
 
   }
 
@@ -86,7 +87,7 @@ export class ProductListComponent implements OnInit {
 
 gotoUpdate(id) {
 
-this.router.navigateByUrl('update-product/'+id);
+this.router.navigateByUrl('update-product/' + id);
 }
 
 
