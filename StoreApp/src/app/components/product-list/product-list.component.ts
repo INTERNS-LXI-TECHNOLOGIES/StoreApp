@@ -37,7 +37,7 @@ export class ProductListComponent implements OnInit {
               private queryResourceService: QueryResourceService) { }
 
   ngOnInit() {
-// this.getProduct(this.categoryid);
+this.getProduct(this.product);
 if (this.userRole === 'admin') {
 
         this.queryResourceService.findAllProductsByCategoryIdUsingGET(this.categoryid).subscribe((pro: any) => {
@@ -63,7 +63,7 @@ if (this.userRole === 'admin') {
     console.log('this is the categoryid from component **********', this.categoryid);
     this.queryResourceService.findAllProductsByCategoryIdUsingGET(categoryid
     ).subscribe(bev => {
-      this.categoryid = bev; console.log(bev); });
+      this.product = bev; console.log(bev); });
 
   }
 

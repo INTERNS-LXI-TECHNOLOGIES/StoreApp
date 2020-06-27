@@ -1,10 +1,11 @@
+import { DashboardComponent } from './../../components/dashboard/dashboard.component';
 import { CategoryDTO } from './../../api/models/category-dto';
 import { Component, OnInit } from '@angular/core';
 import { Categories } from 'src/app/core/mocks/categories.list';
 import { ModalController, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ProductListComponent } from 'src/app/components/product-list/product-list.component';
-import { QueryResourceService } from 'src/app/api/services';
+import { QueryResourceService, CategoryResourceService } from 'src/app/api/services';
 
 @Component({
   selector: 'app-category-list',
@@ -17,13 +18,14 @@ export class CategoryListPage implements OnInit {
   constructor(private modalController: ModalController,
               private router: Router,
               private alert: AlertController,
-              private queryResourceService: QueryResourceService) { }
+              private queryResourceService: QueryResourceService,
+              private categoryResourceService: CategoryResourceService) { }
 
   ngOnInit() {
     this.getAllCategories();
   }
   getAllCategories() {
-    this.queryResourceService.findAllCategoriesUsingGET().subscribe(bev => {
+    this.categoryResourceService.getAllCategoriesUsingGET().subscribe(bev => {
           this.categorylist = bev; console.log(bev); });
   }
   async getCategory(id: any){

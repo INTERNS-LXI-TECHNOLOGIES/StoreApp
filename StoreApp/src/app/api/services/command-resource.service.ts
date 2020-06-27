@@ -7,7 +7,6 @@ import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-respo
 import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
-import { ProductDTO } from '../models/product-dto';
 import { SaleDTO } from '../models/sale-dto';
 
 /**
@@ -17,7 +16,6 @@ import { SaleDTO } from '../models/sale-dto';
   providedIn: 'root',
 })
 class CommandResourceService extends __BaseService {
-  static readonly addProductUsingPOSTPath = '/api/commands/addProduct/{noOfStock}';
   static readonly addSaleUsingPOSTPath = '/api/commands/addSales';
 
   constructor(
@@ -25,49 +23,6 @@ class CommandResourceService extends __BaseService {
     http: HttpClient
   ) {
     super(config, http);
-  }
-
-  /**
-   * @param params The `CommandResourceService.AddProductUsingPOSTParams` containing the following parameters:
-   *
-   * - `productDTO`: productDTO
-   *
-   * - `noOfStock`: noOfStock
-   */
-  addProductUsingPOSTResponse(params: CommandResourceService.AddProductUsingPOSTParams): __Observable<__StrictHttpResponse<null>> {
-    let __params = this.newParams();
-    let __headers = new HttpHeaders();
-    let __body: any = null;
-    __body = params.productDTO;
-
-    let req = new HttpRequest<any>(
-      'POST',
-      this.rootUrl + `/api/commands/addProduct/${params.noOfStock}`,
-      __body,
-      {
-        headers: __headers,
-        params: __params,
-        responseType: 'json'
-      });
-
-    return this.http.request<any>(req).pipe(
-      __filter(_r => _r instanceof HttpResponse),
-      __map((_r) => {
-        return _r as __StrictHttpResponse<null>;
-      })
-    );
-  }
-  /**
-   * @param params The `CommandResourceService.AddProductUsingPOSTParams` containing the following parameters:
-   *
-   * - `productDTO`: productDTO
-   *
-   * - `noOfStock`: noOfStock
-   */
-  addProductUsingPOST(params: CommandResourceService.AddProductUsingPOSTParams): __Observable<null> {
-    return this.addProductUsingPOSTResponse(params).pipe(
-      __map(_r => _r.body as null)
-    );
   }
 
   /**
@@ -106,22 +61,6 @@ class CommandResourceService extends __BaseService {
 }
 
 module CommandResourceService {
-
-  /**
-   * Parameters for addProductUsingPOST
-   */
-  export interface AddProductUsingPOSTParams {
-
-    /**
-     * productDTO
-     */
-    productDTO: ProductDTO;
-
-    /**
-     * noOfStock
-     */
-    noOfStock: string;
-  }
 }
 
 export { CommandResourceService }
