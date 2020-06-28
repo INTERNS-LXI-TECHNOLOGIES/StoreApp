@@ -4,7 +4,7 @@
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title>user-home</ion-title>
+      <ion-title>Home</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -21,7 +21,7 @@
         </ion-slides>
       </ion-card>
     </div>
-    <div>
+    <!-- <div>
       <h2 class="offer" color="danger">SPECIAL OFFER</h2>
       <ion-grid>
         <ion-row>
@@ -33,7 +33,17 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-    </div>
+    </div> -->
+  <div>
+    <ion-grid><ion-row>
+      <ion-col><h3 class="offer">CATEGORIES</h3></ion-col>
+    <ion-col> <ion-button vertical="top" horizontal="end"  expand="block"(click)="goCategories()">view all</ion-button></ion-col> </ion-row></ion-grid>
+    
+  
+    
+    <ion-item *ngFor="let c of categorylist">
+      <ion-buttons (click)="getCategory(c.id)">
+        <ion-card class="welcome">
     <div>
       <ion-grid>
         <ion-row>
@@ -83,10 +93,12 @@
 
       </ion-item>
     </div>
+    </ion-card>
+    </ion-buttons>
+    </ion-item>
+    </div>
+    </ion-content>
 
-  </ion-content>
-
-</ng-container>
 <ng-container *ngIf="userRole == 'admin'">
   <app-category-list [userRole]="'admin'"></app-category-list>
 </ng-container>

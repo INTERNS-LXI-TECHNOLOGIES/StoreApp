@@ -1,85 +1,101 @@
 import { CategoryListComponent } from 'src/app/components/category-list/category-list.component';
-import { UpdateStockComponent } from './components/update-stock/update-stock.component';
-import { UpdateCategoryComponent } from './components/update-category/update-category.component';
-import { CategoryDetailedViewComponent } from './components/category-detailed-view/category-detailed-view.component';
-import { CreateCategoryComponent } from './components/create-category/create-category.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
 import { UserLayoutPageModule } from './layouts/user-layout/user-layout.module';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuardService } from './core/auth/auth-guard.service';
+import { CategoryDetailedViewComponent } from './components/category-detailed-view/category-detailed-view.component';
 import { ProductDetailedViewComponent } from './components/product-detailed-view/product-detailed-view.component';
-import { ProductListComponent } from './components/product-list/product-list.component';
+import { UpdateCategoryComponent } from './components/update-category/update-category.component';
+import { UpdateStockComponent } from './components/update-stock/update-stock.component';
+import { CreateCategoryComponent } from './components/create-category/create-category.component';
 
 const routes: Routes = [
 
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
 
 
   {
     path: 'register',
-    loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterPageModule)
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
+    canActivate: [AuthGuardService]
   },
 
   {
     path: 'create-product',
-    loadChildren: () => import('./pages/create-product/create-product.module').then(m => m.CreateProdouctPageModule)
+    loadChildren: () => import('./pages/create-product/create-product.module').then( m => m.CreateProdouctPageModule),
+    canActivate: [AuthGuardService]
   },
 
   {
     path: 'profile',
-    loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfilePageModule)
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule),
+    canActivate: [AuthGuardService]
   },
   {
     path: 'user-layout',
-    loadChildren: () => import('./layouts/user-layout/user-layout.module').then(m => m.UserLayoutPageModule)
+    loadChildren: () => import('./layouts/user-layout/user-layout.module').then( m => m.UserLayoutPageModule),
+    canActivate: [AuthGuardService]
   },
   {
     path: 'admin-layout',
-    loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutPageModule)
+    loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then( m => m.AdminLayoutPageModule),
+    canActivate: [AuthGuardService]
   },
-  // {
-  //   path: 'category-list',
-  //   component: CategoryListComponent
-  // },
   {
     path: 'update-product/:id',
-    component: UpdateProductComponent
-  },
-  {
-    path: 'create-category',
-    component: CreateCategoryComponent
-  },
-  {
-    path: 'category-detailed-view/:id',
-    component: CategoryDetailedViewComponent
-  },
-  {
-    path: 'product-detailed-view/:id',
-    component: ProductDetailedViewComponent
-  },
-  {
-    path: 'update-category/:id',
-    component: UpdateCategoryComponent
-  },
-  {
-    path: 'update-stock/:id',
-    component: UpdateStockComponent
+    component: UpdateProductComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'category-list',
-    loadChildren: () => import('./pages/category-list/category-list.module').then( m => m.CategoryListPageModule)
+    component: CategoryListComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'category-detailed-view/:id',
+    component: CategoryDetailedViewComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'product-detailed-view/:id',
+    component: ProductDetailedViewComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'update-category/:id',
+    component: UpdateCategoryComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'update-stock/:id',
+    component: UpdateStockComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'category-list',
+    loadChildren: () => import('./pages/category-list/category-list.module').then( m => m.CategoryListPageModule),
+    canActivate: [AuthGuardService]
   },   {
     path: 'sales-history',
-    loadChildren: () => import('./pages/sales-history/sales-history.module').then( m => m.SalesHistoryPageModule)
+    loadChildren: () => import('./pages/sales-history/sales-history.module').then( m => m.SalesHistoryPageModule),
+    canActivate: [AuthGuardService]
   },
+
+{
+    path: 'create-category',
+    component: CreateCategoryComponent,
+    canActivate: [AuthGuardService]
+  },
+
 
 
 
@@ -89,8 +105,10 @@ const routes: Routes = [
 ];
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules})
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
+
+
