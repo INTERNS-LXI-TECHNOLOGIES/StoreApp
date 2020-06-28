@@ -21,12 +21,21 @@
           <ion-input  [(ngModel)]="product.quantity" placeholder="Quantity"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-textarea  placeholder="Description"></ion-textarea>
+          <ion-input  [(ngModel)]="product.warranty" placeholder="Warrenty"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input  [(ngModel)]="product.noOfStock"  placeholder="Number Of Product"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="product.brand"  placeholder="BrandName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-textarea [(ngModel)]="product.description"   placeholder="Description"></ion-textarea>
   </ion-item>
     <ion-item>
       <ion-label>Category</ion-label>
-      <ion-select [(ngModel)]="product.category" okText="Okay" cancelText="Dismiss">
-        <ion-select-option *ngFor="let c of categories" value={{c.name}}>{{c.name}}</ion-select-option>
+      <ion-select [(ngModel)]="product.categoryId" okText="Okay" cancelText="Dismiss">
+        <ion-select-option *ngFor="let c of categories" value={{c.id}}>{{c.name}}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>

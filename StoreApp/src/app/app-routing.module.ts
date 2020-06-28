@@ -4,6 +4,11 @@ import { UserLayoutPageModule } from './layouts/user-layout/user-layout.module';
 import { NgModule, Component } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from './core/auth/auth-guard.service';
+import { CategoryDetailedViewComponent } from './components/category-detailed-view/category-detailed-view.component';
+import { ProductDetailedViewComponent } from './components/product-detailed-view/product-detailed-view.component';
+import { UpdateCategoryComponent } from './components/update-category/update-category.component';
+import { UpdateStockComponent } from './components/update-stock/update-stock.component';
+import { CreateCategoryComponent } from './components/create-category/create-category.component';
 
 const routes: Routes = [
 
@@ -54,7 +59,44 @@ const routes: Routes = [
     path: 'category-list',
     component: CategoryListComponent,
     canActivate: [AuthGuardService]
-  }
+  },
+  {
+    path: 'category-detailed-view/:id',
+    component: CategoryDetailedViewComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'product-detailed-view/:id',
+    component: ProductDetailedViewComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'update-category/:id',
+    component: UpdateCategoryComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'update-stock/:id',
+    component: UpdateStockComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'category-list',
+    loadChildren: () => import('./pages/category-list/category-list.module').then( m => m.CategoryListPageModule),
+    canActivate: [AuthGuardService]
+  },   {
+    path: 'sales-history',
+    loadChildren: () => import('./pages/sales-history/sales-history.module').then( m => m.SalesHistoryPageModule),
+    canActivate: [AuthGuardService]
+  },
+
+{
+    path: 'create-category',
+    component: CreateCategoryComponent,
+    canActivate: [AuthGuardService]
+  },
+
+
 
 
 
@@ -68,3 +110,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
+
+

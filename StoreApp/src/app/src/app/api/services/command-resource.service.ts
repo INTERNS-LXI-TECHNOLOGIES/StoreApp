@@ -26,6 +26,7 @@ class CommandResourceService extends __BaseService {
   }
 
   /**
+   * addSale
    * @param saleDTO saleDTO
    */
   addSaleUsingPOSTResponse(saleDTO: Array<SaleDTO>): __Observable<__StrictHttpResponse<null>> {
@@ -51,6 +52,7 @@ class CommandResourceService extends __BaseService {
     );
   }
   /**
+   * addSale
    * @param saleDTO saleDTO
    */
   addSaleUsingPOST(saleDTO: Array<SaleDTO>): __Observable<null> {

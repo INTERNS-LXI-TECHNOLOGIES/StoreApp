@@ -1,13 +1,13 @@
 /* tslint:disable */
 export interface ManagedUserVM {
-  imageUrl?: string;
   activated?: boolean;
+  authorities?: Array<string>;
   createdBy?: string;
   createdDate?: string;
   email?: string;
   firstName?: string;
   id?: number;
-  authorities?: Array<string>;
+  imageUrl?: string;
   langKey?: string;
   lastModifiedBy?: string;
   lastModifiedDate?: string;

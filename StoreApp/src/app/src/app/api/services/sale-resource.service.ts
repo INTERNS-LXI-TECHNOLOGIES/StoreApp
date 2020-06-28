@@ -30,6 +30,7 @@ class SaleResourceService extends __BaseService {
   }
 
   /**
+   * getAllSales
    * @return OK
    */
   getAllSalesUsingGETResponse(): __Observable<__StrictHttpResponse<Array<SaleDTO>>> {
@@ -54,6 +55,7 @@ class SaleResourceService extends __BaseService {
     );
   }
   /**
+   * getAllSales
    * @return OK
    */
   getAllSalesUsingGET(): __Observable<Array<SaleDTO>> {
@@ -63,6 +65,7 @@ class SaleResourceService extends __BaseService {
   }
 
   /**
+   * createSale
    * @param saleDTO saleDTO
    * @return OK
    */
@@ -89,6 +92,7 @@ class SaleResourceService extends __BaseService {
     );
   }
   /**
+   * createSale
    * @param saleDTO saleDTO
    * @return OK
    */
@@ -99,6 +103,7 @@ class SaleResourceService extends __BaseService {
   }
 
   /**
+   * updateSale
    * @param saleDTO saleDTO
    * @return OK
    */
@@ -125,6 +130,7 @@ class SaleResourceService extends __BaseService {
     );
   }
   /**
+   * updateSale
    * @param saleDTO saleDTO
    * @return OK
    */
@@ -135,6 +141,7 @@ class SaleResourceService extends __BaseService {
   }
 
   /**
+   * getSale
    * @param id id
    * @return OK
    */
@@ -145,7 +152,7 @@ class SaleResourceService extends __BaseService {
 
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/sales/${id}`,
+      this.rootUrl + `/api/sales/${encodeURIComponent(id)}`,
       __body,
       {
         headers: __headers,
@@ -161,6 +168,7 @@ class SaleResourceService extends __BaseService {
     );
   }
   /**
+   * getSale
    * @param id id
    * @return OK
    */
@@ -171,6 +179,7 @@ class SaleResourceService extends __BaseService {
   }
 
   /**
+   * deleteSale
    * @param id id
    */
   deleteSaleUsingDELETEResponse(id: number): __Observable<__StrictHttpResponse<null>> {
@@ -180,7 +189,7 @@ class SaleResourceService extends __BaseService {
 
     let req = new HttpRequest<any>(
       'DELETE',
-      this.rootUrl + `/api/sales/${id}`,
+      this.rootUrl + `/api/sales/${encodeURIComponent(id)}`,
       __body,
       {
         headers: __headers,
@@ -196,6 +205,7 @@ class SaleResourceService extends __BaseService {
     );
   }
   /**
+   * deleteSale
    * @param id id
    */
   deleteSaleUsingDELETE(id: number): __Observable<null> {

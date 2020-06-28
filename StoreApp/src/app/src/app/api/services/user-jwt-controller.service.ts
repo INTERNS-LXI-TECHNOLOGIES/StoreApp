@@ -27,6 +27,7 @@ class UserJwtControllerService extends __BaseService {
   }
 
   /**
+   * authorize
    * @param loginVM loginVM
    * @return OK
    */
@@ -53,6 +54,7 @@ class UserJwtControllerService extends __BaseService {
     );
   }
   /**
+   * authorize
    * @param loginVM loginVM
    * @return OK
    */

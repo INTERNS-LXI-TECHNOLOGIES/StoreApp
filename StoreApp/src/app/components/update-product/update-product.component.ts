@@ -28,7 +28,8 @@ export class UpdateProductComponent implements OnInit {
     this.router.navigateByUrl('admin-layout');
   }
   update() {
-    this.productService.updateProductUsingPUT(this.product).subscribe(() => this.goToHome());
+    this.productService.updateProductUsingPUT(this.product).subscribe((pro) => this.goToHome());
+    
   }
 
 }

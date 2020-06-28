@@ -1,6 +1,5 @@
 import { Router } from '@angular/router';
 import { CartModalComponent } from './../cart-modal/cart-modal.component';
-
 import { Component, OnInit, Input } from '@angular/core';
 import { PRODUCTS } from 'src/app/core/dumb-data/ProductDumb';
 import { ProductDTO } from 'src/app/api/models';
@@ -19,7 +18,9 @@ import { Categories } from 'src/app/core/mocks/categories.list';
   styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit {
-  @Input() categoryName: string;
+
+
+  @Input() categoryId: number;
   @Input() product: ProductDTO[];
   @Input() userRole = 'user';
 
@@ -30,21 +31,19 @@ export class ProductListComponent implements OnInit {
   cartItemCount: BehaviorSubject<number>;
   categories = [];
 
-  constructor(
-    private router: Router,
-    private modalController: ModalController,
-    private cartService: CartService,
-    private productResourceService: ProductResourceService,
-    private queryResourceService: QueryResourceService
-  ) {}
+
+  constructor(private router: Router,
+              private modalController: ModalController,
+              private cartService: CartService,
+              private queryResourceService: QueryResourceService,
+              private productResourceService: ProductResourceService) { }
 
   ngOnInit() {
-    console.log(this.categoryid,'idddddddd');
-    
-    if (this.userRole === 'admin') {
-      this.queryResourceService
-        .findAllProductsByCategoryIdUsingGET(this.categoryid)
-        .subscribe((pro: any) => {
+
+if (this.userRole === 'admin') {
+  console.log(this.categoryId);
+  
+        this.queryResourceService.findAllProductsByCategoryIdUsingGET(this.categoryId).subscribe((pro: any) => {
           console.log(pro);
           this.products = pro;
         });
@@ -81,14 +80,18 @@ export class ProductListComponent implements OnInit {
   }
   closeModal() {
     this.modalController.dismiss();
-  }
+ }
+goToProductDetailedView(id){
+  this.router.navigateByUrl('product-detailed-view/'+id);
 
-  delete(id: number) {
-    this.productResourceService.deleteProductUsingDELETE(id).subscribe();
-    this.products = this.products.filter((pro) => id !== pro.id);
-  }
+}
+delete(id: number){
+  this.productResourceService.deleteProductUsingDELETE(id).subscribe();
+  this.products = this.products.filter(pro => id !== pro.id);
+}
 
-  gotoUpdate(id) {
-    this.router.navigateByUrl('update-product/' + id);
-  }
+gotoUpdate(id) {
+
+this.router.navigateByUrl('update-product/' + id);
+}
 }
