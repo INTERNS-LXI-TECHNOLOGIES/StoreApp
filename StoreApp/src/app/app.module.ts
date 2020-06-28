@@ -1,3 +1,4 @@
+import { AuthGuardService } from './core/auth/auth-guard.service';
 import { Camera } from '@ionic-native/camera/ngx';
 import { AuthInterceptorService } from './core/auth/auth-interceptor.service';
 import { FormsModule } from '@angular/forms';
@@ -30,6 +31,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     StatusBar,
     SplashScreen,
     Camera,
+    AuthGuardService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
       provide: HTTP_INTERCEPTORS,

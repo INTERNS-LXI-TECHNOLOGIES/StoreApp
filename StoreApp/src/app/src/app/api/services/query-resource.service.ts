@@ -7,6 +7,7 @@ import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-respo
 import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
+import { OptionalOfListOfProductDTO } from '../models/optional-of-list-of-product-dto';
 import { ProductDTO } from '../models/product-dto';
 
 /**
@@ -16,6 +17,7 @@ import { ProductDTO } from '../models/product-dto';
   providedIn: 'root',
 })
 class QueryResourceService extends __BaseService {
+  static readonly findAllProductsByBrandUsingGETPath = '/api/query/findAllProductsByBrand/{brand}';
   static readonly findAllProductsByCategoryIdUsingGETPath = '/api/query/findAllProductsByCategoryId/{categoryId}';
   static readonly findStockByCategoryIdUsingGETPath = '/api/query/findStockByCategoryId/{categoryId}';
   static readonly findStockByProductIdUsingGETPath = '/api/query/findStockByProductId/{productId}';
@@ -25,6 +27,42 @@ class QueryResourceService extends __BaseService {
     http: HttpClient
   ) {
     super(config, http);
+  }
+
+  /**
+   * @param brand brand
+   * @return OK
+   */
+  findAllProductsByBrandUsingGETResponse(brand: string): __Observable<__StrictHttpResponse<OptionalOfListOfProductDTO>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/api/query/findAllProductsByBrand/${brand}`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<OptionalOfListOfProductDTO>;
+      })
+    );
+  }
+  /**
+   * @param brand brand
+   * @return OK
+   */
+  findAllProductsByBrandUsingGET(brand: string): __Observable<OptionalOfListOfProductDTO> {
+    return this.findAllProductsByBrandUsingGETResponse(brand).pipe(
+      __map(_r => _r.body as OptionalOfListOfProductDTO)
+    );
   }
 
   /**

@@ -3,6 +3,7 @@ import { UpdateProductComponent } from './components/update-product/update-produ
 import { UserLayoutPageModule } from './layouts/user-layout/user-layout.module';
 import { NgModule, Component } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuardService } from './core/auth/auth-guard.service';
 
 const routes: Routes = [
 
@@ -19,33 +20,40 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
+    canActivate: [AuthGuardService]
   },
 
   {
     path: 'create-product',
-    loadChildren: () => import('./pages/create-product/create-product.module').then( m => m.CreateProdouctPageModule)
+    loadChildren: () => import('./pages/create-product/create-product.module').then( m => m.CreateProdouctPageModule),
+    canActivate: [AuthGuardService]
   },
 
   {
     path: 'profile',
-    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule),
+    canActivate: [AuthGuardService]
   },
   {
     path: 'user-layout',
-    loadChildren: () => import('./layouts/user-layout/user-layout.module').then( m => m.UserLayoutPageModule)
+    loadChildren: () => import('./layouts/user-layout/user-layout.module').then( m => m.UserLayoutPageModule),
+    canActivate: [AuthGuardService]
   },
   {
     path: 'admin-layout',
-    loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then( m => m.AdminLayoutPageModule)
+    loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then( m => m.AdminLayoutPageModule),
+    canActivate: [AuthGuardService]
   },
   {
     path: 'update-product/:id',
-    component: UpdateProductComponent
+    component: UpdateProductComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'category-list',
-    component: CategoryListComponent
+    component: CategoryListComponent,
+    canActivate: [AuthGuardService]
   }
 
 

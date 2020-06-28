@@ -15,7 +15,7 @@ export class UserLayoutPage implements OnInit {
     
   }
   goHome() {
-    this.router.navigateByUrl('/user-home');
+    this.router.navigateByUrl('/home');
   }
   goProfile() {
     this.router.navigateByUrl('/profile');
