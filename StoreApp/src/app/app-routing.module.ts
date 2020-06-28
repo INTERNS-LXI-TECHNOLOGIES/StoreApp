@@ -76,7 +76,7 @@ const routes: Routes = [
   {
     path: 'category-list',
     loadChildren: () => import('./pages/category-list/category-list.module').then( m => m.CategoryListPageModule)
-  },
+  }, 
 
 
 

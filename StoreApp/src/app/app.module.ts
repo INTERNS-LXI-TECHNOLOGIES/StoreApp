@@ -1,3 +1,4 @@
+import { Camera } from '@ionic-native/camera/ngx';
 import { AuthInterceptorService } from './core/auth/auth-interceptor.service';
 import { FormsModule } from '@angular/forms';
 import { ComponentsModule } from './components/components.module';
@@ -28,6 +29,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
       provide: HTTP_INTERCEPTORS,

@@ -1,11 +1,44 @@
-.profile-pic {
-    width: 100px;
-    height: 100px;
+ion-avatar{
+  margin-top: 44px;
+  width: 200px;
+  height: 200px;
+  border: 6px solid rgb(237, 243, 245);
   }
-  .login{
-    margin:auto;
-    width:150px;
-    height:135px;
-    margin-top:25px;
-    margin-bottom: 25px;
-}
+  ion-grid{
+      min-height: 100%;
+      width: 100%;
+      align-items: center;
+  }
+  ion-row{
+      width: 100%;
+  }
+  
+   .items{
+      margin: auto;
+      position: relative;
+      width: 77px;
+      height: 76px;
+      top: -36px;
+      left: 9px;
+  }
+  .edit{
+      color: blue;
+  }
+  .editbutton{
+      padding: 0px 8px 0px 25px;
+  }
+  ion-item{
+      font-size:20px;
+      
+  }
+  ion-tittle{
+      text-align: center;
+  }
+  .image {
+    display: flex;
+    justify-content: center;
+    
+  }
+  .content {
+    margin-top: 48px;
+  }

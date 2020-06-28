@@ -1,9 +1,14 @@
-import { CategoryResourceService } from 'src/app/api/services';
 import { CategoryDetailedViewComponent } from './../category-detailed-view/category-detailed-view.component';
+import { CategoryDTO } from 'src/app/api/models';
+import { ModalController, AlertController } from '@ionic/angular';
+import { CartService } from 'src/app/core/services/cart.service';
+import {
+  QueryResourceService,
+  CategoryResourceService,
+} from 'src/app/api/services';
 import { Router } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import { Categories } from 'src/app/core/mocks/categories.list';
-import { ModalController, AlertController } from '@ionic/angular';
 import { ProductListComponent } from '../product-list/product-list.component';
 import { CATEGORYS } from 'src/app/core/dumb-data/CategoryDumb';
 
@@ -13,12 +18,12 @@ import { CATEGORYS } from 'src/app/core/dumb-data/CategoryDumb';
   styleUrls: ['./category-list.component.scss'],
 })
 export class CategoryListComponent implements OnInit {
-
   // categoryMap= Categories;
   categories = [];
   @Input() userRole = 'user';
   catergory = CATEGORYS;
   currentid;
+  categorylist: CategoryDTO[] = [];
 
   constructor(private modalController: ModalController,
               private router: Router,
@@ -32,15 +37,30 @@ export class CategoryListComponent implements OnInit {
     this.ReadCategory();
   }
 
-  async getCategory(product: any){
+  getAllCategories() {
+    this.categoryResourceService.getAllCategoriesUsingGET().subscribe((bev) => {
+      this.categorylist = bev;
+      console.log(bev);
+    });
+  }
 
+  async getCategory(id: any) {
     const modal = await this.modalController.create({
       component: ProductListComponent,
-      componentProps: { category: product}
+      componentProps: { categoryid: id },
     });
-    console.log('this is the product from page', product);
+    console.log('this is the categoryid from page', id);
     modal.present();
   }
+
+  // async getCategory(product: any) {
+  //   const modal = await this.modalController.create({
+  //     component: ProductListComponent,
+  //     componentProps: { category: product },
+  //   });
+  //   console.log('this is the product from page', product);
+  //   modal.present();
+  // }
 
   gotoCreateProductPage() {
     this.router.navigateByUrl('/create-product');
@@ -65,14 +85,15 @@ export class CategoryListComponent implements OnInit {
       buttons: [
         {
           text: 'Cancel',
-          role: 'cancel'
-        }, {
+          role: 'cancel',
+        },
+        {
           text: 'Okay',
           handler: () => {
             // this.delete(id);
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
 
     await alert.present();

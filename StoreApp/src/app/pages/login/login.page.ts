@@ -1,3 +1,4 @@
+import { NavController, ToastController } from '@ionic/angular';
 import { Routes, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import {
@@ -34,29 +35,49 @@ export class LoginPage implements OnInit {
     private accountService: AccountResourceService,
     private httpClient: HttpClient,
     private jwtService: UserJwtControllerService,
-    private router: Router
+    private navController: NavController,
+    private toastController: ToastController,
+    private router: Router,
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+}
 
   registerPage() {
     this.util.navigateRegister();
   }
 
+  async presentToast(message: string) {
+    const toast = await
+    this.toastController.create({
+      message,
+      duration: 2000,
+      cssClass: 'toast'
+    });
+    toast.present();
+  }
+
+
   login() {
     if (!this.loginForm.invalid) {
-      console.log(this.loginForm.value.username, 'email is getting');
-      this.jwtService
+        console.log(this.loginForm.value.username, 'email is getting');
+        this.jwtService
         .authorizeUsingPOST(this.loginForm.value)
         .subscribe((data) => {
           localStorage.setItem('token', data.id_token);
           localStorage.setItem('username', this.loginForm.value.username);
+          this.util.createToast('You have Succesfuly Logedin');
           console.log(data, 'token');
           this.util.navigateCategories();
           console.log('logged in');
+        },
+        err => {
+          this.util.createToast('Invalid username or Password');
+
         });
     } else {
       this.showLoginError = true;
+
     }
   }
 }

@@ -5,7 +5,10 @@ import { PRODUCTS } from 'src/app/core/dumb-data/ProductDumb';
 import { ProductDTO } from 'src/app/api/models';
 import { ModalController } from '@ionic/angular';
 import { CartService } from 'src/app/core/services/cart.service';
-import { ProductResourceService, QueryResourceService } from 'src/app/api/services';
+import {
+  ProductResourceService,
+  QueryResourceService,
+} from 'src/app/api/services';
 import { BehaviorSubject } from 'rxjs';
 import { Categories } from 'src/app/core/mocks/categories.list';
 
@@ -49,31 +52,31 @@ if (this.userRole === 'admin') {
       this.cartItemCount = this.cartService.getCartItemCount();
       this.getProduct(this.categoryid);
       console.log('this is the productid from component', this.categoryid);
-
-
     }
-
   }
 
   addToCart(product) {
     this.cartService.addProduct(product);
-
   }
   getProduct(categoryid) {
-    console.log('this is the categoryid from component **********', this.categoryid);
-    this.queryResourceService.findAllProductsByCategoryIdUsingGET(categoryid
-    ).subscribe(bev => {
-      this.product = bev; console.log(bev); });
-
+    console.log(
+      'this is the categoryid from component **********',
+      this.categoryid
+    );
+    this.queryResourceService
+      .findAllProductsByCategoryIdUsingGET(categoryid)
+      .subscribe((bev) => {
+        this.product = bev;
+        console.log(bev);
+      });
   }
 
   async openCart() {
-
-      const modal = await this.modalController.create({
-        component : CartModalComponent,
-        cssClass: 'cart-modal'
-      });
-      modal.present();
+    const modal = await this.modalController.create({
+      component: CartModalComponent,
+      cssClass: 'cart-modal',
+    });
+    modal.present();
   }
   closeModal() {
     this.modalController.dismiss();
