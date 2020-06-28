@@ -6,33 +6,84 @@
       </ion-button>
       <ion-title>Update Stock</ion-title>
     </ion-buttons>
-    </ion-toolbar>
+  </ion-toolbar>
 </ion-header>
 <ion-content>
   <ion-card>
+
+
+
     <ion-item>
-      <ion-input  disabled placeholder="name"></ion-input>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input disabled [(ngModel)]="product.name"></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label position="floating">Price</ion-label>
+      <ion-input disabled [(ngModel)]="product.price"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Quantity</ion-label>
+      <ion-input disabled [(ngModel)]="product.quantity" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Warrenty</ion-label>
+      <ion-input disabled [(ngModel)]="product.warranty"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">BrandName</ion-label>
+      <ion-input disabled [(ngModel)]="product.brand"></ion-input>
+    </ion-item>
+    <ion-item>
+
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea disabled [(ngModel)]="product.description"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Category</ion-label>
+      <ion-select disabled [(ngModel)]="product.categoryId" okText="Okay" cancelText="Dismiss">
+
+      </ion-select>
+    </ion-item>
+    <ion-item>
+     
+    </ion-item>
+    <ion-title>
+      <h1>Stock</h1>
+    </ion-title>
+    <ion-card>
+      <ion-item>
+        <ion-button fill="none" (click)="stockIncreaseProcess()">
+          <ion-icon slot="icon-only" name="add-circle" color="dark"></ion-icon>
+        </ion-button>
+        <ion-input class="ion-text-center" [(ngModel)]="product.noOfStock"></ion-input>
+        <ion-button fill="none" slot="end" (click)="stockDecreaseProcess()">
+          <ion-icon  slot="icon-only" name="remove-circle" color="dark"></ion-icon>
+        </ion-button>
+      </ion-item>
+
+    </ion-card>
     <ion-item>
       <ion-label>Manufacturing Date</ion-label>
       <ion-datetime [(ngModel)]="manufacturingDate" displayFormat="MM DD YY"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label>Expiry Date</ion-label>
-      <ion-datetime  [(ngModel)]="expiringDate" displayFormat="MM DD YY"></ion-datetime>
+      <ion-datetime [(ngModel)]="expiringDate" displayFormat="MM DD YY"></ion-datetime>
     </ion-item>
   </ion-card>
+
   <ion-card>
-  <ion-card>
-    
-    <ion-title><h1>Stock</h1></ion-title>
     <ion-card>
-     <ion-item><ion-button fill="none" (click)="stockIncreaseProcess()"><ion-icon name="add-circle" color="dark"></ion-icon></ion-button>
-      <ion-label>{{stock}}</ion-label>
-      <ion-button fill="none" slot="end" (click)="stockDecreaseProcess()"><ion-icon name="remove-circle" color="dark"></ion-icon></ion-button></ion-item>
-    
+
+      
     </ion-card>
   </ion-card>
-</ion-card>
 </ion-content>
-<ion-footer></ion-footer>
+<ion-footer>
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="createProduct()">
+      <ion-icon name="add-circle"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-footer>

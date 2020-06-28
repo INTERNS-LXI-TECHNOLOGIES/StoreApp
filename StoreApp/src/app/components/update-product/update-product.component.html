@@ -13,32 +13,40 @@
     <ion-input type="file"></ion-input>
   </ion-item>
   
-    <ion-item>
-          <ion-input [(ngModel)]="product.name" placeholder="Name"></ion-input>
-    </ion-item>
-    <ion-item>
-          <ion-input  [(ngModel)]="product.price" placeholder="Price"></ion-input>
-    </ion-item>
-    <ion-item>
-          <ion-input  [(ngModel)]="product.quantity" placeholder="Quantity"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-textarea  placeholder="Description"></ion-textarea>
+
+  <ion-item>
+    <ion-label position="floating">Name</ion-label>
+    <ion-input  [(ngModel)]="product.name"></ion-input>
   </ion-item>
-    <ion-item>
-      <ion-label>Category</ion-label>
-      <ion-select [(ngModel)]="product.categoryId" okText="Okay" cancelText="Dismiss">
-        <ion-select-option *ngFor="let c of categories" value={{c.name}}>{{c.name}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>Manufacturing Date</ion-label>
-      <ion-datetime [(ngModel)]="product.manufacturingDate" displayFormat="MM DD YY"></ion-datetime>
-    </ion-item>
-    <ion-item>
-      <ion-label>Expiry Date</ion-label>
-      <ion-datetime  [(ngModel)]="product.expiringDate" displayFormat="MM DD YY"></ion-datetime>
-    </ion-item>
+  <ion-item>
+    <ion-label position="floating">Price</ion-label>
+    <ion-input  [(ngModel)]="product.price"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Quantity</ion-label>
+    <ion-input  [(ngModel)]="product.quantity" ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Warrenty</ion-label>
+    <ion-input  [(ngModel)]="product.warranty"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">BrandName</ion-label>
+    <ion-input  [(ngModel)]="product.brand"></ion-input>
+  </ion-item>
+  <ion-item>
+
+    <ion-label position="floating">Description</ion-label>
+    <ion-textarea [(ngModel)]="product.description"></ion-textarea>
+  </ion-item>
+  <ion-item>
+<ion-label>Category</ion-label>
+<ion-select [(ngModel)]="product.categoryId" okText="Okay" cancelText="Dismiss">
+  <ion-select-option *ngFor="let c of categories" value={{c.id}}>{{c.name}}</ion-select-option>
+</ion-select>
+</ion-item>
+
   </ion-card>
 </ion-content>
 <ion-footer color="primary">

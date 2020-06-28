@@ -2,7 +2,7 @@ import { CategoryResourceService } from 'src/app/api/services';
 import { ProductDTO, CategoryDTO } from 'src/app/api/models';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-category-detailed-view',
   templateUrl: './category-detailed-view.component.html',
@@ -12,7 +12,7 @@ export class CategoryDetailedViewComponent implements OnInit {
 id
 
 category: CategoryDTO ={};
-  constructor(private alert: AlertController,private router: Router,private route: ActivatedRoute, private categoryResourceService: CategoryResourceService) { }
+  constructor(private toastController: ToastController, private alert: AlertController,private router: Router,private route: ActivatedRoute, private categoryResourceService: CategoryResourceService) { }
 
   ngOnInit() {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
@@ -40,14 +40,32 @@ category: CategoryDTO ={};
         }, {
           text: 'Okay',
           handler: () => {
-            this.categoryResourceService.deleteCategoryUsingDELETE(this.category.id).subscribe();
+            this.categoryResourceService.deleteCategoryUsingDELETE(this.category.id).subscribe(() => {
+              this.goToHome();
+            }, err => {
+              this.toastController.create({
+                message: 'Can\'t delete !! Not an empty category',
+                duration: 2000,
+                color: 'dark',
+                position: 'bottom',
+               
+                keyboardClose: true,
+                buttons: [
+                    {
+                        side: 'start',
+                        icon: 'alert-circle-outline',
+                    }]
+            }).then(data => {
+                data.present();
+            });
+            });
           }
         }
       ]
     });
   
     await alert.present();
-    this.goToHome();
+    
   }
   
 }

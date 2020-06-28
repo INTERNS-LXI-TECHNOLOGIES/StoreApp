@@ -70,7 +70,7 @@ const routes: Routes = [
     component: UpdateCategoryComponent
   },
   {
-    path: 'update-stock',
+    path: 'update-stock/:id',
     component: UpdateStockComponent
   },
   {

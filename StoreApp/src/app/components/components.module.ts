@@ -1,3 +1,4 @@
+import { UpdateStockComponent } from './update-stock/update-stock.component';
 import { ProductDetailedViewComponent } from './product-detailed-view/product-detailed-view.component';
 import { UpdateCategoryComponent } from './update-category/update-category.component';
 import { CartService } from './../core/services/cart.service';
@@ -28,7 +29,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     CategoryDetailedViewComponent,
     ProductDetailedViewComponent,
     DashboardComponent,
-    UpdateCategoryComponent
+    UpdateCategoryComponent,
+    UpdateStockComponent
   ],
   imports: [CommonModule, IonicModule, FormsModule, HttpClientModule],
   exports: [
@@ -41,7 +43,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     UpdateCategoryComponent,
     CategoryDetailedViewComponent,
     ProductDetailedViewComponent,
-    DashboardComponent
+    DashboardComponent,
+    UpdateStockComponent
   ]
 })
 export class ComponentsModule {}

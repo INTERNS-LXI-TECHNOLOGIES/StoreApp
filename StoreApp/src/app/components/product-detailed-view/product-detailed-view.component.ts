@@ -33,7 +33,7 @@ gotoUpdate() {
   }
   
 goToUpdateStock(){
-  this.router.navigateByUrl('update-stock');
+  this.router.navigateByUrl('update-stock/'+this.product.id);
 }
 async deleteProduct() {
   const alert = await this.alert.create({
