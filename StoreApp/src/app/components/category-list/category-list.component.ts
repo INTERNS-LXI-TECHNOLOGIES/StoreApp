@@ -36,7 +36,9 @@ export class CategoryListComponent implements OnInit {
   ngOnInit() {
     this.ReadCategory();
   }
-
+ gotoSalesHistory(){
+   this.router.navigateByUrl('sales-history');
+ }
   getAllCategories() {
     this.categoryResourceService.getAllCategoriesUsingGET().subscribe((bev) => {
       this.categorylist = bev;

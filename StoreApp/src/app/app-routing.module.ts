@@ -76,7 +76,11 @@ const routes: Routes = [
   {
     path: 'category-list',
     loadChildren: () => import('./pages/category-list/category-list.module').then( m => m.CategoryListPageModule)
-  }, 
+  },   {
+    path: 'sales-history',
+    loadChildren: () => import('./pages/sales-history/sales-history.module').then( m => m.SalesHistoryPageModule)
+  },
+
 
 
 
