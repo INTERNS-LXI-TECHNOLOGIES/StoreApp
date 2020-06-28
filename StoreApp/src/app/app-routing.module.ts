@@ -1,6 +1,7 @@
+import { CategoryListComponent } from 'src/app/components/category-list/category-list.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
 import { UserLayoutPageModule } from './layouts/user-layout/user-layout.module';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
@@ -41,12 +42,12 @@ const routes: Routes = [
   {
     path: 'update-product/:id',
     component: UpdateProductComponent
-  },  {
-    path: 'category-list',
-    loadChildren: () => import('./pages/category-list/category-list.module').then( m => m.CategoryListPageModule)
   },
+  {
+    path: 'category-list',
+    component: CategoryListComponent
+  }
 
-  
 
 
 
