@@ -7,7 +7,7 @@ import {
   FormControl,
 } from '@angular/forms';
 import { Util } from 'src/app/core/services/util';
-import { UserJwtControllerService } from 'src/app/src/app/api/services/user-jwt-controller.service';
+import { UserJwtControllerService } from 'src/app/api/services';
 
 @Component({
   selector: 'app-login',

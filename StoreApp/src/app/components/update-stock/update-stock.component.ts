@@ -1,7 +1,7 @@
 import { ProductDTO } from './../../api/models/product-dto';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { ProductResourceService } from 'src/app/src/app/api/services/product-resource.service';
+import { ProductResourceService } from 'src/app/api/services';
 
 @Component({
   selector: 'app-update-stock',

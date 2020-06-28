@@ -81,10 +81,6 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
-    path: 'category-list',
-    loadChildren: () => import('./pages/category-list/category-list.module').then( m => m.CategoryListPageModule),
-    canActivate: [AuthGuardService]
-  },   {
     path: 'sales-history',
     loadChildren: () => import('./pages/sales-history/sales-history.module').then( m => m.SalesHistoryPageModule),
     canActivate: [AuthGuardService]
