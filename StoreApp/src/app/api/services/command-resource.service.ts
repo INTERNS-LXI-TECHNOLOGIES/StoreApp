@@ -7,17 +7,16 @@ import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-respo
 import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
-import { JWTToken } from '../models/jwttoken';
-import { LoginVM } from '../models/login-vm';
+import { SaleDTO } from '../models/sale-dto';
 
 /**
- * User JWT Controller
+ * Command Resource
  */
 @Injectable({
   providedIn: 'root',
 })
-class UserJwtControllerService extends __BaseService {
-  static readonly authorizeUsingPOSTPath = '/api/authenticate';
+class CommandResourceService extends __BaseService {
+  static readonly addSaleUsingPOSTPath = '/api/commands/addSales';
 
   constructor(
     config: __Configuration,
@@ -27,18 +26,16 @@ class UserJwtControllerService extends __BaseService {
   }
 
   /**
-   * authorize
-   * @param loginVM loginVM
-   * @return OK
+   * @param saleDTO saleDTO
    */
-  authorizeUsingPOSTResponse(loginVM: LoginVM): __Observable<__StrictHttpResponse<JWTToken>> {
+  addSaleUsingPOSTResponse(saleDTO: Array<SaleDTO>): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-    __body = loginVM;
+    __body = saleDTO;
     let req = new HttpRequest<any>(
       'POST',
-      this.rootUrl + `/api/authenticate`,
+      this.rootUrl + `/api/commands/addSales`,
       __body,
       {
         headers: __headers,
@@ -49,23 +46,21 @@ class UserJwtControllerService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<JWTToken>;
+        return _r as __StrictHttpResponse<null>;
       })
     );
   }
   /**
-   * authorize
-   * @param loginVM loginVM
-   * @return OK
+   * @param saleDTO saleDTO
    */
-  authorizeUsingPOST(loginVM: LoginVM): __Observable<JWTToken> {
-    return this.authorizeUsingPOSTResponse(loginVM).pipe(
-      __map(_r => _r.body as JWTToken)
+  addSaleUsingPOST(saleDTO: Array<SaleDTO>): __Observable<null> {
+    return this.addSaleUsingPOSTResponse(saleDTO).pipe(
+      __map(_r => _r.body as null)
     );
   }
 }
 
-module UserJwtControllerService {
+module CommandResourceService {
 }
 
-export { UserJwtControllerService }
+export { CommandResourceService }

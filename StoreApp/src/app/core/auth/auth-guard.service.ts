@@ -6,8 +6,6 @@ import {
   Router,
   RouterStateSnapshot,
 } from '@angular/router';
-import { AccountResourceService } from 'src/app/api/services';
-import { Storage } from '@ionic/storage';
 
 @Injectable({
   providedIn: 'root',

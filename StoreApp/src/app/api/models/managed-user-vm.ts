@@ -1,16 +1,17 @@
 /* tslint:disable */
-export interface UserDTO {
+export interface ManagedUserVM {
+  imageUrl?: string;
   activated?: boolean;
-  authorities?: Array<string>;
   createdBy?: string;
   createdDate?: string;
   email?: string;
   firstName?: string;
   id?: number;
-  imageUrl?: string;
+  authorities?: Array<string>;
   langKey?: string;
   lastModifiedBy?: string;
   lastModifiedDate?: string;
   lastName?: string;
   login?: string;
+  password?: string;
 }
