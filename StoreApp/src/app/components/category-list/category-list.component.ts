@@ -1,5 +1,5 @@
 import { CategoryDTO } from 'src/app/api/models';
-import { ModalController, AlertController } from '@ionic/angular';
+import { ModalController, AlertController, NavController } from '@ionic/angular';
 import {
   CategoryResourceService,
 } from 'src/app/api/services';
@@ -26,7 +26,8 @@ export class CategoryListComponent implements OnInit {
               private alert: AlertController,
               // private cartService: CartService,
               // private modalController: ModalController
-              private categoryResourceService: CategoryResourceService
+              private categoryResourceService: CategoryResourceService,
+              private navController: NavController
               ) { }
 
   ngOnInit() {
@@ -80,6 +81,9 @@ export class CategoryListComponent implements OnInit {
   goToCategoryDetailedView(id){
     this.router.navigateByUrl('category-detailed-view/' + id);
   }
+  goBack () {
+    this.router.navigateByUrl('/home');
+  }
 
   async presentAlertConfirm(id) {
     const alert = await this.alert.create({
@@ -105,6 +109,11 @@ export class CategoryListComponent implements OnInit {
    this.categoryResourceService.getAllCategoriesUsingGET().subscribe(allcategory => {
      this.categories = allcategory;
    });
+ }
+ logout() {
+  localStorage.removeItem('token');
+  this.navController.navigateRoot('/login');
+
  }
 
 }

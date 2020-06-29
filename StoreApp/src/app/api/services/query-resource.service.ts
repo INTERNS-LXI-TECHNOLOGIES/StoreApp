@@ -7,6 +7,7 @@ import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-respo
 import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
+import { OptionalOfListOfProductDTO } from '../models/optional-of-list-of-product-dto';
 import { ProductDTO } from '../models/product-dto';
 
 /**
@@ -16,6 +17,7 @@ import { ProductDTO } from '../models/product-dto';
   providedIn: 'root',
 })
 class QueryResourceService extends __BaseService {
+  static readonly findAllProductsByBrandUsingGETPath = '/api/query/findAllProductsByBrand/{brand}';
   static readonly findAllProductsByCategoryIdUsingGETPath = '/api/query/findAllProductsByCategoryId/{categoryId}';
   static readonly findStockByCategoryIdUsingGETPath = '/api/query/findStockByCategoryId/{categoryId}';
   static readonly findStockByProductIdUsingGETPath = '/api/query/findStockByProductId/{productId}';

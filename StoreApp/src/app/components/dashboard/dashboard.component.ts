@@ -3,9 +3,10 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { slideData } from './../../core/mocks/slides.list';
 import { Categories } from 'src/app/core/mocks/categories.list';
 import { CATEGORYS } from 'src/app/core/dumb-data/CategoryDumb';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, ModalController } from '@ionic/angular';
 import { CategoryDTO } from 'src/app/api/models';
 import { CategoryResourceService } from 'src/app/api/services';
+import { CartModalComponent } from '../cart-modal/cart-modal.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +15,8 @@ import { CategoryResourceService } from 'src/app/api/services';
 })
 export class DashboardComponent implements OnInit {
   constructor(private router: Router,
-              private categoryResourceService: CategoryResourceService) { }
+              private categoryResourceService: CategoryResourceService,
+              private modalController: ModalController) { }
   categories = Categories;
   data = slideData;
   @ViewChild('Slides', null) slides: IonSlides;
@@ -56,5 +58,16 @@ goCategories() {
   this.router.navigateByUrl('/category-list');
 }
 getCategory(c) {
+}
+
+async openCart() {
+  const modal = await this.modalController.create({
+    component: CartModalComponent,
+    cssClass: 'cart-modal',
+  });
+  modal.present();
+}
+closeModal() {
+  this.modalController.dismiss();
 }
 }

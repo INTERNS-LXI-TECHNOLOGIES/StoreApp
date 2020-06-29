@@ -1,5 +1,7 @@
+import { ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartModalComponent } from 'src/app/components/cart-modal/cart-modal.component';
 
 @Component({
   selector: 'app-user-layout',
@@ -9,10 +11,11 @@ import { Router } from '@angular/router';
 export class UserLayoutPage implements OnInit {
 
 
-  constructor(private router:Router) { }
+  constructor(private router: Router,
+              private modalController: ModalController) { }
 
   ngOnInit() {
-    
+
   }
   goHome() {
     this.router.navigateByUrl('/home');
@@ -23,4 +26,14 @@ export class UserLayoutPage implements OnInit {
   goCart() {
     this.router.navigateByUrl('/mycart');
   }
+  async openCart() {
+    const modal = await this.modalController.create({
+      component: CartModalComponent,
+      cssClass: 'cart-modal',
+    });
+    modal.present();
+  }
+  closeModal() {
+    this.modalController.dismiss();
+ }
 }

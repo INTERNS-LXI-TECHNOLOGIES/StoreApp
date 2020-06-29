@@ -42,8 +42,8 @@ export class ProductListComponent implements OnInit {
 
 if (this.userRole === 'admin') {
   console.log(this.categoryId);
-  
-        this.queryResourceService.findAllProductsByCategoryIdUsingGET(this.categoryId).subscribe((pro: any) => {
+
+  this.queryResourceService.findAllProductsByCategoryIdUsingGET(this.categoryId).subscribe((pro: any) => {
           console.log(pro);
           this.products = pro;
         });
@@ -82,7 +82,7 @@ if (this.userRole === 'admin') {
     this.modalController.dismiss();
  }
 goToProductDetailedView(id){
-  this.router.navigateByUrl('product-detailed-view/'+id);
+  this.router.navigateByUrl('product-detailed-view/' + id);
 
 }
 delete(id: number){
