@@ -1,3 +1,4 @@
+import { SaleDTO } from 'src/app/api/models';
 import { SaleResourceService } from 'src/app/api/services';
 import { ModalController } from '@ionic/angular';
 import { OrderList } from './../../core/mocks/order.list';
@@ -11,7 +12,7 @@ import { SummaryComponent } from 'src/app/components/summary/summary.component';
 })
 export class OrderPage implements OnInit {
 // orders = OrderList ;
-sales: SalesDTO={};
+sales: SaleDTO [] = [];
   constructor(private modalController: ModalController,
               private salesResourceService: SaleResourceService) { }
 
@@ -20,7 +21,7 @@ sales: SalesDTO={};
   }
   getorders() {
     this.salesResourceService.getAllSalesUsingGET().subscribe((bev) => {
-      this.orders = bev;
+      this.sales = bev;
       console.log(bev);
     });
   }

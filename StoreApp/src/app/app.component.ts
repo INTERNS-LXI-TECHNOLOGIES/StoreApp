@@ -30,7 +30,7 @@ export class AppComponent {
       icon: 'person'
     },
     {
-      title: 'Order Summary',
+      title: 'Your Order',
       url: '/order',
       icon: 'archive'
     }

@@ -12,37 +12,58 @@ import { CommandResourceService } from 'src/app/api/services';
   styleUrls: ['./cart-modal.component.scss'],
 })
 export class CartModalComponent implements OnInit {
-    cart: Product[];
-    product : ProductDTO = {};
+    cart: Product[] = [];
+    sales: SaleDTO[];
+    productMap;
+    total = 0;
    constructor( private cartService: CartService,
                 private modalController: ModalController,
                 private alertCntoller: AlertController,
                 private commandResourceService: CommandResourceService,
+
                  ) { }
 
    ngOnInit() {
-     this.cart = this.cartService.getCart();
+     this.sales = this.cartService.getCart();
+     console.log(this.sales, 'sles is getting');
+     this.getTotal();
+     this.productMap = this.cartService.productsMap;
    }
 
    decreaseCartItem(product) {
      this.cartService.decreaseProduct(product);
+     this.getTotal();
    }
 
    increaseCartItem(product) {
      this.cartService.addProduct(product);
+     this.getTotal();
    }
 
    removeCartItem(product) {
      this.cartService.removeProduct(product);
+     this.getTotal();
    }
 
    getTotal() {
-     return this.cart.reduce((i, j) => i + j.price * j.amount, 0);
+     this.total = 0;
+     this.sales.forEach(s => {this.total += s.amount; });
    }
 
    close() {
      this.modalController.dismiss();
    }
+
+  //  getOrder() {
+  //    this.commandResourceService.addSaleUsingPOST(this.sales).subscribe((oder) => {
+  //     console.log('this is the cartdetails', this.cart);
+  //     this.modalController.dismiss();
+  //    }, err => {
+  //      console.log('failed checkout', err);
+
+  //    });
+
+  //  }
 
    async checkout() {
 
@@ -52,14 +73,21 @@ export class CartModalComponent implements OnInit {
        buttons: ['OK']
      });
      alert.present().then(() => {
-       this.cartService.clearProducts();
-       this.modalController.dismiss();
+      this.commandResourceService.addSaleUsingPOST(this.sales).subscribe((oder) => {
+        console.log('this is the cartdetails', this.cart);
+        this.modalController.dismiss();
+       }, err => {
+         console.log('failed checkout', err);
+
+       });
+      this.cartService.clearProducts();
+      this.modalController.dismiss();
      });
    }
    emptyCart() {
      const choice = confirm('Do you want to clear cart?');
      if (choice) {
-       this.cart = [];
+       this.sales = [];
        this.cartService.clearProducts();
        this.close();
      }

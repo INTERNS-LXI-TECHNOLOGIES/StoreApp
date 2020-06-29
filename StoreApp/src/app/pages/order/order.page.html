@@ -8,8 +8,8 @@
 </ion-header>
 
 <ion-content>
-  <ion-item *ngFor=" let o of orders">
-    <ion-buttons (click)=getSummary(o.id)>
+  <ion-item *ngFor=" let o of sales">
+    <ion-buttons >
       
       <ion-card class="welcome">
     <ion-grid>
@@ -18,7 +18,10 @@
                 <img class="category" src="assets/orders.jpg">
         </ion-col>
         <ion-col>
-          <ion-row><h4>{{o.name}}</h4></ion-row>
+          <ion-row><h4>{{o.productId}}</h4></ion-row>
+          <ion-row><h4>{{o.amount}}</h4></ion-row>
+          <ion-row><h4>{{o.noOfProduct}}</h4></ion-row>
+          <ion-row><h4>{{o.date}}</h4></ion-row>
       </ion-col>
       </ion-row>
       <ion-col></ion-col>
