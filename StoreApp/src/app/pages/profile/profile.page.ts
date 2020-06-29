@@ -19,7 +19,7 @@ export class ProfilePage implements OnInit {
                private navController: NavController,
                private userResourceService: UserResourceService
   ) { }
-
+  //  
   user: UserDTO;
   imageContent: any = {};
   image: any = {};
