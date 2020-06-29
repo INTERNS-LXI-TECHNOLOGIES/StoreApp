@@ -46,7 +46,11 @@ const routes: Routes = [
   {
     path: 'category-list',
     component: CategoryListComponent
+  },  {
+    path: 'order',
+    loadChildren: () => import('./pages/order/order.module').then( m => m.OrderPageModule)
   }
+
 
 
 

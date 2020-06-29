@@ -1,6 +1,8 @@
+import { ProductDTO } from './../../api/models/product-dto';
 import { OnInit, Component } from '@angular/core';
 import { Product, CartService } from 'src/app/core/services/cart.service';
 import { ModalController, AlertController } from '@ionic/angular';
+import { CommandResourceService } from 'src/app/api/services';
 
 
 @Component({
@@ -12,11 +14,13 @@ export class CartModalComponent implements OnInit {
     cart: Product[] = [];
    constructor( private cartService: CartService,
                 private modalController: ModalController,
-                private alertCntoller: AlertController
+                private alertCntoller: AlertController,
+                private commandResourceService: CommandResourceService,
                  ) { }
 
    ngOnInit() {
      this.cart = this.cartService.getCart();
+     this.getOrder();
    }
 
    decreaseCartItem(product) {
@@ -36,6 +40,12 @@ export class CartModalComponent implements OnInit {
    }
 
    close() {
+     this.modalController.dismiss();
+   }
+
+   getOrder() {
+     this.commandResourceService.addSaleUsingPOST(this.cart).subscribe();
+     console.log("this is the cartdetails",this.cart.id);
      this.modalController.dismiss();
    }
 

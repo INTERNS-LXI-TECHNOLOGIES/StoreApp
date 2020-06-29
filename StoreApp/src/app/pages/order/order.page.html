@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>order</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor=" let c of orders">
+    <ion-buttons>
+      
+      <ion-card class="welcome">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+                <img class="category" src="assets/product.jpg">
+        </ion-col>
+        <ion-col>
+          <ion-row><h4>{{c.name}}</h4></ion-row>
+      </ion-col>
+      </ion-row>
+      <ion-col></ion-col>
+    </ion-grid>
+  </ion-card>
+</ion-buttons>
+</ion-item>
+</ion-content>
