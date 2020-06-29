@@ -1,3 +1,4 @@
+import { SaleDTO } from './../../api/models/sale-dto';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderPage implements OnInit {
 
+  sales: SaleDTO[] = [];
   constructor() { }
 
   ngOnInit() {
