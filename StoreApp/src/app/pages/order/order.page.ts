@@ -1,4 +1,3 @@
-import { OrderList } from './../../core/mocks/order.list';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./order.page.scss'],
 })
 export class OrderPage implements OnInit {
-orders = OrderList ;
+
   constructor() { }
 
   ngOnInit() {
