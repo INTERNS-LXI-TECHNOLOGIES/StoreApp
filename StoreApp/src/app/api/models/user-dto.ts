@@ -1,12 +1,12 @@
 /* tslint:disable */
 export interface UserDTO {
-  id?: number;
   activated?: boolean;
+  authorities?: Array<string>;
   createdBy?: string;
   createdDate?: string;
   email?: string;
   firstName?: string;
-  authorities?: Array<string>;
+  id?: number;
   imageUrl?: string;
   langKey?: string;
   lastModifiedBy?: string;

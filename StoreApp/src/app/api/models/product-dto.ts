@@ -1,12 +1,12 @@
 /* tslint:disable */
 export interface ProductDTO {
-  name?: string;
   brand?: string;
+  categoryId?: number;
   description?: string;
   expiringDate?: string;
   id?: number;
   manufacturingDate?: string;
-  categoryId?: number;
+  name?: string;
   noOfStock?: number;
   price?: number;
   quantity?: string;

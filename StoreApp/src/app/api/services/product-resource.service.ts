@@ -30,6 +30,7 @@ class ProductResourceService extends __BaseService {
   }
 
   /**
+   * getAllProducts
    * @return OK
    */
   getAllProductsUsingGETResponse(): __Observable<__StrictHttpResponse<Array<ProductDTO>>> {
@@ -54,6 +55,7 @@ class ProductResourceService extends __BaseService {
     );
   }
   /**
+   * getAllProducts
    * @return OK
    */
   getAllProductsUsingGET(): __Observable<Array<ProductDTO>> {
@@ -63,6 +65,7 @@ class ProductResourceService extends __BaseService {
   }
 
   /**
+   * createProduct
    * @param productDTO productDTO
    * @return OK
    */
@@ -89,6 +92,7 @@ class ProductResourceService extends __BaseService {
     );
   }
   /**
+   * createProduct
    * @param productDTO productDTO
    * @return OK
    */
@@ -99,6 +103,7 @@ class ProductResourceService extends __BaseService {
   }
 
   /**
+   * updateProduct
    * @param productDTO productDTO
    * @return OK
    */
@@ -125,6 +130,7 @@ class ProductResourceService extends __BaseService {
     );
   }
   /**
+   * updateProduct
    * @param productDTO productDTO
    * @return OK
    */
@@ -135,6 +141,7 @@ class ProductResourceService extends __BaseService {
   }
 
   /**
+   * getProduct
    * @param id id
    * @return OK
    */
@@ -145,7 +152,7 @@ class ProductResourceService extends __BaseService {
 
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/products/${id}`,
+      this.rootUrl + `/api/products/${encodeURIComponent(id)}`,
       __body,
       {
         headers: __headers,
@@ -161,6 +168,7 @@ class ProductResourceService extends __BaseService {
     );
   }
   /**
+   * getProduct
    * @param id id
    * @return OK
    */
@@ -171,6 +179,7 @@ class ProductResourceService extends __BaseService {
   }
 
   /**
+   * deleteProduct
    * @param id id
    */
   deleteProductUsingDELETEResponse(id: number): __Observable<__StrictHttpResponse<null>> {
@@ -180,7 +189,7 @@ class ProductResourceService extends __BaseService {
 
     let req = new HttpRequest<any>(
       'DELETE',
-      this.rootUrl + `/api/products/${id}`,
+      this.rootUrl + `/api/products/${encodeURIComponent(id)}`,
       __body,
       {
         headers: __headers,
@@ -196,6 +205,7 @@ class ProductResourceService extends __BaseService {
     );
   }
   /**
+   * deleteProduct
    * @param id id
    */
   deleteProductUsingDELETE(id: number): __Observable<null> {

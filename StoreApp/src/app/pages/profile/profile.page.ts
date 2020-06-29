@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { UserDTO } from './../../api/models/user-dto';
 import { UserResourceService } from 'src/app/api/services';
 import { AlertController, ModalController, NavController } from '@ionic/angular';
@@ -13,6 +14,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 export class ProfilePage implements OnInit {
 
   constructor(
+              private router: Router,
                private camera: Camera,
                private alertController: AlertController,
                private modalController: ModalController,
@@ -109,6 +111,8 @@ export class ProfilePage implements OnInit {
      console.log('Camera issue:' + err);
    });
  }
-
+goToHome(){
+  this.router.navigateByUrl('admin-layout');
+}
 
 }

@@ -36,6 +36,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons>
+      <ion-button (click)="logout()" shape="round"><ion-icon name="log-out-outline"></ion-icon></ion-button>
       <ion-title>Home</ion-title>
       <ion-button (click)="gotoSalesHistory()" slot="end"><ion-icon slot="icon-only" name="pricetags-outline"></ion-icon></ion-button>
 
@@ -74,9 +75,7 @@
  <ion-fab-list side="start"> 
   <ion-button (click)="goToCreateCatogeryPage()" shape="round">Category</ion-button>
   <ion-button (click)="gotoCreateProductPage()" shape="round">Product</ion-button>
-  <ion-button (click)="logout()" shape="round">
-    <ion-icon name="log-out-outline"></ion-icon>
-  </ion-button>
+ 
  </ion-fab-list>
  </ion-fab>
 

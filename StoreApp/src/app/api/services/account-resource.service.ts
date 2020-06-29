@@ -36,6 +36,7 @@ class AccountResourceService extends __BaseService {
   }
 
   /**
+   * getAccount
    * @return OK
    */
   getAccountUsingGETResponse(): __Observable<__StrictHttpResponse<UserDTO>> {
@@ -60,6 +61,7 @@ class AccountResourceService extends __BaseService {
     );
   }
   /**
+   * getAccount
    * @return OK
    */
   getAccountUsingGET(): __Observable<UserDTO> {
@@ -69,6 +71,7 @@ class AccountResourceService extends __BaseService {
   }
 
   /**
+   * saveAccount
    * @param userDTO userDTO
    */
   saveAccountUsingPOSTResponse(userDTO: UserDTO): __Observable<__StrictHttpResponse<null>> {
@@ -94,6 +97,7 @@ class AccountResourceService extends __BaseService {
     );
   }
   /**
+   * saveAccount
    * @param userDTO userDTO
    */
   saveAccountUsingPOST(userDTO: UserDTO): __Observable<null> {
@@ -103,6 +107,7 @@ class AccountResourceService extends __BaseService {
   }
 
   /**
+   * changePassword
    * @param passwordChangeDto passwordChangeDto
    */
   changePasswordUsingPOSTResponse(passwordChangeDto: PasswordChangeDTO): __Observable<__StrictHttpResponse<null>> {
@@ -128,6 +133,7 @@ class AccountResourceService extends __BaseService {
     );
   }
   /**
+   * changePassword
    * @param passwordChangeDto passwordChangeDto
    */
   changePasswordUsingPOST(passwordChangeDto: PasswordChangeDTO): __Observable<null> {
@@ -137,6 +143,7 @@ class AccountResourceService extends __BaseService {
   }
 
   /**
+   * finishPasswordReset
    * @param keyAndPassword keyAndPassword
    */
   finishPasswordResetUsingPOSTResponse(keyAndPassword: KeyAndPasswordVM): __Observable<__StrictHttpResponse<null>> {
@@ -162,6 +169,7 @@ class AccountResourceService extends __BaseService {
     );
   }
   /**
+   * finishPasswordReset
    * @param keyAndPassword keyAndPassword
    */
   finishPasswordResetUsingPOST(keyAndPassword: KeyAndPasswordVM): __Observable<null> {
@@ -171,6 +179,7 @@ class AccountResourceService extends __BaseService {
   }
 
   /**
+   * requestPasswordReset
    * @param mail mail
    */
   requestPasswordResetUsingPOSTResponse(mail: string): __Observable<__StrictHttpResponse<null>> {
@@ -196,6 +205,7 @@ class AccountResourceService extends __BaseService {
     );
   }
   /**
+   * requestPasswordReset
    * @param mail mail
    */
   requestPasswordResetUsingPOST(mail: string): __Observable<null> {
@@ -205,6 +215,7 @@ class AccountResourceService extends __BaseService {
   }
 
   /**
+   * activateAccount
    * @param key key
    */
   activateAccountUsingGETResponse(key: string): __Observable<__StrictHttpResponse<null>> {
@@ -230,6 +241,7 @@ class AccountResourceService extends __BaseService {
     );
   }
   /**
+   * activateAccount
    * @param key key
    */
   activateAccountUsingGET(key: string): __Observable<null> {
@@ -239,6 +251,7 @@ class AccountResourceService extends __BaseService {
   }
 
   /**
+   * isAuthenticated
    * @return OK
    */
   isAuthenticatedUsingGETResponse(): __Observable<__StrictHttpResponse<string>> {
@@ -263,6 +276,7 @@ class AccountResourceService extends __BaseService {
     );
   }
   /**
+   * isAuthenticated
    * @return OK
    */
   isAuthenticatedUsingGET(): __Observable<string> {
@@ -272,6 +286,7 @@ class AccountResourceService extends __BaseService {
   }
 
   /**
+   * registerAccount
    * @param managedUserVM managedUserVM
    */
   registerAccountUsingPOSTResponse(managedUserVM: ManagedUserVM): __Observable<__StrictHttpResponse<null>> {
@@ -297,6 +312,7 @@ class AccountResourceService extends __BaseService {
     );
   }
   /**
+   * registerAccount
    * @param managedUserVM managedUserVM
    */
   registerAccountUsingPOST(managedUserVM: ManagedUserVM): __Observable<null> {
