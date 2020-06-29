@@ -1,21 +1,24 @@
 <ion-header>
   <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>order</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-item *ngFor=" let c of orders">
-    <ion-buttons>
+  <ion-item *ngFor=" let o of orders">
+    <ion-buttons (click)=getSummary(o.id)>
       
       <ion-card class="welcome">
     <ion-grid>
       <ion-row>
         <ion-col>
-                <img class="category" src="assets/product.jpg">
+                <img class="category" src="assets/orders.jpg">
         </ion-col>
         <ion-col>
-          <ion-row><h4>{{c.name}}</h4></ion-row>
+          <ion-row><h4>{{o.name}}</h4></ion-row>
       </ion-col>
       </ion-row>
       <ion-col></ion-col>

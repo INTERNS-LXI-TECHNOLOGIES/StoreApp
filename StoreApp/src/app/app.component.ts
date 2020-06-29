@@ -25,15 +25,16 @@ export class AppComponent {
       icon: 'paper-plane'
     },
     {
-      title: 'Order Summary',
-      url: '/order',
-      icon: 'archive'
-    },
-    {
       title: 'Profile',
       url: '/profile',
       icon: 'person'
+    },
+    {
+      title: 'Order Summary',
+      url: '/order',
+      icon: 'archive'
     }
+
 
   ];
   constructor(

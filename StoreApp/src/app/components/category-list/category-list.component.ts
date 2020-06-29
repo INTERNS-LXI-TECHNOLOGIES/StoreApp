@@ -31,7 +31,8 @@ export class CategoryListComponent implements OnInit {
               ) { }
 
   ngOnInit() {
-    this.ReadCategory();
+    // this.ReadCategory();
+    this.getAllCategories();
   }
  gotoSalesHistory(){
    this.router.navigateByUrl('sales-history');
@@ -51,15 +52,6 @@ export class CategoryListComponent implements OnInit {
     console.log('this is the categoryid from page', id);
     modal.present();
   }
-
-  // async getCategory(product: any) {
-  //   const modal = await this.modalController.create({
-  //     component: ProductListComponent,
-  //     componentProps: { category: product },
-  //   });
-  //   console.log('this is the product from page', product);
-  //   modal.present();
-  // }
 
   gotoCreateProductPage() {
     this.router.navigateByUrl('/create-product');
@@ -105,11 +97,11 @@ export class CategoryListComponent implements OnInit {
 
     await alert.present();
   }
- ReadCategory(){
-   this.categoryResourceService.getAllCategoriesUsingGET().subscribe(allcategory => {
-     this.categories = allcategory;
-   });
- }
+//  ReadCategory(){
+//    this.categoryResourceService.getAllCategoriesUsingGET().subscribe(allcategory => {
+//      this.categories = allcategory;
+//    });
+//  }
  logout() {
   localStorage.removeItem('token');
   this.navController.navigateRoot('/login');
