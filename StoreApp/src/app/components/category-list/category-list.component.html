@@ -2,16 +2,14 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-button (click)="goBack()">
-        <ion-icon name="arrow-back" slot="start"></ion-icon>
-      </ion-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Categories</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-item *ngFor="let c of categories">
+  <ion-item *ngFor="let c of categorylist">
     <ion-buttons (click)="getCategory(c.id)">
       <ion-card class="welcome">
     <ion-grid>
