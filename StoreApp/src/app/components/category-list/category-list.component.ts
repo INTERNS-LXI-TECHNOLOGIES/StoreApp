@@ -1,13 +1,10 @@
 import { CategoryDTO } from 'src/app/api/models';
-import { ModalController, AlertController } from '@ionic/angular';
-import { CartService } from 'src/app/core/services/cart.service';
+import { ModalController, AlertController, NavController } from '@ionic/angular';
 import {
-  QueryResourceService,
   CategoryResourceService,
 } from 'src/app/api/services';
 import { Router } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
-import { Categories } from 'src/app/core/mocks/categories.list';
 import { ProductListComponent } from '../product-list/product-list.component';
 import { CATEGORYS } from 'src/app/core/dumb-data/CategoryDumb';
 
@@ -18,25 +15,27 @@ import { CATEGORYS } from 'src/app/core/dumb-data/CategoryDumb';
 })
 export class CategoryListComponent implements OnInit {
   // categoryMap= Categories;
-  categories = Categories;
+  categories = [];
   @Input() userRole = 'user';
   catergory = CATEGORYS;
-  currentid;
+  currentid = false;
   categorylist: CategoryDTO[] = [];
 
-  constructor(
-    private modalController: ModalController,
-    private router: Router,
-    private alert: AlertController,
-    private queryResourceService: QueryResourceService,
-    private categoryResourceService: CategoryResourceService,
-    private cartService: CartService
-  ) {}
+  constructor(private modalController: ModalController,
+              private router: Router,
+              private alert: AlertController,
+              // private cartService: CartService,
+              // private modalController: ModalController
+              private categoryResourceService: CategoryResourceService,
+              private navController: NavController
+              ) { }
 
   ngOnInit() {
-    this.getAllCategories();
+    this.ReadCategory();
   }
-
+ gotoSalesHistory(){
+   this.router.navigateByUrl('sales-history');
+ }
   getAllCategories() {
     this.categoryResourceService.getAllCategoriesUsingGET().subscribe((bev) => {
       this.categorylist = bev;
@@ -69,10 +68,21 @@ export class CategoryListComponent implements OnInit {
     this.router.navigateByUrl('/create-category');
   }
   arrowProcess(id) {
-    this.currentid = id;
+    if (this.currentid === id) {
+      this.currentid = false;
+    } else {
+      this.currentid = id;
+
+    }
   }
-  goToUpdateProductPage() {
-    this.router.navigateByUrl('update-product');
+  // goToUpdateProductPage() {
+  //   this.router.navigateByUrl('update-product');
+  // }
+  goToCategoryDetailedView(id){
+    this.router.navigateByUrl('category-detailed-view/' + id);
+  }
+  goBack () {
+    this.router.navigateByUrl('/home');
   }
 
   async presentAlertConfirm(id) {
@@ -95,27 +105,15 @@ export class CategoryListComponent implements OnInit {
 
     await alert.present();
   }
-  // getCategories() {
-  //   this.productResourceService.findAllCategoryUsingGET(category
-  //     ).subscribe(bev => {
-  //       this.category = bev; console.log(bev); });
-  // }
-  // async openCart() {
+ ReadCategory(){
+   this.categoryResourceService.getAllCategoriesUsingGET().subscribe(allcategory => {
+     this.categories = allcategory;
+   });
+ }
+ logout() {
+  localStorage.removeItem('token');
+  this.navController.navigateRoot('/login');
 
-  //   const modal = await this.modalController.create({
-  //     component : CartModalPage,
-  //     cssClass: 'cart-modal'
-  //   });
-  //   modal.present();
-  // }
+ }
 
-  //  ngOnInit() {
-  // this.products = this.cartService.getProduct();
-  // this.cart = this.cartService.getCart();
-  // this.cartItemCount = this.cartService.getCartItemCount();
-
-  // addToCart(product) {
-  //   this.cartService.addProduct(product);
-
-  // }
 }

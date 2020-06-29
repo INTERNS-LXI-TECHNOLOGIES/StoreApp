@@ -1,3 +1,4 @@
+import { NavController } from '@ionic/angular';
 import { Component } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
@@ -14,7 +15,7 @@ export class AppComponent {
   public selectedIndex = 0;
   public appPages = [
     {
-      title: 'home',
+      title: 'Home',
       url: '/user-layout',
       icon: 'home'
     },
@@ -24,20 +25,22 @@ export class AppComponent {
       icon: 'paper-plane'
     },
     {
-      title: 'order summary',
+      title: 'Order Summary',
       url: '/order',
       icon: 'archive'
     },
     {
-      title: 'profile',
+      title: 'Profile',
       url: '/profile',
       icon: 'person'
     }
+
   ];
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private navcontroler: NavController
   ) {
     this.initializeApp();
   }
@@ -48,11 +51,16 @@ export class AppComponent {
       this.splashScreen.hide();
     });
   }
-  
+
   ngOnInit() {
     const path = window.location.pathname.split('user-home/')[1];
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
     }
   }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.navcontroler.navigateRoot('/login');
+    }
 }

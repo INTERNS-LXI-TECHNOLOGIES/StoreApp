@@ -1,0 +1,33 @@
+
+<ion-header>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <ion-toolbar color="primary">
+    <ion-buttons><ion-button (click)="goToHome()"><ion-icon slot="icon-only" name="backspace"></ion-icon></ion-button>
+    <ion-title>Category Detailed View</ion-title></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <div class="container">
+   <div class="card">
+    <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/hbz-shampoo-index-1572638865.jpg" alt="user" width="100%" class="image">
+    
+      <div class="overlay">
+    <div class="text">No Image!!</div>
+   </div>
+  </div>
+  </div>
+
+
+    <ion-item>Name: {{category.name}}</ion-item>
+  <ion-item>Id:  {{category.id}}</ion-item>
+  <ion-item>storeId:  {{category.storeId}}</ion-item>
+  <ion-item>description:  {{category.description}}</ion-item>
+</ion-card>
+</ion-content>
+  
+   <ion-item size=2 ><ion-button slot="end" fill="none" (click)="goToUpdateProductPage()"><ion-icon color="primary" slot="icon-only" name ="create"></ion-icon></ion-button>
+   <ion-button slot="start" (click)="deleteProduct()" fill="none"><ion-icon color ="danger" slot="icon-only" name ="trash"></ion-icon></ion-button></ion-item> 
+
+
+  

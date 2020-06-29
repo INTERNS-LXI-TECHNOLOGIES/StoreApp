@@ -45,22 +45,22 @@ export class CartModalComponent implements OnInit {
 
    getOrder() {
      this.commandResourceService.addSaleUsingPOST(this.cart).subscribe();
-     console.log("this is the cartdetails",this.cart.id);
+     console.log("this is the cartdetails",this.cart);
      this.modalController.dismiss();
    }
 
-   async checkout() {
+  //  async checkout() {
 
-     const alert = await this.alertCntoller.create({
-       header: 'Thanks for your Order!',
-       message: 'We will deliver your food as soon as possible',
-       buttons: ['OK']
-     });
-     alert.present().then(() => {
-       this.cartService.clearProducts();
-       this.modalController.dismiss();
-     });
-   }
+  //    const alert = await this.alertCntoller.create({
+  //      header: 'Thanks for your Order!',
+  //      message: 'We will deliver your food as soon as possible',
+  //      buttons: ['OK']
+  //    });
+  //    alert.present().then(() => {
+  //      this.cartService.clearProducts();
+  //      this.modalController.dismiss();
+  //    });
+  //  }
    emptyCart() {
      const choice = confirm('Do you want to clear cart?');
      if (choice) {

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-layout.page.scss'],
 })
 export class AdminLayoutPage implements OnInit {
-  constructor() { }
+  constructor(  private router: Router) {
+  }
 
   ngOnInit() {
+  }
+
+  goHome() {
+    this.router.navigateByUrl('/admin-layout');
+  }
+  goProfile() {
+    this.router.navigateByUrl('/profile');
   }
 
 }

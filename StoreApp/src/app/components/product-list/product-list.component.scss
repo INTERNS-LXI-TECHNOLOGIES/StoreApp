@@ -6,6 +6,15 @@
     height: 10vh;
   width: 10vh;
 }
+.img {
+  width: 79px;
+  height: 79px;
+  margin-right: 10px;
+}
+.labelItems {
+  padding: 3px;
+    margin-left: 8px;
+}
 .buttonsize{
 height: 10px;
 width: 10px;
@@ -42,4 +51,9 @@ width: 10px;
   font-size: 1.2em;
   min-width: 25px;
   z-index: 15;
+}
+h1 {
+  border-style: solid;
+  border-color: #92a8d1;
+  border-radius: 10px;
 }

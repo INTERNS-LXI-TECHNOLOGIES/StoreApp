@@ -18,7 +18,7 @@ export class UserLayoutPage implements OnInit {
 
   }
   goHome() {
-    this.router.navigateByUrl('/user-home');
+    this.router.navigateByUrl('/home');
   }
   goProfile() {
     this.router.navigateByUrl('/profile');
@@ -34,4 +34,14 @@ export class UserLayoutPage implements OnInit {
     this.modalController.dismiss();
  }
   }
-
+//   async openCart() {
+//     const modal = await this.modalController.create({
+//       component: CartModalComponent,
+//       cssClass: 'cart-modal',
+//     });
+//     modal.present();
+//   }
+//   closeModal() {
+//     this.modalController.dismiss();
+//  }
+// }

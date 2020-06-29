@@ -1,3 +1,6 @@
+import { UpdateStockComponent } from './update-stock/update-stock.component';
+import { ProductDetailedViewComponent } from './product-detailed-view/product-detailed-view.component';
+import { UpdateCategoryComponent } from './update-category/update-category.component';
 import { CartService } from './../core/services/cart.service';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -11,6 +14,7 @@ import { CreateCategoryComponent } from './create-category/create-category.compo
 import { CreateProductComponent } from './create-product/create-product.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
+import { CategoryDetailedViewComponent } from './category-detailed-view/category-detailed-view.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
@@ -22,10 +26,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ProductListComponent,
     UpdateProductComponent,
     CartModalComponent,
-    DashboardComponent
+    CategoryDetailedViewComponent,
+    ProductDetailedViewComponent,
+    DashboardComponent,
+    UpdateCategoryComponent,
+    UpdateStockComponent
   ],
   imports: [CommonModule, IonicModule, FormsModule, HttpClientModule],
-
   exports: [
     CartModalComponent,
     CategoryListComponent,
@@ -33,7 +40,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     CreateProductComponent,
     ProductListComponent,
     UpdateProductComponent,
-    DashboardComponent
+    UpdateCategoryComponent,
+    CategoryDetailedViewComponent,
+    ProductDetailedViewComponent,
+    DashboardComponent,
+    UpdateStockComponent
   ]
 })
 export class ComponentsModule {}

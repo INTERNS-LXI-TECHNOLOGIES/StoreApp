@@ -7,11 +7,19 @@
 </ion-header>
 
 <ion-content>
-<input type="file">
-<ion-card>
-<ion-input placeholder="CategoryName"></ion-input>
-</ion-card>
-<ion-card>
-<ion-input placeholder="Description"></ion-input>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <ion-card size="10"><ion-item><div>
+    <label for="files" class="btn">Select Image</label>
+    <input id="files" style="visibility:hidden;" type="file"></div></ion-item>
+
+<ion-item><ion-input  [(ngModel)]="category.name" placeholder="CategoryName"></ion-input></ion-item>
+
+
+<ion-item><ion-input [(ngModel)]="category.description" placeholder="Description"></ion-input></ion-item>
 </ion-card>
 </ion-content>
+
+<ion-fab vertical="bottom" horizontal="end" >
+  <ion-fab-button (click)=" createCategory()" >
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
