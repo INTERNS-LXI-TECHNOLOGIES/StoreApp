@@ -23,17 +23,25 @@ export class UserLayoutPage implements OnInit {
   goProfile() {
     this.router.navigateByUrl('/profile');
   }
-  goCart() {
-    this.router.navigateByUrl('/mycart');
-  }
-  async openCart() {
-    const modal = await this.modalController.create({
-      component: CartModalComponent,
-      cssClass: 'cart-modal',
-    });
-    modal.present();
+ async goCart() {
+   const modal = await this.modalController.create({
+        component : CartModalComponent,
+        cssClass: 'cart-modal'
+      });
+   modal.present();
   }
   closeModal() {
     this.modalController.dismiss();
  }
-}
+  }
+//   async openCart() {
+//     const modal = await this.modalController.create({
+//       component: CartModalComponent,
+//       cssClass: 'cart-modal',
+//     });
+//     modal.present();
+//   }
+//   closeModal() {
+//     this.modalController.dismiss();
+//  }
+// }

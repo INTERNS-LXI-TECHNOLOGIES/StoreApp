@@ -1,54 +1,77 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-buttons><ion-button (click)="goToHome()"><ion-icon slot="icon-only" name="backspace"></ion-icon></ion-button>
-      <ion-title>UpdateProduct</ion-title></ion-buttons>
+    <ion-buttons>
+      <ion-button (click)="goToHome()">
+        <ion-icon slot="icon-only" name="backspace"></ion-icon>
+      </ion-button>
+      <ion-title>UpdateProduct</ion-title>
+    </ion-buttons>
 
-    
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-card>
     <ion-item>
-    <ion-input type="file"></ion-input>
-  </ion-item>
-  
+      <ion-input type="file"></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Name</ion-label>
-    <ion-input  [(ngModel)]="product.name"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Price</ion-label>
-    <ion-input  [(ngModel)]="product.price"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Quantity</ion-label>
-    <ion-input  [(ngModel)]="product.quantity" ></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Warrenty</ion-label>
-    <ion-input  [(ngModel)]="product.warranty"></ion-input>
-  </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">BrandName</ion-label>
-    <ion-input  [(ngModel)]="product.brand"></ion-input>
-  </ion-item>
-  <ion-item>
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input [(ngModel)]="product.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Price</ion-label>
+      <ion-input [(ngModel)]="product.price"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Quantity</ion-label>
+      <ion-input [(ngModel)]="product.quantity"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Warrenty</ion-label>
+      <ion-input [(ngModel)]="product.warranty"></ion-input>
+    </ion-item>
 
-    <ion-label position="floating">Description</ion-label>
-    <ion-textarea [(ngModel)]="product.description"></ion-textarea>
-  </ion-item>
-  <ion-item>
-<ion-label>Category</ion-label>
-<ion-select [(ngModel)]="product.categoryId" okText="Okay" cancelText="Dismiss">
-  <ion-select-option *ngFor="let c of categories" value={{c.id}}>{{c.name}}</ion-select-option>
-</ion-select>
-</ion-item>
+    <ion-item>
+      <ion-label position="floating">BrandName</ion-label>
+      <ion-input [(ngModel)]="product.brand"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label position="floating">Nunmber of Product</ion-label>
+      <ion-input [(ngModel)]="product.noOfStock"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea [(ngModel)]="product.description"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Category</ion-label>
+      <ion-select [(ngModel)]="product.categoryId" okText="Okay" cancelText="Dismiss">
+        <ion-select-option *ngFor="let c of categories" value={{c.id}}>{{c.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Manufacturing Date</ion-label>
+      <ion-datetime [(ngModel)]="manufacturingDate" displayFormat="MM DD YY"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Expiry Date</ion-label>
+      <ion-datetime [(ngModel)]="expiringDate" displayFormat="MM DD YY"></ion-datetime>
+    </ion-item>
 
   </ion-card>
 </ion-content>
 <ion-footer color="primary">
-  <ion-item><ion-button slot="start" (click)="update()">Update</ion-button><ion-button slot="end" (click)="goToHome()">Cancel</ion-button></ion-item>
+  <ion-item>
+    <ion-button slot="start" (click)="update()">Update</ion-button>
+    <ion-button slot="end" (click)="goToHome()">Cancel</ion-button>
+  </ion-item>
 </ion-footer>
