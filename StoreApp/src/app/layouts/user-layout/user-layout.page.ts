@@ -23,6 +23,8 @@ export class UserLayoutPage implements OnInit {
   goProfile() {
     this.router.navigateByUrl('/profile');
   }
+
+
  async goCart() {
    const modal = await this.modalController.create({
         component : CartModalComponent,

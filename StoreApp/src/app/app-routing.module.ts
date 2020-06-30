@@ -51,6 +51,12 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
+    path: 'order',
+    loadChildren: () => import('./pages/order/order.module').then( m => m.OrderPageModule),
+    canActivate: [AuthGuardService]
+  },
+
+  {
     path: 'update-product/:id',
     component: UpdateProductComponent,
     canActivate: [AuthGuardService]

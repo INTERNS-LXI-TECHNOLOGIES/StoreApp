@@ -18,7 +18,7 @@ export class CategoryListComponent implements OnInit {
   categories = [];
   @Input() userRole = 'user';
   catergory = CATEGORYS;
-  currentid = false;
+  currentid;
   categorylist: CategoryDTO[] = [];
 
   constructor(private modalController: ModalController,
@@ -31,7 +31,10 @@ export class CategoryListComponent implements OnInit {
               ) { }
 
   ngOnInit() {
-    this.ReadCategory();
+    console.log(this.userRole);
+    
+    // this.ReadCategory();
+    this.getAllCategories();
   }
  gotoSalesHistory(){
    this.router.navigateByUrl('sales-history');
@@ -52,15 +55,6 @@ export class CategoryListComponent implements OnInit {
     modal.present();
   }
 
-  // async getCategory(product: any) {
-  //   const modal = await this.modalController.create({
-  //     component: ProductListComponent,
-  //     componentProps: { category: product },
-  //   });
-  //   console.log('this is the product from page', product);
-  //   modal.present();
-  // }
-
   gotoCreateProductPage() {
     this.router.navigateByUrl('/create-product');
   }
@@ -68,12 +62,13 @@ export class CategoryListComponent implements OnInit {
     this.router.navigateByUrl('/create-category');
   }
   arrowProcess(id) {
-    if (this.currentid === id) {
-      this.currentid = false;
-    } else {
-      this.currentid = id;
+    this.currentid = id
+    // if (this.currentid === id) {
+    //   this.currentid = false;
+    // } else {
+    //   this.currentid = id;
 
-    }
+    // }
   }
   // goToUpdateProductPage() {
   //   this.router.navigateByUrl('update-product');
@@ -105,11 +100,11 @@ export class CategoryListComponent implements OnInit {
 
     await alert.present();
   }
- ReadCategory(){
-   this.categoryResourceService.getAllCategoriesUsingGET().subscribe(allcategory => {
-     this.categories = allcategory;
-   });
- }
+//  ReadCategory(){
+//    this.categoryResourceService.getAllCategoriesUsingGET().subscribe(allcategory => {
+//      this.categories = allcategory;
+//    });
+//  }
  logout() {
   localStorage.removeItem('token');
   this.navController.navigateRoot('/login');

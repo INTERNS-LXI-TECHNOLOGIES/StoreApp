@@ -23,6 +23,8 @@ export class UpdateProductComponent implements OnInit {
 
     this.productService.getProductUsingGET(this.id).subscribe(pro => {
       this.product = pro
+      this.manufacturingDate = pro.manufacturingDate.slice(0,pro.manufacturingDate.length-1);
+      this.expiringDate = pro.expiringDate.slice(0,pro.expiringDate.length-1);
     })
   }
   goToHome() {

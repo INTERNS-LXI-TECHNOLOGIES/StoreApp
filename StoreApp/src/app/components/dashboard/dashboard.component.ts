@@ -7,6 +7,7 @@ import { IonSlides, ModalController } from '@ionic/angular';
 import { CategoryDTO } from 'src/app/api/models';
 import { CategoryResourceService } from 'src/app/api/services';
 import { CartModalComponent } from '../cart-modal/cart-modal.component';
+import { ProductListComponent } from '../product-list/product-list.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -57,7 +58,13 @@ abstract;
 goCategories() {
   this.router.navigateByUrl('/category-list');
 }
-getCategory(c) {
+async getCategory(id: any) {
+  const modal = await this.modalController.create({
+    component: ProductListComponent,
+    componentProps: { categoryid: id },
+  });
+  console.log('this is the categoryid from page', id);
+  modal.present();
 }
 
 async openCart() {

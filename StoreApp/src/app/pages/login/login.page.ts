@@ -1,3 +1,5 @@
+import { CartService } from 'src/app/core/services/cart.service';
+import { UserDTO } from './../../api/models/user-dto';
 import { NavController, ToastController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -7,7 +9,7 @@ import {
   FormControl,
 } from '@angular/forms';
 import { Util } from 'src/app/core/services/util';
-import { UserJwtControllerService } from 'src/app/api/services';
+import { UserJwtControllerService, UserResourceService } from 'src/app/api/services';
 
 @Component({
   selector: 'app-login',
@@ -28,6 +30,8 @@ export class LoginPage implements OnInit {
     private jwtService: UserJwtControllerService,
     private navController: NavController,
     private toastController: ToastController,
+    private userResourceService: UserResourceService,
+    private cartService: CartService
   ) {}
 
   ngOnInit() {
@@ -60,10 +64,15 @@ export class LoginPage implements OnInit {
         (data) => {
           localStorage.setItem('token', data.id_token);
           localStorage.setItem('username', this.loginForm.value.username);
-          this.util.createToast('You have Succesfuly Logedin');
-          console.log(data, 'token');
-          this.util.navigateCategories();
-          console.log('logged in');
+          this.userResourceService.getUserUsingGET(this.loginForm.value.username).subscribe((user: UserDTO) => {
+            this.util.createToast('You have Succesfuly Logedin');
+            localStorage.setItem('userId', user.id + '' );
+            console.log(data, 'token');
+            this.cartService.getCustomerId();
+            this.util.navigateCategories();
+            console.log('logged in');
+
+          });
         },
         (err) => {
           this.util.createToast('Invalid username or Password');

@@ -4,6 +4,7 @@ import { UserResourceService } from 'src/app/api/services';
 import { AlertController, ModalController, NavController } from '@ionic/angular';
 import { Component, OnInit, Input } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { CartModalComponent } from 'src/app/components/cart-modal/cart-modal.component';
 
 
 @Component({
@@ -14,12 +15,12 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 export class ProfilePage implements OnInit {
 
   constructor(
-              private router: Router,
                private camera: Camera,
                private alertController: AlertController,
                private modalController: ModalController,
                private navController: NavController,
-               private userResourceService: UserResourceService
+               private userResourceService: UserResourceService,
+               private router: Router,
   ) { }
   //  
   user: UserDTO;
@@ -113,6 +114,22 @@ export class ProfilePage implements OnInit {
  }
 goToHome(){
   this.router.navigateByUrl('admin-layout');
+}
+ goHome() {
+  this.router.navigateByUrl('/home');
+}
+goProfile() {
+  this.router.navigateByUrl('/profile');
+}
+async goCart() {
+ const modal = await this.modalController.create({
+      component : CartModalComponent,
+      cssClass: 'cart-modal'
+    });
+ modal.present();
+}
+closeModal() {
+  this.modalController.dismiss();
 }
 
 }
