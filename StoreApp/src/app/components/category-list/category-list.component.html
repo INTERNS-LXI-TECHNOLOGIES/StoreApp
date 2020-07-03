@@ -1,81 +1,96 @@
 <ng-container *ngIf="userRole === 'user'">
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Categories</ion-title>
-  </ion-toolbar>
-</ion-header>
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Categories</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
-  <ion-item *ngFor="let c of categorylist">
-    <ion-buttons (click)="getCategory(c.id)">
-      <ion-card class="welcome">
-    <ion-grid>
-      <ion-row>
-        <ion-col>
+  <ion-content>
+    <ion-item *ngFor="let c of categorylist">
+      <ion-buttons (click)="getCategory(c.id)">
+        <ion-card class="welcome">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
                 <img class="category" src="assets/product.jpg">
-        </ion-col>
-        <ion-col><h4>{{c.name}}</h4>
-      </ion-col>
-      </ion-row>
-      <ion-col></ion-col>
-    </ion-grid>
-  </ion-card>
-</ion-buttons>
-</ion-item>
-</ion-content>
+              </ion-col>
+              <ion-col>
+                <h4>{{c.name}}</h4>
+              </ion-col>
+            </ion-row>
+            <ion-col></ion-col>
+          </ion-grid>
+        </ion-card>
+      </ion-buttons>
+    </ion-item>
+  </ion-content>
 </ng-container>
 
 <ng-container *ngIf="userRole === 'admin'">
-  
-  
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons>
-      <ion-button (click)="logout()" shape="round"><ion-icon name="log-out-outline"></ion-icon></ion-button>
-      <ion-title>Home</ion-title>
-      <ion-button (click)="gotoSalesHistory()" slot="end"><ion-icon slot="icon-only" name="pricetags-outline"></ion-icon></ion-button>
-
-    </ion-buttons>
-     
-     
 
 
-  </ion-toolbar>
-</ion-header>
+  <ion-header>
+    
+    <ion-toolbar color="primary">
+      <ion-buttons>
+        <ion-button (click)="logout()" shape="round">
+          <ion-icon name="log-out-outline"></ion-icon>
+        </ion-button>
+        <ion-title>Home</ion-title>
+        <ion-button (click)="gotoSalesHistory()" slot="end">
+          <ion-icon slot="icon-only" name="pricetags-outline"></ion-icon>
+        </ion-button>
 
-<ion-content >
-<ion-list *ngFor="let c of categorylist">
-<ion-card >
-   <ion-grid>
-     <ion-row>
-      <ion-col (click)="arrowProcess(c.id)" size=2> <img src = "https://forecourtretailer.com/wp-content/uploads/2020/03/Cans_LINEUP_5_V2-2.png"></ion-col>
-     <!--<ion-col (click)="arrowProcess(c.id)" size=2> <img src = "{{c.image}}"></ion-col>-->
-      <ion-col (click)="arrowProcess(c.id)" size=8><ion-text center>{{c.name}}</ion-text></ion-col>
-      <!-- <ion-col size=2><ion-button fill="none" (click)="goToUpdateProductPage()"><ion-icon color="dark" slot="icon-only" name ="create"></ion-icon></ion-button></ion-col>
+      </ion-buttons>
+
+
+
+
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list *ngFor="let c of categorylist">
+      <ion-card>
+        <ion-grid>
+          <ion-row>
+            <ion-col (click)="arrowProcess(c.id)" size=2> <img
+                src="https://forecourtretailer.com/wp-content/uploads/2020/03/Cans_LINEUP_5_V2-2.png"></ion-col>
+            <!--<ion-col (click)="arrowProcess(c.id)" size=2> <img src = "{{c.image}}"></ion-col>-->
+            <ion-col (click)="arrowProcess(c.id)" size=4>
+              <ion-text center>{{c.name}}</ion-text>
+            </ion-col>
+            <ion-col (click)="arrowProcess(c.id)" size=4>
+              <ion-text center>{{c.name}}</ion-text>
+            </ion-col>
+            <!-- <ion-col size=2><ion-button fill="none" (click)="goToUpdateProductPage()"><ion-icon color="dark" slot="icon-only" name ="create"></ion-icon></ion-button></ion-col>
       <ion-col size=2><ion-button (click)="presentAlertConfirm(c.id)" fill="none"><ion-icon color ="danger" slot="icon-only" name ="trash"></ion-icon></ion-button></ion-col> 
       <ion-col size=2><ion-button fill="none" (click)="arrowProcess(c.id)"><ion-icon color="dark" slot="icon-only" name="arrow-down-circle"></ion-icon></ion-button></ion-col>-->
-      <ion-col (click)="goToCategoryDetailedView(c.id)" size=2><ion-button fill="none"><ion-icon name="arrow-forward-circle"></ion-icon></ion-button></ion-col>
-    </ion-row>
-   <app-product-list  *ngIf="currentid ==c.id" userRole='admin' categoryId={{c.id}}></app-product-list>
-   </ion-grid>
-   </ion-card>
-</ion-list>
-</ion-content>
+            <ion-col (click)="goToCategoryDetailedView(c.id)" size=2>
+              <ion-button fill="none">
+                <ion-icon name="arrow-forward-circle"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          <app-product-list *ngIf="currentid ==c.id" userRole='admin' categoryId={{c.id}}></app-product-list>
+        </ion-grid>
+      </ion-card>
+    </ion-list>
+  </ion-content>
 
-<ion-fab vertical="bottom" horizontal="end" >
-  <ion-fab-button >
-    <ion-icon name="add"></ion-icon>
-  </ion-fab-button>
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+
+    <ion-fab-list side="start">
+      <ion-button (click)="goToCreateCatogeryPage()" shape="round">Category</ion-button>
+      <ion-button (click)="gotoCreateProductPage()" shape="round">Product</ion-button>
+
+    </ion-fab-list>
+  </ion-fab>
   
- <ion-fab-list side="start"> 
-  <ion-button (click)="goToCreateCatogeryPage()" shape="round">Category</ion-button>
-  <ion-button (click)="gotoCreateProductPage()" shape="round">Product</ion-button>
- 
- </ion-fab-list>
- </ion-fab>
-
-
-
+</ng-container>

@@ -44,6 +44,7 @@ export class CategoryListComponent implements OnInit {
       this.categorylist = bev;
       console.log(bev);
     });
+    //this.goBack();
   }
 
   async getCategory(id: any) {
