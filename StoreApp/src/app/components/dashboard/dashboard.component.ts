@@ -66,7 +66,6 @@ async getCategory(id: any) {
   console.log('this is the categoryid from page', id);
   modal.present();
 }
-
 async openCart() {
   const modal = await this.modalController.create({
     component: CartModalComponent,

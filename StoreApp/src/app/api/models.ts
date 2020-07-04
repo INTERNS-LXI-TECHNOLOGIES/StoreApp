@@ -1,3 +1,4 @@
+export { CartDTO } from './models/cart-dto';
 export { CategoryDTO } from './models/category-dto';
 export { CustomerDTO } from './models/customer-dto';
 export { JWTToken } from './models/jwttoken';

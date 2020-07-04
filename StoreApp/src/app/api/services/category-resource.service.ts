@@ -30,7 +30,6 @@ class CategoryResourceService extends __BaseService {
   }
 
   /**
-   * getAllCategories
    * @return OK
    */
   getAllCategoriesUsingGETResponse(): __Observable<__StrictHttpResponse<Array<CategoryDTO>>> {
@@ -55,7 +54,6 @@ class CategoryResourceService extends __BaseService {
     );
   }
   /**
-   * getAllCategories
    * @return OK
    */
   getAllCategoriesUsingGET(): __Observable<Array<CategoryDTO>> {
@@ -65,7 +63,6 @@ class CategoryResourceService extends __BaseService {
   }
 
   /**
-   * createCategory
    * @param categoryDTO categoryDTO
    * @return OK
    */
@@ -92,7 +89,6 @@ class CategoryResourceService extends __BaseService {
     );
   }
   /**
-   * createCategory
    * @param categoryDTO categoryDTO
    * @return OK
    */
@@ -103,7 +99,6 @@ class CategoryResourceService extends __BaseService {
   }
 
   /**
-   * updateCategory
    * @param categoryDTO categoryDTO
    * @return OK
    */
@@ -130,7 +125,6 @@ class CategoryResourceService extends __BaseService {
     );
   }
   /**
-   * updateCategory
    * @param categoryDTO categoryDTO
    * @return OK
    */
@@ -141,7 +135,6 @@ class CategoryResourceService extends __BaseService {
   }
 
   /**
-   * getCategory
    * @param id id
    * @return OK
    */
@@ -152,7 +145,7 @@ class CategoryResourceService extends __BaseService {
 
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/categories/${encodeURIComponent(id)}`,
+      this.rootUrl + `/api/categories/${id}`,
       __body,
       {
         headers: __headers,
@@ -168,7 +161,6 @@ class CategoryResourceService extends __BaseService {
     );
   }
   /**
-   * getCategory
    * @param id id
    * @return OK
    */
@@ -179,7 +171,6 @@ class CategoryResourceService extends __BaseService {
   }
 
   /**
-   * deleteCategory
    * @param id id
    */
   deleteCategoryUsingDELETEResponse(id: number): __Observable<__StrictHttpResponse<null>> {
@@ -189,7 +180,7 @@ class CategoryResourceService extends __BaseService {
 
     let req = new HttpRequest<any>(
       'DELETE',
-      this.rootUrl + `/api/categories/${encodeURIComponent(id)}`,
+      this.rootUrl + `/api/categories/${id}`,
       __body,
       {
         headers: __headers,
@@ -205,7 +196,6 @@ class CategoryResourceService extends __BaseService {
     );
   }
   /**
-   * deleteCategory
    * @param id id
    */
   deleteCategoryUsingDELETE(id: number): __Observable<null> {

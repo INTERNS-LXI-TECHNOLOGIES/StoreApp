@@ -7,20 +7,20 @@ import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-respo
 import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
-import { SaleDTO } from '../models/sale-dto';
+import { CartDTO } from '../models/cart-dto';
 
 /**
- * Sale Resource
+ * Cart Resource
  */
 @Injectable({
   providedIn: 'root',
 })
-class SaleResourceService extends __BaseService {
-  static readonly getAllSalesUsingGETPath = '/api/sales';
-  static readonly createSaleUsingPOSTPath = '/api/sales';
-  static readonly updateSaleUsingPUTPath = '/api/sales';
-  static readonly getSaleUsingGETPath = '/api/sales/{id}';
-  static readonly deleteSaleUsingDELETEPath = '/api/sales/{id}';
+class CartResourceService extends __BaseService {
+  static readonly getAllCartsUsingGETPath = '/api/carts';
+  static readonly createCartUsingPOSTPath = '/api/carts';
+  static readonly updateCartUsingPUTPath = '/api/carts';
+  static readonly getCartUsingGETPath = '/api/carts/{id}';
+  static readonly deleteCartUsingDELETEPath = '/api/carts/{id}';
 
   constructor(
     config: __Configuration,
@@ -32,13 +32,13 @@ class SaleResourceService extends __BaseService {
   /**
    * @return OK
    */
-  getAllSalesUsingGETResponse(): __Observable<__StrictHttpResponse<Array<SaleDTO>>> {
+  getAllCartsUsingGETResponse(): __Observable<__StrictHttpResponse<Array<CartDTO>>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/sales`,
+      this.rootUrl + `/api/carts`,
       __body,
       {
         headers: __headers,
@@ -49,31 +49,31 @@ class SaleResourceService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<Array<SaleDTO>>;
+        return _r as __StrictHttpResponse<Array<CartDTO>>;
       })
     );
   }
   /**
    * @return OK
    */
-  getAllSalesUsingGET(): __Observable<Array<SaleDTO>> {
-    return this.getAllSalesUsingGETResponse().pipe(
-      __map(_r => _r.body as Array<SaleDTO>)
+  getAllCartsUsingGET(): __Observable<Array<CartDTO>> {
+    return this.getAllCartsUsingGETResponse().pipe(
+      __map(_r => _r.body as Array<CartDTO>)
     );
   }
 
   /**
-   * @param saleDTO saleDTO
+   * @param cartDTO cartDTO
    * @return OK
    */
-  createSaleUsingPOSTResponse(saleDTO: SaleDTO): __Observable<__StrictHttpResponse<SaleDTO>> {
+  createCartUsingPOSTResponse(cartDTO: CartDTO): __Observable<__StrictHttpResponse<CartDTO>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-    __body = saleDTO;
+    __body = cartDTO;
     let req = new HttpRequest<any>(
       'POST',
-      this.rootUrl + `/api/sales`,
+      this.rootUrl + `/api/carts`,
       __body,
       {
         headers: __headers,
@@ -84,32 +84,32 @@ class SaleResourceService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<SaleDTO>;
+        return _r as __StrictHttpResponse<CartDTO>;
       })
     );
   }
   /**
-   * @param saleDTO saleDTO
+   * @param cartDTO cartDTO
    * @return OK
    */
-  createSaleUsingPOST(saleDTO: SaleDTO): __Observable<SaleDTO> {
-    return this.createSaleUsingPOSTResponse(saleDTO).pipe(
-      __map(_r => _r.body as SaleDTO)
+  createCartUsingPOST(cartDTO: CartDTO): __Observable<CartDTO> {
+    return this.createCartUsingPOSTResponse(cartDTO).pipe(
+      __map(_r => _r.body as CartDTO)
     );
   }
 
   /**
-   * @param saleDTO saleDTO
+   * @param cartDTO cartDTO
    * @return OK
    */
-  updateSaleUsingPUTResponse(saleDTO: SaleDTO): __Observable<__StrictHttpResponse<SaleDTO>> {
+  updateCartUsingPUTResponse(cartDTO: CartDTO): __Observable<__StrictHttpResponse<CartDTO>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-    __body = saleDTO;
+    __body = cartDTO;
     let req = new HttpRequest<any>(
       'PUT',
-      this.rootUrl + `/api/sales`,
+      this.rootUrl + `/api/carts`,
       __body,
       {
         headers: __headers,
@@ -120,17 +120,17 @@ class SaleResourceService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<SaleDTO>;
+        return _r as __StrictHttpResponse<CartDTO>;
       })
     );
   }
   /**
-   * @param saleDTO saleDTO
+   * @param cartDTO cartDTO
    * @return OK
    */
-  updateSaleUsingPUT(saleDTO: SaleDTO): __Observable<SaleDTO> {
-    return this.updateSaleUsingPUTResponse(saleDTO).pipe(
-      __map(_r => _r.body as SaleDTO)
+  updateCartUsingPUT(cartDTO: CartDTO): __Observable<CartDTO> {
+    return this.updateCartUsingPUTResponse(cartDTO).pipe(
+      __map(_r => _r.body as CartDTO)
     );
   }
 
@@ -138,14 +138,14 @@ class SaleResourceService extends __BaseService {
    * @param id id
    * @return OK
    */
-  getSaleUsingGETResponse(id: number): __Observable<__StrictHttpResponse<SaleDTO>> {
+  getCartUsingGETResponse(id: number): __Observable<__StrictHttpResponse<CartDTO>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
 
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/sales/${id}`,
+      this.rootUrl + `/api/carts/${id}`,
       __body,
       {
         headers: __headers,
@@ -156,7 +156,7 @@ class SaleResourceService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<SaleDTO>;
+        return _r as __StrictHttpResponse<CartDTO>;
       })
     );
   }
@@ -164,23 +164,23 @@ class SaleResourceService extends __BaseService {
    * @param id id
    * @return OK
    */
-  getSaleUsingGET(id: number): __Observable<SaleDTO> {
-    return this.getSaleUsingGETResponse(id).pipe(
-      __map(_r => _r.body as SaleDTO)
+  getCartUsingGET(id: number): __Observable<CartDTO> {
+    return this.getCartUsingGETResponse(id).pipe(
+      __map(_r => _r.body as CartDTO)
     );
   }
 
   /**
    * @param id id
    */
-  deleteSaleUsingDELETEResponse(id: number): __Observable<__StrictHttpResponse<null>> {
+  deleteCartUsingDELETEResponse(id: number): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
 
     let req = new HttpRequest<any>(
       'DELETE',
-      this.rootUrl + `/api/sales/${id}`,
+      this.rootUrl + `/api/carts/${id}`,
       __body,
       {
         headers: __headers,
@@ -198,14 +198,14 @@ class SaleResourceService extends __BaseService {
   /**
    * @param id id
    */
-  deleteSaleUsingDELETE(id: number): __Observable<null> {
-    return this.deleteSaleUsingDELETEResponse(id).pipe(
+  deleteCartUsingDELETE(id: number): __Observable<null> {
+    return this.deleteCartUsingDELETEResponse(id).pipe(
       __map(_r => _r.body as null)
     );
   }
 }
 
-module SaleResourceService {
+module CartResourceService {
 }
 
-export { SaleResourceService }
+export { CartResourceService }

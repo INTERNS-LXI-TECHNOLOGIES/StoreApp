@@ -1,31 +1,31 @@
+import { Component, OnInit } from '@angular/core';
 import { SaleDTO } from './../../api/models/sale-dto';
 import { ProductDTO } from './../../api/models/product-dto';
-import { OnInit, Component } from '@angular/core';
 import { Product, CartService } from 'src/app/core/services/cart.service';
 import { ModalController, AlertController } from '@ionic/angular';
-import { CommandResourceService } from 'src/app/api/services';
-
+import { CommandResourceService, CartResourceService } from 'src/app/api/services';
+import { CartDTO } from 'src/app/api/models';
 
 @Component({
-  selector: 'app-cart-modal',
-  templateUrl: './cart-modal.component.html',
-  styleUrls: ['./cart-modal.component.scss'],
+  selector: 'app-mycart',
+  templateUrl: './mycart.component.html',
+  styleUrls: ['./mycart.component.scss'],
 })
-export class CartModalComponent implements OnInit {
+export class MycartComponent implements OnInit {
     cart: Product[] = [];
-    sales: SaleDTO[] = [];
+    carts: CartDTO[] = [];
     productMap;
     total = 0;
    constructor( private cartService: CartService,
                 private modalController: ModalController,
                 private alertCntoller: AlertController,
                 private commandResourceService: CommandResourceService,
-
+                private cartResourceService: CartResourceService
                  ) { }
 
    ngOnInit() {
-     this.sales = this.cartService.getCart();
-     console.log(this.sales, 'sles is getting');
+     this.carts = this.cartService.getCart();
+     console.log(this.carts, 'sles is getting');
      this.getTotal();
      this.productMap = this.cartService.productsMap;
    }
@@ -41,29 +41,18 @@ export class CartModalComponent implements OnInit {
    }
 
    removeCartItem(product) {
-     this.cartService.removeProduct(product);
+     this.cartResourceService.deleteCartUsingDELETE(product);
      this.getTotal();
    }
 
    getTotal() {
      this.total = 0;
-     this.sales.forEach(s => {this.total += s.amount; });
+     this.carts.forEach(s => {this.total += s.amount; });
    }
 
    close() {
      this.modalController.dismiss();
    }
-
-  //  getOrder() {
-  //    this.commandResourceService.addSaleUsingPOST(this.sales).subscribe((oder) => {
-  //     console.log('this is the cartdetails', this.cart);
-  //     this.modalController.dismiss();
-  //    }, err => {
-  //      console.log('failed checkout', err);
-
-  //    });
-
-  //  }
 
    async checkout() {
 
@@ -73,10 +62,11 @@ export class CartModalComponent implements OnInit {
        buttons: ['OK']
      });
      alert.present().then(() => {
-      // this.commandResourceService.addSaleUsingPOST(this.sales).subscribe((oder) => {
+      // this.commandResourceService.addSaleUsingPOST(this.carts).subscribe((oder) => {
       //   console.log('this is the cartdetails', this.cart);
       //   this.modalController.dismiss();
-      //  }, err => {
+      //  }, 
+      //  err => {
       //    console.log('failed checkout', err);
 
       //  });
@@ -84,12 +74,16 @@ export class CartModalComponent implements OnInit {
       this.modalController.dismiss();
      });
    }
+  customerId(customerId: any, carts: CartDTO[]) {
+    throw new Error("Method not implemented.");
+  }
    emptyCart() {
      const choice = confirm('Do you want to clear cart?');
      if (choice) {
-       this.sales = [];
+       this.carts = [];
        this.cartService.clearProducts();
        this.close();
      }
    }
 }
+

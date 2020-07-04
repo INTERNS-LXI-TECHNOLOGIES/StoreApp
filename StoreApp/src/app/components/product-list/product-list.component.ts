@@ -8,9 +8,11 @@ import { CartService } from 'src/app/core/services/cart.service';
 import {
   ProductResourceService,
   QueryResourceService,
+  CartResourceService,
 } from 'src/app/api/services';
 import { BehaviorSubject } from 'rxjs';
 import { Categories } from 'src/app/core/mocks/categories.list';
+import { MycartComponent } from '../mycart/mycart.component';
 
 @Component({
   selector: 'app-product-list',
@@ -36,7 +38,8 @@ export class ProductListComponent implements OnInit {
               private modalController: ModalController,
               private cartService: CartService,
               private queryResourceService: QueryResourceService,
-              private productResourceService: ProductResourceService) { }
+              private productResourceService: ProductResourceService,
+              private cartResourceService: CartResourceService) { }
 
   ngOnInit() {
 
@@ -55,9 +58,13 @@ if (this.userRole === 'admin') {
     }
   }
 
+  // addToCart(product) {
+  //   this.cartService.addProduct(product);
+  // }
   addToCart(product) {
-    this.cartService.addProduct(product);
+    this.cartResourceService.createCartUsingPOST(product);
   }
+
   getProduct(categoryid) {
     console.log(
       'this is the categoryid from component **********',
@@ -70,10 +77,9 @@ if (this.userRole === 'admin') {
         console.log(bev);
       });
   }
-
   async openCart() {
     const modal = await this.modalController.create({
-      component: CartModalComponent,
+      component: MycartComponent,
       cssClass: 'cart-modal',
     });
     modal.present();
@@ -81,6 +87,16 @@ if (this.userRole === 'admin') {
   closeModal() {
     this.modalController.dismiss();
  }
+//   async openCart() {
+//     const modal = await this.modalController.create({
+//       component: CartModalComponent,
+//       cssClass: 'cart-modal',
+//     });
+//     modal.present();
+//   }
+//   closeModal() {
+//     this.modalController.dismiss();
+//  }
 goToProductDetailedView(id){
   this.router.navigateByUrl('product-detailed-view/' + id);
 

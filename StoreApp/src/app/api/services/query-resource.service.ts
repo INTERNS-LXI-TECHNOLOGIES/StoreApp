@@ -28,7 +28,6 @@ class QueryResourceService extends __BaseService {
   }
 
   /**
-   * findAllProductsByCategoryId
    * @param categoryId categoryId
    * @return OK
    */
@@ -39,7 +38,7 @@ class QueryResourceService extends __BaseService {
 
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/query/findAllProductsByCategoryId/${encodeURIComponent(categoryId)}`,
+      this.rootUrl + `/api/query/findAllProductsByCategoryId/${categoryId}`,
       __body,
       {
         headers: __headers,
@@ -55,7 +54,6 @@ class QueryResourceService extends __BaseService {
     );
   }
   /**
-   * findAllProductsByCategoryId
    * @param categoryId categoryId
    * @return OK
    */
@@ -66,7 +64,6 @@ class QueryResourceService extends __BaseService {
   }
 
   /**
-   * findStockByCategoryId
    * @param categoryId categoryId
    * @return OK
    */
@@ -77,7 +74,7 @@ class QueryResourceService extends __BaseService {
 
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/query/findStockByCategoryId/${encodeURIComponent(categoryId)}`,
+      this.rootUrl + `/api/query/findStockByCategoryId/${categoryId}`,
       __body,
       {
         headers: __headers,
@@ -93,7 +90,6 @@ class QueryResourceService extends __BaseService {
     );
   }
   /**
-   * findStockByCategoryId
    * @param categoryId categoryId
    * @return OK
    */
@@ -104,7 +100,6 @@ class QueryResourceService extends __BaseService {
   }
 
   /**
-   * findStockByProductId
    * @param productId productId
    * @return OK
    */
@@ -115,7 +110,7 @@ class QueryResourceService extends __BaseService {
 
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/query/findStockByProductId/${encodeURIComponent(productId)}`,
+      this.rootUrl + `/api/query/findStockByProductId/${productId}`,
       __body,
       {
         headers: __headers,
@@ -131,7 +126,6 @@ class QueryResourceService extends __BaseService {
     );
   }
   /**
-   * findStockByProductId
    * @param productId productId
    * @return OK
    */

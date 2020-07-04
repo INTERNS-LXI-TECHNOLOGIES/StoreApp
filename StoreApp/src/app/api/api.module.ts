@@ -5,6 +5,7 @@ import { ApiConfiguration, ApiConfigurationInterface } from './api-configuration
 
 import { AccountResourceService } from './services/account-resource.service';
 import { UserJwtControllerService } from './services/user-jwt-controller.service';
+import { CartResourceService } from './services/cart-resource.service';
 import { CategoryResourceService } from './services/category-resource.service';
 import { CommandResourceService } from './services/command-resource.service';
 import { CustomerResourceService } from './services/customer-resource.service';
@@ -29,6 +30,7 @@ import { UserResourceService } from './services/user-resource.service';
     ApiConfiguration,
     AccountResourceService,
     UserJwtControllerService,
+    CartResourceService,
     CategoryResourceService,
     CommandResourceService,
     CustomerResourceService,
@@ -40,7 +42,7 @@ import { UserResourceService } from './services/user-resource.service';
   ],
 })
 export class ApiModule {
-  static forRoot(customParams: ApiConfigurationInterface): ModuleWithProviders<ApiModule> {
+  static forRoot(customParams: ApiConfigurationInterface): ModuleWithProviders {
     return {
       ngModule: ApiModule,
       providers: [
