@@ -94,4 +94,5 @@ gotoUpdate(id) {
 
 this.router.navigateByUrl('update-product/' + id);
 }
+
 }

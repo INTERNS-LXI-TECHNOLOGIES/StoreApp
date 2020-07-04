@@ -5,6 +5,9 @@ export interface ProductDTO {
   description?: string;
   expiringDate?: string;
   id?: number;
+  image?: string;
+  imageContentType?: string;
+  imageLink?: string;
   manufacturingDate?: string;
   name?: string;
   noOfStock?: number;

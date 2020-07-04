@@ -7,7 +7,8 @@ import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-respo
 import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
-import { SaleDTO } from '../models/sale-dto';
+import { ProductDTO } from '../models/product-dto';
+import { CartDTO } from '../models/cart-dto';
 
 /**
  * Command Resource
@@ -16,7 +17,8 @@ import { SaleDTO } from '../models/sale-dto';
   providedIn: 'root',
 })
 class CommandResourceService extends __BaseService {
-  static readonly addSaleUsingPOSTPath = '/api/commands/addSales';
+  static readonly addCartUsingPOSTPath = '/api/commands/addcart/{customerId}/{noOfProduct}';
+  static readonly addSaleUsingPOSTPath = '/api/commands/addsale/{customerId}';
 
   constructor(
     config: __Configuration,
@@ -26,17 +28,72 @@ class CommandResourceService extends __BaseService {
   }
 
   /**
-   * addSale
-   * @param saleDTO saleDTO
+   * addCart
+   * @param params The `CommandResourceService.AddCartUsingPOSTParams` containing the following parameters:
+   *
+   * - `productDTO`: productDTO
+   *
+   * - `noOfProduct`: noOfProduct
+   *
+   * - `customerId`: customerId
    */
-  addSaleUsingPOSTResponse(saleDTO: Array<SaleDTO>): __Observable<__StrictHttpResponse<null>> {
+  addCartUsingPOSTResponse(params: CommandResourceService.AddCartUsingPOSTParams): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-    __body = saleDTO;
+    __body = params.productDTO;
+
+
     let req = new HttpRequest<any>(
       'POST',
-      this.rootUrl + `/api/commands/addSales`,
+      this.rootUrl + `/api/commands/addcart/${encodeURIComponent(params.customerId)}/${encodeURIComponent(params.noOfProduct)}`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<null>;
+      })
+    );
+  }
+  /**
+   * addCart
+   * @param params The `CommandResourceService.AddCartUsingPOSTParams` containing the following parameters:
+   *
+   * - `productDTO`: productDTO
+   *
+   * - `noOfProduct`: noOfProduct
+   *
+   * - `customerId`: customerId
+   */
+  addCartUsingPOST(params: CommandResourceService.AddCartUsingPOSTParams): __Observable<null> {
+    return this.addCartUsingPOSTResponse(params).pipe(
+      __map(_r => _r.body as null)
+    );
+  }
+
+  /**
+   * addSale
+   * @param params The `CommandResourceService.AddSaleUsingPOSTParams` containing the following parameters:
+   *
+   * - `customerId`: customerId
+   *
+   * - `cartDTO`: cartDTO
+   */
+  addSaleUsingPOSTResponse(params: CommandResourceService.AddSaleUsingPOSTParams): __Observable<__StrictHttpResponse<null>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+
+    __body = params.cartDTO;
+    let req = new HttpRequest<any>(
+      'POST',
+      this.rootUrl + `/api/commands/addsale/${encodeURIComponent(params.customerId)}`,
       __body,
       {
         headers: __headers,
@@ -53,16 +110,57 @@ class CommandResourceService extends __BaseService {
   }
   /**
    * addSale
-   * @param saleDTO saleDTO
+   * @param params The `CommandResourceService.AddSaleUsingPOSTParams` containing the following parameters:
+   *
+   * - `customerId`: customerId
+   *
+   * - `cartDTO`: cartDTO
    */
-  addSaleUsingPOST(saleDTO: Array<SaleDTO>): __Observable<null> {
-    return this.addSaleUsingPOSTResponse(saleDTO).pipe(
+  addSaleUsingPOST(params: CommandResourceService.AddSaleUsingPOSTParams): __Observable<null> {
+    return this.addSaleUsingPOSTResponse(params).pipe(
       __map(_r => _r.body as null)
     );
   }
 }
 
 module CommandResourceService {
+
+  /**
+   * Parameters for addCartUsingPOST
+   */
+  export interface AddCartUsingPOSTParams {
+
+    /**
+     * productDTO
+     */
+    productDTO: ProductDTO;
+
+    /**
+     * noOfProduct
+     */
+    noOfProduct: number;
+
+    /**
+     * customerId
+     */
+    customerId: number;
+  }
+
+  /**
+   * Parameters for addSaleUsingPOST
+   */
+  export interface AddSaleUsingPOSTParams {
+
+    /**
+     * customerId
+     */
+    customerId: number;
+
+    /**
+     * cartDTO
+     */
+    cartDTO: Array<CartDTO>;
+  }
 }
 
 export { CommandResourceService }

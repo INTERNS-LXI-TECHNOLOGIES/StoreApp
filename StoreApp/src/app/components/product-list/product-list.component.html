@@ -5,9 +5,9 @@
         <ion-grid>
           <ion-row>
 
-            <ion-col>
-              <img src={{p.image}}>
-
+            <ion-col size=3>
+              <!-- <img src={{p.image}}> -->
+               <img [src]="'data:' +'image/jpeg' +';base64,' + p.image">
             </ion-col>
             <ion-col size=2>
               <ion-label>{{p.name}}</ion-label>

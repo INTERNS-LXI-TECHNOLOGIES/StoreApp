@@ -1,5 +1,6 @@
 export { AccountResourceService } from './services/account-resource.service';
 export { UserJwtControllerService } from './services/user-jwt-controller.service';
+export { CartResourceService } from './services/cart-resource.service';
 export { CategoryResourceService } from './services/category-resource.service';
 export { CommandResourceService } from './services/command-resource.service';
 export { CustomerResourceService } from './services/customer-resource.service';
