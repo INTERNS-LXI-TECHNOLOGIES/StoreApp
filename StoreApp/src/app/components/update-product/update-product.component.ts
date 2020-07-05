@@ -36,5 +36,14 @@ export class UpdateProductComponent implements OnInit {
     this.productService.updateProductUsingPUT(this.product).subscribe((pro) => this.goToHome());
 
   }
+  onProfileChange(event:any) {
+    var reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (_event) => {
+    console.log(reader.result.toString().split(','));
+    this.product.imageContentType = reader.result.toString().split(',')[1].split(':')[1];
+    this.product.image = reader.result.toString().split(',')[1];
+  }
+}
 
 }

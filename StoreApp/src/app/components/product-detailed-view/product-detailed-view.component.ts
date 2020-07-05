@@ -46,7 +46,9 @@ async deleteProduct() {
       }, {
         text: 'Okay',
         handler: () => {
-          this.productResourceService.deleteProductUsingDELETE(this.product.id).subscribe();
+          this.productResourceService.deleteProductUsingDELETE(this.product.id).subscribe(a=>{
+            this.router.navigateByUrl('admin-layout');
+          });
         }
       }
     ]
