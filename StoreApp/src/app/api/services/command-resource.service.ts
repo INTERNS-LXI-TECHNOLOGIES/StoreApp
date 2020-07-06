@@ -7,8 +7,8 @@ import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-respo
 import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
-import { ProductDTO } from '../models/product-dto';
 import { CartDTO } from '../models/cart-dto';
+import { ProductDTO } from '../models/product-dto';
 
 /**
  * Command Resource
@@ -17,7 +17,7 @@ import { CartDTO } from '../models/cart-dto';
   providedIn: 'root',
 })
 class CommandResourceService extends __BaseService {
-  static readonly addCartUsingPOSTPath = '/api/commands/addcart/{customerId}/{noOfProduct}';
+  static readonly addCartUsingPOSTPath = '/api/commands/addcart/{customerId}';
   static readonly addSaleUsingPOSTPath = '/api/commands/addsale/{customerId}';
 
   constructor(
@@ -33,20 +33,19 @@ class CommandResourceService extends __BaseService {
    *
    * - `productDTO`: productDTO
    *
-   * - `noOfProduct`: noOfProduct
-   *
    * - `customerId`: customerId
+   *
+   * @return OK
    */
-  addCartUsingPOSTResponse(params: CommandResourceService.AddCartUsingPOSTParams): __Observable<__StrictHttpResponse<null>> {
+  addCartUsingPOSTResponse(params: CommandResourceService.AddCartUsingPOSTParams): __Observable<__StrictHttpResponse<CartDTO>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
     __body = params.productDTO;
 
-
     let req = new HttpRequest<any>(
       'POST',
-      this.rootUrl + `/api/commands/addcart/${encodeURIComponent(params.customerId)}/${encodeURIComponent(params.noOfProduct)}`,
+      this.rootUrl + `/api/commands/addcart/${encodeURIComponent(params.customerId)}`,
       __body,
       {
         headers: __headers,
@@ -57,7 +56,7 @@ class CommandResourceService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<null>;
+        return _r as __StrictHttpResponse<CartDTO>;
       })
     );
   }
@@ -67,13 +66,13 @@ class CommandResourceService extends __BaseService {
    *
    * - `productDTO`: productDTO
    *
-   * - `noOfProduct`: noOfProduct
-   *
    * - `customerId`: customerId
+   *
+   * @return OK
    */
-  addCartUsingPOST(params: CommandResourceService.AddCartUsingPOSTParams): __Observable<null> {
+  addCartUsingPOST(params: CommandResourceService.AddCartUsingPOSTParams): __Observable<CartDTO> {
     return this.addCartUsingPOSTResponse(params).pipe(
-      __map(_r => _r.body as null)
+      __map(_r => _r.body as CartDTO)
     );
   }
 
@@ -84,8 +83,10 @@ class CommandResourceService extends __BaseService {
    * - `customerId`: customerId
    *
    * - `cartDTO`: cartDTO
+   *
+   * @return OK
    */
-  addSaleUsingPOSTResponse(params: CommandResourceService.AddSaleUsingPOSTParams): __Observable<__StrictHttpResponse<null>> {
+  addSaleUsingPOSTResponse(params: CommandResourceService.AddSaleUsingPOSTParams): __Observable<__StrictHttpResponse<boolean>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -98,13 +99,13 @@ class CommandResourceService extends __BaseService {
       {
         headers: __headers,
         params: __params,
-        responseType: 'json'
+        responseType: 'text'
       });
 
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<null>;
+        return (_r as HttpResponse<any>).clone({ body: (_r as HttpResponse<any>).body === 'true' }) as __StrictHttpResponse<boolean>
       })
     );
   }
@@ -115,10 +116,12 @@ class CommandResourceService extends __BaseService {
    * - `customerId`: customerId
    *
    * - `cartDTO`: cartDTO
+   *
+   * @return OK
    */
-  addSaleUsingPOST(params: CommandResourceService.AddSaleUsingPOSTParams): __Observable<null> {
+  addSaleUsingPOST(params: CommandResourceService.AddSaleUsingPOSTParams): __Observable<boolean> {
     return this.addSaleUsingPOSTResponse(params).pipe(
-      __map(_r => _r.body as null)
+      __map(_r => _r.body as boolean)
     );
   }
 }
@@ -134,11 +137,6 @@ module CommandResourceService {
      * productDTO
      */
     productDTO: ProductDTO;
-
-    /**
-     * noOfProduct
-     */
-    noOfProduct: number;
 
     /**
      * customerId

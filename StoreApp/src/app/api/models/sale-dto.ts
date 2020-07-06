@@ -6,4 +6,7 @@ export interface SaleDTO {
   id?: number;
   noOfProduct?: number;
   productId?: number;
+  productName?: string;
+  storeId?: number;
+  unitCost?: number;
 }

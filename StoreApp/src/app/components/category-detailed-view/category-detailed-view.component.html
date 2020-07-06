@@ -8,17 +8,12 @@
 </ion-header>   
 <ion-content>
   <ion-card>
-    <div class="container">
-   <div class="card">
-    <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/hbz-shampoo-index-1572638865.jpg" alt="user" width="100%" class="image">
     
-      <div class="overlay">
-    <div class="text">No Image!!</div>
-   </div>
-  </div>
-  </div>
+    <img [src]="'data:' +'image/jpeg' +';base64,' + category.image" width="100%" >
+    
+    
 
-
+   
     <ion-item>Name: {{category.name}}</ion-item>
   <ion-item>Id:  {{category.id}}</ion-item>
   <ion-item>storeId:  {{category.storeId}}</ion-item>
