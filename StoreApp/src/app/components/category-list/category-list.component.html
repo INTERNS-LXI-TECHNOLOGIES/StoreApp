@@ -41,9 +41,10 @@
       <ion-card>
         <ion-grid>
           <ion-row>
-            <ion-col (click)="arrowProcess(c.id)" size=6> <img
-              src="https://forecourtretailer.com/wp-content/uploads/2020/03/Cans_LINEUP_5_V2-2.png"></ion-col>
-          <!--<ion-col (click)="arrowProcess(c.id)" size=2> <img src = "{{c.image}}"></ion-col>-->
+            <ion-col (click)="arrowProcess(c.id)" size=6>
+              
+              <img [src]="'data:' +'image/jpeg' +';base64,' + c.image"></ion-col>
+              <!--<ion-col (click)="arrowProcess(c.id)" size=2> <img src = "{{c.image}}"></ion-col>-->
           <ion-col (click)="arrowProcess(c.id)" size=4>
             <ion-text>{{c.name}}</ion-text>
           </ion-col>

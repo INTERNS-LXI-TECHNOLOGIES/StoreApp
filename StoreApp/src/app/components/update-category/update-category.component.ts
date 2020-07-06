@@ -33,4 +33,13 @@ export class UpdateCategoryComponent implements OnInit {
     this.categoryResourceService.updateCategoryUsingPUT(this.category).subscribe((cat) => this.goToHome());
 
   }
+  onProfileChange(event:any) {
+    var reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (_event) => {
+    console.log(reader.result.toString().split(','));
+    this.category.imageContentType = reader.result.toString().split(',')[1].split(':')[1];
+    this.category.image = reader.result.toString().split(',')[1];
+  }
+}
 }

@@ -12,7 +12,7 @@ import { ProductResourceService } from 'src/app/api/services';
 export class UpdateProductComponent implements OnInit {
   manufacturingDate;
   expiringDate;
-  product: ProductDTO = {};
+  product: ProductDTO = {}; 
   id: number;
   categories = CATEGORYS;
   constructor(private router: Router, private route: ActivatedRoute, private productService: ProductResourceService) { }
