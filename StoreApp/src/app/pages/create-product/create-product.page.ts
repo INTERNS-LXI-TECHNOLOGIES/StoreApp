@@ -34,5 +34,13 @@ export class CreateProductPage implements OnInit {
     this.router.navigateByUrl('/admin-layout');
   }
   
+  onProfileChange(event:any) {
+    var reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (_event) => {
+    console.log(reader.result.toString().split(','));
+    this.product.imageContentType = reader.result.toString().split(',')[1].split(':')[1];
+    this.product.image = reader.result.toString().split(',')[1];
+  }
 }
-
+}
