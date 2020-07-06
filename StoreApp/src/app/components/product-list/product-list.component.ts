@@ -1,16 +1,13 @@
 import { Router } from '@angular/router';
 import { CartModalComponent } from './../cart-modal/cart-modal.component';
 import { Component, OnInit, Input } from '@angular/core';
-import { PRODUCTS } from 'src/app/core/dumb-data/ProductDumb';
-import { ProductDTO } from 'src/app/api/models';
 import { ModalController } from '@ionic/angular';
 import { CartService } from 'src/app/core/services/cart.service';
-import {
-  ProductResourceService,
-  QueryResourceService,
-} from 'src/app/api/services';
+
 import { BehaviorSubject } from 'rxjs';
 import { Categories } from 'src/app/core/mocks/categories.list';
+import { QueryResourceService, ProductResourceService, CommandResourceService } from 'src/app/api/services';
+import { ProductDTO } from 'src/app/api/models';
 
 @Component({
   selector: 'app-product-list',
@@ -24,19 +21,21 @@ export class ProductListComponent implements OnInit {
   @Input() product: ProductDTO[];
   @Input() userRole = 'user';
 
-  productsDumb = PRODUCTS;
   products = [];
   categoryid;
   cart = [];
   cartItemCount: BehaviorSubject<number>;
   categories = [];
 
+    productNumberMap  = new Map<number, number>();
 
   constructor(private router: Router,
               private modalController: ModalController,
               private cartService: CartService,
               private queryResourceService: QueryResourceService,
-              private productResourceService: ProductResourceService) { }
+              private productResourceService: ProductResourceService,
+              private commandResourceService: CommandResourceService,
+              ) { }
 
   ngOnInit() {
 
@@ -53,10 +52,32 @@ if (this.userRole === 'admin') {
       this.getProduct(this.categoryid);
       console.log('this is the productid from component', this.categoryid);
     }
+
+
   }
 
   addToCart(product) {
-    this.cartService.addProduct(product);
+    let count = this.productNumberMap.get(product.id);
+    if (!count) {
+    this.productNumberMap.set(product.id , 1);
+    count = 1;
+   } else {
+    count++;
+
+    this.productNumberMap.set(product.id , count);
+
+   }
+    console.log(count, 'count is', product.id, 'oroduct id');
+
+    this.commandResourceService.addCartUsingPOST({
+      productDTO: product,
+      noOfProduct: count,
+      customerId: this.cartService.customerId
+
+    }).subscribe((data) => {
+      console.log(data, 'what is gettinng');
+      this.cartService.addProduct(product);
+    });
   }
   getProduct(categoryid) {
     console.log(

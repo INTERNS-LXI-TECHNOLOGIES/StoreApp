@@ -7,7 +7,7 @@ import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-respo
 import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
-import { OptionalOfListOfProductDTO } from '../models/optional-of-list-of-product-dto';
+import { CartDTO } from '../models/cart-dto';
 import { ProductDTO } from '../models/product-dto';
 
 /**
@@ -17,10 +17,11 @@ import { ProductDTO } from '../models/product-dto';
   providedIn: 'root',
 })
 class QueryResourceService extends __BaseService {
-  static readonly findAllProductsByBrandUsingGETPath = '/api/query/findAllProductsByBrand/{brand}';
+  static readonly findAllCartByCustomerIdUsingGETPath = '/api/query/findAllCartByCustomerId/{customerId}';
   static readonly findAllProductsByCategoryIdUsingGETPath = '/api/query/findAllProductsByCategoryId/{categoryId}';
   static readonly findStockByCategoryIdUsingGETPath = '/api/query/findStockByCategoryId/{categoryId}';
   static readonly findStockByProductIdUsingGETPath = '/api/query/findStockByProductId/{productId}';
+  static readonly getReportAsPdfUsingDataBaseUsingGETPath = '/api/query/pdf/{customerId}';
 
   constructor(
     config: __Configuration,
@@ -30,17 +31,17 @@ class QueryResourceService extends __BaseService {
   }
 
   /**
-   * @param brand brand
+   * @param customerId customerId
    * @return OK
    */
-  findAllProductsByBrandUsingGETResponse(brand: string): __Observable<__StrictHttpResponse<OptionalOfListOfProductDTO>> {
+  findAllCartByCustomerIdUsingGETResponse(customerId: number): __Observable<__StrictHttpResponse<Array<CartDTO>>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
 
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/query/findAllProductsByBrand/${brand}`,
+      this.rootUrl + `/api/query/findAllCartByCustomerId/${customerId}`,
       __body,
       {
         headers: __headers,
@@ -51,17 +52,17 @@ class QueryResourceService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<OptionalOfListOfProductDTO>;
+        return _r as __StrictHttpResponse<Array<CartDTO>>;
       })
     );
   }
   /**
-   * @param brand brand
+   * @param customerId customerId
    * @return OK
    */
-  findAllProductsByBrandUsingGET(brand: string): __Observable<OptionalOfListOfProductDTO> {
-    return this.findAllProductsByBrandUsingGETResponse(brand).pipe(
-      __map(_r => _r.body as OptionalOfListOfProductDTO)
+  findAllCartByCustomerIdUsingGET(customerId: number): __Observable<Array<CartDTO>> {
+    return this.findAllCartByCustomerIdUsingGETResponse(customerId).pipe(
+      __map(_r => _r.body as Array<CartDTO>)
     );
   }
 
@@ -170,6 +171,42 @@ class QueryResourceService extends __BaseService {
   findStockByProductIdUsingGET(productId: number): __Observable<number> {
     return this.findStockByProductIdUsingGETResponse(productId).pipe(
       __map(_r => _r.body as number)
+    );
+  }
+
+  /**
+   * @param customerId customerId
+   * @return OK
+   */
+  getReportAsPdfUsingDataBaseUsingGETResponse(customerId: number): __Observable<__StrictHttpResponse<string>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/api/query/pdf/${customerId}`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'text'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<string>;
+      })
+    );
+  }
+  /**
+   * @param customerId customerId
+   * @return OK
+   */
+  getReportAsPdfUsingDataBaseUsingGET(customerId: number): __Observable<string> {
+    return this.getReportAsPdfUsingDataBaseUsingGETResponse(customerId).pipe(
+      __map(_r => _r.body as string)
     );
   }
 }

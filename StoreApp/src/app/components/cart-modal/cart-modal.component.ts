@@ -1,9 +1,9 @@
-import { SaleDTO } from './../../api/models/sale-dto';
-import { ProductDTO } from './../../api/models/product-dto';
 import { OnInit, Component } from '@angular/core';
 import { Product, CartService } from 'src/app/core/services/cart.service';
 import { ModalController, AlertController } from '@ionic/angular';
+import { SaleDTO } from 'src/app/api/models';
 import { CommandResourceService } from 'src/app/api/services';
+
 
 
 @Component({
@@ -69,17 +69,17 @@ export class CartModalComponent implements OnInit {
 
      const alert = await this.alertCntoller.create({
        header: 'Thanks for your Order!',
-       message: 'We will deliver your food as soon as possible',
+       message: 'We will deliver your Order as soon as possible',
        buttons: ['OK']
      });
      alert.present().then(() => {
-      this.commandResourceService.addSaleUsingPOST(this.sales).subscribe((oder) => {
-        console.log('this is the cartdetails', this.cart);
-        this.modalController.dismiss();
-       }, err => {
-         console.log('failed checkout', err);
+      // this.commandResourceService.addSaleUsingPOST().subscribe((oder) => {
+      //   console.log('this is the cartdetails', this.cart);
+      //   this.modalController.dismiss();
+      //  }, err => {
+      //    console.log('failed checkout', err);
 
-       });
+      //  });
       this.cartService.clearProducts();
       this.modalController.dismiss();
      });

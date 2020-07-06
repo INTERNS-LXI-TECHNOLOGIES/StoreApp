@@ -1,7 +1,6 @@
-import { ProductDTO } from './../../api/models/product-dto';
-import { SaleDTO } from './../../api/models/sale-dto';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { SaleDTO, ProductDTO } from 'src/app/api/models';
 
 export interface Product {
   id?: number;
@@ -19,7 +18,7 @@ export class CartService {
   customerId;
   item: SaleDTO[] = [];
 
-  productsMap = new Map<number,ProductDTO>()
+  productsMap = new Map<number, ProductDTO>();
 
   private cart = [];
   private cartItemCount = new BehaviorSubject(0);
@@ -85,6 +84,7 @@ export class CartService {
   }
   getCustomerId() {
     this.customerId = localStorage.getItem('userId');
+    return this.customerId;
   }
 
   decreaseProduct(product) {

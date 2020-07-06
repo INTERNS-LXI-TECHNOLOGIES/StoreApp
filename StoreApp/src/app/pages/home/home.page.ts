@@ -1,7 +1,4 @@
 import { Router } from '@angular/router';
-import { UserDTO } from './../../api/models/user-dto';
-import { UserResourceService } from 'src/app/api/services';
-
 import { AlertController } from '@ionic/angular';
 
 import { ModalController } from '@ionic/angular';
@@ -9,6 +6,8 @@ import { ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { CATEGORYS } from 'src/app/core/dumb-data/CategoryDumb';
+import { UserDTO } from 'src/app/api/models';
+import { UserResourceService } from 'src/app/api/services';
 
 @Component({
   selector: 'app-home',
@@ -31,7 +30,7 @@ export class HomePage implements OnInit {
 
   getUserDetails() {
     this.userResourceService.getUserUsingGET(localStorage.getItem('username')).subscribe((data) => {
-      console.log(data);
+      console.log(data,'user is loged in');
       this.user = data;
       this.checkRole();
     });
