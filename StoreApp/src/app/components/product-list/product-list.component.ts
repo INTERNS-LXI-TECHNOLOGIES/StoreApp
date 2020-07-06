@@ -12,8 +12,6 @@ import {
 } from 'src/app/api/services';
 import { BehaviorSubject } from 'rxjs';
 import { Categories } from 'src/app/core/mocks/categories.list';
-import { MycartComponent } from '../mycart/mycart.component';
-
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -58,11 +56,8 @@ if (this.userRole === 'admin') {
     }
   }
 
-  // addToCart(product) {
-  //   this.cartService.addProduct(product);
-  // }
   addToCart(product) {
-    this.cartResourceService.createCartUsingPOST(product);
+    this.cartService.addProduct(product);
   }
 
   getProduct(categoryid) {
@@ -77,9 +72,10 @@ if (this.userRole === 'admin') {
         console.log(bev);
       });
   }
+ 
   async openCart() {
     const modal = await this.modalController.create({
-      component: MycartComponent,
+      component: CartModalComponent,
       cssClass: 'cart-modal',
     });
     modal.present();
@@ -87,16 +83,6 @@ if (this.userRole === 'admin') {
   closeModal() {
     this.modalController.dismiss();
  }
-//   async openCart() {
-//     const modal = await this.modalController.create({
-//       component: CartModalComponent,
-//       cssClass: 'cart-modal',
-//     });
-//     modal.present();
-//   }
-//   closeModal() {
-//     this.modalController.dismiss();
-//  }
 goToProductDetailedView(id){
   this.router.navigateByUrl('product-detailed-view/' + id);
 

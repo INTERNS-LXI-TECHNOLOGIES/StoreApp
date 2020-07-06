@@ -53,18 +53,9 @@ export class CartModalComponent implements OnInit {
    close() {
      this.modalController.dismiss();
    }
+getMail() {
 
-  //  getOrder() {
-  //    this.commandResourceService.addSaleUsingPOST(this.sales).subscribe((oder) => {
-  //     console.log('this is the cartdetails', this.cart);
-  //     this.modalController.dismiss();
-  //    }, err => {
-  //      console.log('failed checkout', err);
-
-  //    });
-
-  //  }
-
+}
    async checkout() {
 
      const alert = await this.alertCntoller.create({

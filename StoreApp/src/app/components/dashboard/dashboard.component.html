@@ -45,23 +45,7 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-                   <ion-item *ngFor="let c of categorylist">
-                      <ion-buttons (click)="getCategory(c.id)">
-                        <ion-card class="welcome">
-                          <ion-grid>
-                            <ion-row>
-                              <ion-col>
-                                <img class="category" src="assets/product.jpg">
-                              </ion-col>
-                              <ion-col>
-                                <h4>{{c.name}}</h4>
-                              </ion-col>
-                            </ion-row>
-                            <ion-col></ion-col>
-                          </ion-grid>
-                        </ion-card>
-                      </ion-buttons>
-                    </ion-item>
+      <app-category-card></app-category-card>
             </div>
     </ion-content>
 

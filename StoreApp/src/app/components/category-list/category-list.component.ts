@@ -47,14 +47,14 @@ export class CategoryListComponent implements OnInit {
     //this.goBack();
   }
 
-  async getCategory(id: any) {
-    const modal = await this.modalController.create({
-      component: ProductListComponent,
-      componentProps: { categoryid: id },
-    });
-    console.log('this is the categoryid from page', id);
-    modal.present();
-  }
+  // async getCategory(id: any) {
+  //   const modal = await this.modalController.create({
+  //     component: ProductListComponent,
+  //     componentProps: { categoryid: id },
+  //   });
+  //   console.log('this is the categoryid from page', id);
+  //   modal.present();
+  // }
 
   gotoCreateProductPage() {
     this.router.navigateByUrl('/create-product');

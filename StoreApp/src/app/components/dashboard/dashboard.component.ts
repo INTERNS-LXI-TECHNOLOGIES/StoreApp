@@ -58,14 +58,6 @@ abstract;
 goCategories() {
   this.router.navigateByUrl('/category-list');
 }
-async getCategory(id: any) {
-  const modal = await this.modalController.create({
-    component: ProductListComponent,
-    componentProps: { categoryid: id },
-  });
-  console.log('this is the categoryid from page', id);
-  modal.present();
-}
 async openCart() {
   const modal = await this.modalController.create({
     component: CartModalComponent,
