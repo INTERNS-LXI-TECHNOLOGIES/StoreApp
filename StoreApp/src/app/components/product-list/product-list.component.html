@@ -50,7 +50,8 @@
         <ion-card-header>
           <ion-item>
             <ion-thumbnail class="img">
-          <img [src]="'data:' + i. imageContentType + ';base64,' + i. image "/>
+          <!-- <img [src]="'data:' + i. imageContentType + ';base64,' + i. image "/> -->
+          <img [src]="'data:' +'image/jpeg' +';base64,' + i.image">
             </ion-thumbnail>
             <ion-label class="labelItems">
               <h2>{{i.name}}</h2>
