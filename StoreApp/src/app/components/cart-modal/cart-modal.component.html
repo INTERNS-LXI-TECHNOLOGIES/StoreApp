@@ -15,16 +15,16 @@
 
 	
 <ion-content fullscreen>
-  <div  *ngIf="sales.length == 0" class="box" >
+  <div  *ngIf="cartDto.length == 0" class="box" >
     <ion-icon name="cart" class="cartIcon"></ion-icon>
   
   </div>
 
  
-  <div class="ion-padding" *ngIf="sales.length > 0">
+  <div class="ion-padding" *ngIf="cartDto.length > 0">
  
     <ion-list>
-      <ion-item *ngFor="let p of sales" class="ion-text-wrap">
+      <ion-item *ngFor="let p of cartDto" class="ion-text-wrap">
         <ion-grid>
           <ion-row class="ion-align-items-center">
             <ion-col size="2" class="ion-text-center ion-align-self-center">

@@ -20,20 +20,18 @@ export class CategoryListComponent implements OnInit {
   catergory = CATEGORYS;
   currentid;
   categorylist: CategoryDTO[] = [];
-  stock: any=[];
+  stock: any = [];
   constructor(private modalController: ModalController,
               private router: Router,
               private alert: AlertController,
-              // private cartService: CartService,
-              // private modalController: ModalController
               private categoryResourceService: CategoryResourceService,
               private navController: NavController,
-              private queryResourceService:QueryResourceService
+              private queryResourceService: QueryResourceService
               ) { }
 
   ngOnInit() {
     console.log(this.userRole);
-    
+
     // this.ReadCategory();
     this.getAllCategories();
   }
@@ -44,23 +42,22 @@ export class CategoryListComponent implements OnInit {
   this.categoryResourceService.getAllCategoriesUsingGET().subscribe((bev) => {
     this.categorylist = bev;
     bev.forEach(c => {
-      this.queryResourceService.findStockByCategoryIdUsingGET(c.id).subscribe(s =>{
+      this.queryResourceService.findStockByCategoryIdUsingGET(c.id).subscribe(s => {
         this.stock.push(s);
-      })
-    })
-    console.log('pppppppppp'+bev);
+      });
+    });
+    console.log('pppppppppp' + bev);
   });
-  //this.goBack();
+  // this.goBack();
 }
-
-  // async getCategory(id: any) {
-  //   const modal = await this.modalController.create({
-  //     component: ProductListComponent,
-  //     componentProps: { categoryid: id },
-  //   });
-  //   console.log('this is the categoryid from page', id);
-  //   modal.present();
-  // }
+  async getCategory(id: any) {
+    const modal = await this.modalController.create({
+      component: ProductListComponent,
+      componentProps: { categoryid: id },
+    });
+    console.log('this is the categoryid from page', id);
+    modal.present();
+  }
 
   gotoCreateProductPage() {
     this.router.navigateByUrl('/create-product');
@@ -69,7 +66,7 @@ export class CategoryListComponent implements OnInit {
     this.router.navigateByUrl('/create-category');
   }
   arrowProcess(id) {
-    this.currentid = id
+    this.currentid = id;
     // if (this.currentid === id) {
     //   this.currentid = false;
     // } else {
@@ -83,7 +80,7 @@ export class CategoryListComponent implements OnInit {
   goToCategoryDetailedView(id){
     this.router.navigateByUrl('category-detailed-view/' + id);
   }
-  goBack () {
+  goBack() {
     this.router.navigateByUrl('/home');
   }
 

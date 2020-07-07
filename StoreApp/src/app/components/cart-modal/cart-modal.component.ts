@@ -1,9 +1,10 @@
-import { SaleDTO } from './../../api/models/sale-dto';
-import { ProductDTO } from './../../api/models/product-dto';
+import { CartDTO } from './../../api/models/cart-dto';
 import { OnInit, Component } from '@angular/core';
 import { Product, CartService } from 'src/app/core/services/cart.service';
 import { ModalController, AlertController } from '@ionic/angular';
+import { SaleDTO } from 'src/app/api/models';
 import { CommandResourceService } from 'src/app/api/services';
+
 
 
 @Component({
@@ -13,7 +14,7 @@ import { CommandResourceService } from 'src/app/api/services';
 })
 export class CartModalComponent implements OnInit {
     cart: Product[] = [];
-    sales: SaleDTO[] = [];
+    cartDto: CartDTO[] = [];
     productMap;
     total = 0;
    constructor( private cartService: CartService,
@@ -24,8 +25,8 @@ export class CartModalComponent implements OnInit {
                  ) { }
 
    ngOnInit() {
-     this.sales = this.cartService.getCart();
-     console.log(this.sales, 'sles is getting');
+     this.cartDto = this.cartService.getCart();
+     console.log(this.cartDto, 'sles is getting');
      this.getTotal();
      this.productMap = this.cartService.productsMap;
    }
@@ -47,7 +48,7 @@ export class CartModalComponent implements OnInit {
 
    getTotal() {
      this.total = 0;
-     this.sales.forEach(s => {this.total += s.amount; });
+     this.cartDto.forEach(s => {this.total += s.amount; });
    }
 
    close() {
@@ -57,20 +58,28 @@ getMail() {
 
 }
    async checkout() {
+    console.log(this.cartService.customerId, 'customer id');
 
-     const alert = await this.alertCntoller.create({
+    const alert = await this.alertCntoller.create({
        header: 'Thanks for your Order!',
-       message: 'We will deliver your food as soon as possible',
+       message: 'We will deliver your Order as soon as possible',
        buttons: ['OK']
      });
-     alert.present().then(() => {
-      // this.commandResourceService.addSaleUsingPOST(this.sales).subscribe((oder) => {
-      //   console.log('this is the cartdetails', this.cart);
-      //   this.modalController.dismiss();
-      //  }, err => {
-      //    console.log('failed checkout', err);
+    alert.present().then(() => {
+      console.log(this.cartService.customerId, 'customer idzzzzzz');
 
-      //  });
+      this.commandResourceService.addSaleUsingPOST({
+        customerId: this.cartService.customerId,
+        cartDTO: this.cartDto
+      }).subscribe((oder) => {
+        console.log('this is the cartdetails', this.cart);
+        this.modalController.dismiss();
+       }, err => {
+         console.log('failed checkout', err);
+
+
+
+       });
       this.cartService.clearProducts();
       this.modalController.dismiss();
      });
@@ -78,7 +87,7 @@ getMail() {
    emptyCart() {
      const choice = confirm('Do you want to clear cart?');
      if (choice) {
-       this.sales = [];
+       this.cartDto = [];
        this.cartService.clearProducts();
        this.close();
      }

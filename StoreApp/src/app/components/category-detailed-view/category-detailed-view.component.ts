@@ -9,25 +9,25 @@ import { AlertController, ToastController } from '@ionic/angular';
   styleUrls: ['./category-detailed-view.component.scss'],
 })
 export class CategoryDetailedViewComponent implements OnInit {
-id
+id;
 
-category: CategoryDTO ={};
-  constructor(private toastController: ToastController, private alert: AlertController,private router: Router,private route: ActivatedRoute, private categoryResourceService: CategoryResourceService) { }
+category: CategoryDTO = {};
+  constructor(private toastController: ToastController, private alert: AlertController, private router: Router, private route: ActivatedRoute, private categoryResourceService: CategoryResourceService) { }
 
   ngOnInit() {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     console.log(this.id);
     this.categoryResourceService.getCategoryUsingGET(this.id).subscribe(c => {
-       this.category=c;
+       this.category = c;
     });
   }
 
-  
+
   goToHome(){
     this.router.navigateByUrl('/admin-layout');
   }
   goToUpdateProductPage() {
-    this.router.navigateByUrl('update-category/'+this.id);
+    this.router.navigateByUrl('update-category/' + this.id);
   }
   async deleteProduct() {
     const alert = await this.alert.create({
@@ -48,7 +48,7 @@ category: CategoryDTO ={};
                 duration: 2000,
                 color: 'dark',
                 position: 'bottom',
-               
+
                 keyboardClose: true,
                 buttons: [
                     {
@@ -63,9 +63,9 @@ category: CategoryDTO ={};
         }
       ]
     });
-  
+
     await alert.present();
-    
+
   }
-  
+
 }

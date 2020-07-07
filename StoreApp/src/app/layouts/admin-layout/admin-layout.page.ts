@@ -14,7 +14,7 @@ export class AdminLayoutPage implements OnInit {
   }
 
   goHome() {
-    this.router.navigateByUrl('/admin-layout');
+    this.router.navigateByUrl('/category-list');
   }
   goProfile() {
     this.router.navigateByUrl('/profile');
