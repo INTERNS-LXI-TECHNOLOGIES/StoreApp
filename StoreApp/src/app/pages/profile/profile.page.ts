@@ -1,9 +1,9 @@
+import { Router } from '@angular/router';
 import { UserDTO } from './../../api/models/user-dto';
 import { UserResourceService } from 'src/app/api/services';
 import { AlertController, ModalController, NavController } from '@ionic/angular';
 import { Component, OnInit, Input } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { Router } from '@angular/router';
 import { CartModalComponent } from 'src/app/components/cart-modal/cart-modal.component';
 
 
@@ -112,6 +112,9 @@ export class ProfilePage implements OnInit {
      console.log('Camera issue:' + err);
    });
  }
+goToHome(){
+  this.router.navigateByUrl('admin-layout');
+}
  goHome() {
   this.router.navigateByUrl('/home');
 }

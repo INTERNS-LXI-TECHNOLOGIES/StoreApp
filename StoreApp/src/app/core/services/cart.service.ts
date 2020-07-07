@@ -1,3 +1,4 @@
+import { CartDTO } from './../../api/models/cart-dto';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { SaleDTO, ProductDTO } from 'src/app/api/models';
@@ -16,11 +17,10 @@ export interface Product {
 export class CartService {
 
   customerId;
-  item: SaleDTO[] = [];
+  cartDTO: CartDTO[] = [];
 
   productsMap = new Map<number, ProductDTO>();
 
-  private cart = [];
   private cartItemCount = new BehaviorSubject(0);
 
   constructor() {
@@ -31,10 +31,10 @@ export class CartService {
 
 
   getProduct() {
-    return this.item;
+    return this.cartDTO;
   }
   getCart() {
-    return this.item;
+    return this.cartDTO;
   }
   getCartItemCount() {
     return this.cartItemCount;
@@ -59,26 +59,25 @@ export class CartService {
   addProduct(product: ProductDTO) {
     this.productsMap.set(product.id , product);
     let alreadyExist = false;
-    let tempSaleDto: SaleDTO;
+    let tempCartDto: CartDTO;
 
-    for (const saleDto of this.item) {
-      if (saleDto.productId === product.id) {
+    for (const CartDto of this.cartDTO) {
+      if (CartDto.productId === product.id) {
         alreadyExist = true;
-        tempSaleDto = saleDto;
+        tempCartDto = CartDto;
       }
     }
     if (alreadyExist) {
-      tempSaleDto.noOfProduct++;
-      tempSaleDto.amount = product.price * tempSaleDto.noOfProduct;
+      tempCartDto.noOfProduct++;
+      tempCartDto.amount = product.price * tempCartDto.noOfProduct;
     } else {
-      const salesDto: SaleDTO = {
+      const cartDto: CartDTO = {
         productId: product.id,
-        date: new Date().toISOString(),
         amount: product.price,
         noOfProduct: 1,
         customerId: this.customerId,
       };
-      this.item.push(salesDto);
+      this.cartDTO.push(cartDto);
     }
     this.cartItemCount.next(this.cartItemCount.value + 1);
   }
@@ -88,12 +87,12 @@ export class CartService {
   }
 
   decreaseProduct(product) {
-    for (const [index, salesDto] of this.item.entries()) {
-      if (salesDto.productId === product.id) {
-        salesDto.noOfProduct -= 1;
-        salesDto.amount = this.productsMap.get(salesDto.productId).price * salesDto.noOfProduct;
-        if (salesDto.noOfProduct === 0) {
-          this.item.splice(index, 1);
+    for (const [index, cartDto] of this.cartDTO.entries()) {
+      if (cartDto.productId === product.id) {
+        cartDto.noOfProduct -= 1;
+        cartDto.amount = this.productsMap.get(cartDto.productId).price * cartDto.noOfProduct;
+        if (cartDto.noOfProduct === 0) {
+          this.cartDTO.splice(index, 1);
         }
       }
     }
@@ -101,15 +100,15 @@ export class CartService {
   }
 
   removeProduct(product) {
-    for (const [index, salesDto] of this.item.entries()) {
-      if (salesDto.productId === product.id) {
-        this.cartItemCount.next(this.cartItemCount.value - salesDto.noOfProduct);
-        this.item.splice(index, 1);
+    for (const [index, cartDto] of this.cartDTO.entries()) {
+      if (cartDto.productId === product.id) {
+        this.cartItemCount.next(this.cartItemCount.value - cartDto.noOfProduct);
+        this.cartDTO.splice(index, 1);
       }
     }
   }
   clearProducts() {
-    this.item = [];
+    this.cartDTO = [];
     this.cartItemCount.next(0);
   }
 }

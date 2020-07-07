@@ -29,7 +29,7 @@ export class CreateProductComponent implements OnInit {
  //   this.goToHome();
    }
    goToHome(){
-     this.router.navigateByUrl('/admin-layout');
+     this.router.navigateByUrl('admin-layout');
    }
 
 }

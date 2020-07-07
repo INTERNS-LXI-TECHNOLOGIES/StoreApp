@@ -34,7 +34,7 @@ customers: CustomerDTO[] = [];
 
   }
   goToHome(){
-    this.router.navigateByUrl('admin-layout');
+    this.router.navigateByUrl('/admin-layout');
   }
 
 

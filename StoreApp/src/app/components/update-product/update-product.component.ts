@@ -10,26 +10,40 @@ import { ProductResourceService } from 'src/app/api/services';
   styleUrls: ['./update-product.component.scss'],
 })
 export class UpdateProductComponent implements OnInit {
-
-  product:ProductDTO = {};
-  id : number;
+  manufacturingDate;
+  expiringDate;
+  product: ProductDTO = {}; 
+  id: number;
   categories = CATEGORYS;
-  constructor(private router: Router,private route: ActivatedRoute,private productService:ProductResourceService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private productService: ProductResourceService) { }
 
   ngOnInit() {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     console.log(this.id);
-    
+
     this.productService.getProductUsingGET(this.id).subscribe(pro => {
       this.product = pro
+      this.manufacturingDate = pro.manufacturingDate.slice(0,pro.manufacturingDate.length-1);
+      this.expiringDate = pro.expiringDate.slice(0,pro.expiringDate.length-1);
     })
   }
-  goToHome(){
+  goToHome() {
     this.router.navigateByUrl('admin-layout');
   }
   update() {
+    this.product.manufacturingDate = this.manufacturingDate.split('+')[0] + 'Z';
+    this.product.expiringDate = this.expiringDate.split('+')[0] + 'Z';
     this.productService.updateProductUsingPUT(this.product).subscribe((pro) => this.goToHome());
-    
+
   }
+  onProfileChange(event:any) {
+    var reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (_event) => {
+    console.log(reader.result.toString().split(','));
+    this.product.imageContentType = reader.result.toString().split(',')[1].split(':')[1];
+    this.product.image = reader.result.toString().split(',')[1];
+  }
+}
 
 }

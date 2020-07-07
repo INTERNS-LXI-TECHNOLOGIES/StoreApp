@@ -1,0 +1,21 @@
+<ion-list>
+  <ion-card *ngFor="let i of categorylist">
+    <ion-buttons (click)="getCategory(i.id)">
+    <ion-card-header>
+      <ion-item>
+        <ion-thumbnail class="img">
+      <img [src]="'data:' + i. imageContentType + ';base64,' + i. image "/>
+        </ion-thumbnail>
+        <ion-label class="labelItems">
+          <h2>{{i.name}}</h2>
+        </ion-label>
+      </ion-item>
+    </ion-card-header>
+  </ion-buttons>
+    <ion-card-content>
+      <ion-item lines="none">
+      </ion-item>
+    </ion-card-content>
+   
+  </ion-card>
+</ion-list>

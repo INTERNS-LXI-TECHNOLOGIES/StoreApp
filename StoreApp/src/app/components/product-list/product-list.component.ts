@@ -3,12 +3,15 @@ import { CartModalComponent } from './../cart-modal/cart-modal.component';
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { CartService } from 'src/app/core/services/cart.service';
-
+import {
+  ProductResourceService,
+  QueryResourceService,
+  CartResourceService,
+  CommandResourceService,
+} from 'src/app/api/services';
 import { BehaviorSubject } from 'rxjs';
 import { Categories } from 'src/app/core/mocks/categories.list';
-import { QueryResourceService, ProductResourceService, CommandResourceService } from 'src/app/api/services';
 import { ProductDTO } from 'src/app/api/models';
-
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -20,6 +23,7 @@ export class ProductListComponent implements OnInit {
   @Input() categoryId: number;
   @Input() product: ProductDTO[];
   @Input() userRole = 'user';
+  viewCart = false;
 
   products = [];
   categoryid;
@@ -34,8 +38,8 @@ export class ProductListComponent implements OnInit {
               private cartService: CartService,
               private queryResourceService: QueryResourceService,
               private productResourceService: ProductResourceService,
-              private commandResourceService: CommandResourceService,
-              ) { }
+              private cartResourceService: CartResourceService,
+              private commandResourceService: CommandResourceService) { }
 
   ngOnInit() {
 
@@ -71,7 +75,6 @@ if (this.userRole === 'admin') {
 
     this.commandResourceService.addCartUsingPOST({
       productDTO: product,
-      noOfProduct: count,
       customerId: this.cartService.customerId
 
     }).subscribe((data) => {
@@ -79,6 +82,7 @@ if (this.userRole === 'admin') {
       this.cartService.addProduct(product);
     });
   }
+
   getProduct(categoryid) {
     console.log(
       'this is the categoryid from component **********',
@@ -91,7 +95,6 @@ if (this.userRole === 'admin') {
         console.log(bev);
       });
   }
-
   async openCart() {
     const modal = await this.modalController.create({
       component: CartModalComponent,
@@ -115,4 +118,5 @@ gotoUpdate(id) {
 
 this.router.navigateByUrl('update-product/' + id);
 }
+
 }

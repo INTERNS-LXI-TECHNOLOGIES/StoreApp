@@ -1,7 +1,7 @@
 import { CategoryDTO } from 'src/app/api/models';
 import { ModalController, AlertController, NavController } from '@ionic/angular';
 import {
-  CategoryResourceService,
+  CategoryResourceService, QueryResourceService,
 } from 'src/app/api/services';
 import { Router } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
@@ -18,32 +18,38 @@ export class CategoryListComponent implements OnInit {
   categories = [];
   @Input() userRole = 'user';
   catergory = CATEGORYS;
-  currentid = false;
+  currentid;
   categorylist: CategoryDTO[] = [];
-
+  stock: any = [];
   constructor(private modalController: ModalController,
               private router: Router,
               private alert: AlertController,
-              // private cartService: CartService,
-              // private modalController: ModalController
               private categoryResourceService: CategoryResourceService,
-              private navController: NavController
+              private navController: NavController,
+              private queryResourceService: QueryResourceService
               ) { }
 
   ngOnInit() {
+    console.log(this.userRole);
+
     // this.ReadCategory();
     this.getAllCategories();
   }
  gotoSalesHistory(){
    this.router.navigateByUrl('sales-history');
  }
-  getAllCategories() {
-    this.categoryResourceService.getAllCategoriesUsingGET().subscribe((bev) => {
-      this.categorylist = bev;
-      console.log(bev);
+ getAllCategories() {
+  this.categoryResourceService.getAllCategoriesUsingGET().subscribe((bev) => {
+    this.categorylist = bev;
+    bev.forEach(c => {
+      this.queryResourceService.findStockByCategoryIdUsingGET(c.id).subscribe(s => {
+        this.stock.push(s);
+      });
     });
-  }
-
+    console.log('pppppppppp' + bev);
+  });
+  // this.goBack();
+}
   async getCategory(id: any) {
     const modal = await this.modalController.create({
       component: ProductListComponent,
@@ -60,12 +66,13 @@ export class CategoryListComponent implements OnInit {
     this.router.navigateByUrl('/create-category');
   }
   arrowProcess(id) {
-    if (this.currentid === id) {
-      this.currentid = false;
-    } else {
-      this.currentid = id;
+    this.currentid = id;
+    // if (this.currentid === id) {
+    //   this.currentid = false;
+    // } else {
+    //   this.currentid = id;
 
-    }
+    // }
   }
   // goToUpdateProductPage() {
   //   this.router.navigateByUrl('update-product');
@@ -73,7 +80,7 @@ export class CategoryListComponent implements OnInit {
   goToCategoryDetailedView(id){
     this.router.navigateByUrl('category-detailed-view/' + id);
   }
-  goBack () {
+  goBack() {
     this.router.navigateByUrl('/home');
   }
 
